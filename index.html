@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Learn — your next lightbulb moment</title>
+  <script defer src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{--bg:#0c1021;--panel:#151a30;--panel2:#1c223c;--line:#2b3353;--text:#f1f3ff;--muted:#a8b0d1;--accent:#a89cff;--purple:#7763ee;--green:#78ddbd;--red:#ff9eac;--shadow:0 24px 80px #0005}
+    html.light{--bg:#f5f5fc;--panel:#fff;--panel2:#eeedf8;--line:#dbdced;--text:#20243f;--muted:#626986;--accent:#6550cd;--purple:#6853de;--green:#148062;--red:#bb3152;--shadow:0 24px 80px #24205118;color-scheme:light}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px;line-height:1.55}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}button,a,input,textarea,select{outline-offset:4px}button:focus-visible,a:focus-visible{outline:3px solid var(--accent)}input:focus,textarea:focus,select:focus{outline:2px solid var(--accent);border-color:transparent}button{color:inherit}a{color:var(--accent)}svg{width:20px;height:20px;flex-shrink:0}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(28px,4vw,40px);letter-spacing:-1.4px;line-height:1.2;font-weight:750}h2{font-size:23px;font-weight:700;letter-spacing:-.5px}h3{font-size:18px;font-weight:700}.shell{display:flex;min-height:100vh}.sidebar{width:236px;position:fixed;inset:0 auto 0 0;border-right:1px solid var(--line);padding:30px 22px;display:flex;flex-direction:column;background:var(--bg);z-index:10}.brand{display:flex;align-items:center;gap:10px;font-size:27px;letter-spacing:-1px;font-weight:800;background:none;border:0;padding:0}.brand-mark{background:var(--accent);color:var(--bg);display:grid;place-items:center;width:35px;height:35px;border-radius:12px;transform:rotate(-7deg);font-size:24px}.nav{margin-top:40px;display:grid;gap:9px}.nav-button{display:flex;align-items:center;gap:12px;text-align:left;width:100%;border:0;border-radius:10px;padding:12px 14px;background:transparent;color:var(--muted);font-weight:600}.nav-button.selected{background:var(--panel2);color:var(--accent)}.side-note{margin-top:auto;padding-top:40px;font-size:12px;color:var(--muted)}.live-dot{display:inline-block;width:7px;height:7px;border-radius:100%;background:var(--green);margin-right:6px}.content{margin-left:236px;flex:1;min-width:0}.topbar{height:83px;padding:0 48px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}.breadcrumb{color:var(--muted);font-size:13px}.top-actions{display:flex;gap:8px;align-items:center}.page{max-width:1260px;margin:0 auto;padding:46px 48px 60px}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:750;color:var(--accent);margin-bottom:12px}.muted{color:var(--muted)}.small{font-size:13px}.tiny{font-size:11px}.row{display:flex;align-items:center;gap:12px}.spread{justify-content:space-between}.wrap{flex-wrap:wrap}.stack{display:grid;gap:18px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:11px 17px;background:var(--panel);font-weight:650;font-size:13px;white-space:nowrap;transition:background .15s,transform .15s}.btn:hover{background:var(--panel2);transform:translateY(-1px)}.btn.primary{background:var(--purple);color:white;border-color:var(--purple)}.btn.primary:hover{filter:brightness(1.12)}.btn.ghost{background:transparent}.btn.danger{color:var(--red)}.icon-btn{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;padding:9px;border-radius:9px;background:transparent;border:1px solid transparent;color:var(--muted)}.icon-btn:hover{background:var(--panel2);color:var(--text)}.icon-btn.starred{color:#f4ca73}.hero{display:flex;justify-content:space-between;align-items:center;gap:20px;margin:0 0 32px}.hero p{margin:12px 0 0;color:var(--muted)}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:34px}.stat{padding:20px 23px;border:1px solid var(--line);background:var(--panel);border-radius:14px}.stat-number{font-size:27px;font-weight:750;letter-spacing:-.6px}.stat-label{font-size:12px;color:var(--muted);margin-top:3px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}.section-head h2{margin:0}.search{max-width:260px}.field{display:block;width:100%;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:11px 13px;color:var(--text)}.field::placeholder{color:var(--muted);opacity:.7}textarea.field{resize:vertical;min-height:95px}label{display:block;font-size:13px;font-weight:650;margin-bottom:7px}.deck-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.deck{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:23px;display:flex;flex-direction:column;position:relative;overflow:hidden}.deck:before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--accent)}.deck:nth-child(3n+2):before{background:#78cfc4}.deck:nth-child(3n):before{background:#e9b976}.deck h3{margin:0;overflow-wrap:anywhere}.deck p{margin:10px 0 24px;font-size:13px;color:var(--muted);white-space:pre-wrap;overflow-wrap:anywhere}.deck-meta{font-size:12px;color:var(--muted);margin:9px 0 14px}.deck-bottom{margin-top:auto}.progress-track{height:7px;overflow:hidden;border-radius:8px;background:var(--line)}.progress-fill{height:100%;border-radius:8px;background:var(--accent);transition:width .3s}.progress-label{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:var(--muted);margin-bottom:8px}.deck-footer{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:20px}.badge{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:650;color:var(--muted)}.badge.green{color:var(--green);background:color-mix(in srgb,var(--green) 9%,transparent);border-color:color-mix(in srgb,var(--green) 25%,transparent)}.badge.purple{color:var(--accent)}.empty{text-align:center;border:1px dashed var(--line);border-radius:16px;padding:55px 24px;background:var(--panel)}.empty-symbol{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;background:var(--panel2);color:var(--accent);margin:0 auto 20px}.empty-symbol svg{width:28px;height:28px}.resume{padding:18px 22px;background:var(--panel2);border:1px solid var(--line);border-radius:13px;margin-bottom:25px}.footer-note{text-align:center;font-size:12px;color:var(--muted);margin-top:35px}.study{max-width:830px;margin:0 auto}.study-header{margin-bottom:28px}.study-header h1{font-size:25px;letter-spacing:-.7px;margin:0;overflow-wrap:anywhere}.round-meta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);margin:20px 0 10px}.question{border:1px solid var(--line);background:var(--panel);border-radius:20px;padding:32px;box-shadow:var(--shadow)}.question-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}.prompt{font-size:clamp(23px,3vw,32px);font-weight:650;line-height:1.45;overflow-wrap:anywhere;white-space:pre-wrap;margin:0 0 32px;letter-spacing:-.5px}.choices{display:grid;grid-template-columns:1fr 1fr;gap:13px}.choice{display:flex;align-items:center;gap:12px;text-align:left;white-space:pre-wrap;overflow-wrap:anywhere;background:var(--bg);padding:17px;border:1px solid var(--line);border-radius:11px;min-height:76px;font-size:14px;transition:border-color .15s}.choice:hover{border-color:var(--accent)}.choice .key{border:1px solid var(--line);border-radius:6px;width:26px;height:27px;flex-shrink:0;display:grid;place-items:center;font-size:12px;color:var(--muted)}.choice.correct{border-color:var(--green);color:var(--green);background:color-mix(in srgb,var(--green) 7%,var(--bg))}.choice.wrong{border-color:var(--red);color:var(--red)}.answer-input{font-size:17px;padding:15px}.feedback{margin-top:24px;border-top:1px solid var(--line);padding-top:24px}.success{color:var(--green)}.error{color:var(--red)}.feedback h3{margin:0 0 8px}.answer-text{white-space:pre-wrap;overflow-wrap:anywhere;font-weight:650;font-size:18px;margin:10px 0}.hint{font-size:12px;color:var(--muted);margin-top:16px;margin-bottom:0}.study-footer{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:20px 4px;color:var(--muted);font-size:12px}kbd{display:inline-block;font-family:inherit;font-size:11px;border:1px solid var(--line);padding:1px 5px;border-radius:4px;background:var(--panel)}.checkpoint{text-align:center}.checkpoint .question{padding:38px}.checkpoint h1{margin-bottom:12px}.checkpoint-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:27px 0;text-align:center}.checkpoint-stat{padding:16px 7px;background:var(--bg);border-radius:12px}.checkpoint-stat strong{display:block;font-size:25px}.results{text-align:left;margin:28px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden}.result{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:13px 16px;border-bottom:1px solid var(--line);font-size:13px}.result:last-child{border:0}.result-name{min-width:0;overflow-wrap:anywhere}.result .badge{white-space:nowrap}.completion-icon{display:grid;place-items:center;width:70px;height:70px;border-radius:24px;background:var(--panel2);color:var(--accent);margin:0 auto 25px}.completion-icon svg{width:32px;height:32px}dialog{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:18px;padding:0;width:min(760px,calc(100% - 28px));max-height:90vh;box-shadow:var(--shadow)}dialog::backdrop{background:#050816bb;backdrop-filter:blur(4px)}.modal-head{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:23px 26px;border-bottom:1px solid var(--line)}.modal-head h2{margin:0;font-size:21px}.modal-body{padding:24px 26px}.modal-foot{display:flex;justify-content:flex-end;gap:10px;padding:19px 26px;border-top:1px solid var(--line);background:var(--panel);position:sticky;bottom:0;z-index:1}.form-group{margin-bottom:20px}.card-row{display:grid;grid-template-columns:24px 1fr 1fr 34px;gap:10px;align-items:start;margin-bottom:12px}.card-row textarea{min-height:70px;font-size:13px}.card-number{font-size:12px;color:var(--muted);padding-top:12px}.card-row .icon-btn{padding:9px 5px}.card-labels{display:grid;grid-template-columns:24px 1fr 1fr 34px;gap:10px;color:var(--muted);font-size:11px;margin-bottom:8px}.bulk{padding:18px;border:1px solid var(--line);background:var(--bg);border-radius:12px;margin-bottom:25px}.bulk textarea{background:var(--panel);font-family:ui-monospace,SFMono-Regular,monospace;font-size:12px}.option{display:flex;gap:16px;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}.option:first-child{padding-top:0}.option:last-child{border:0}.option-title{font-weight:650;font-size:14px}.option p{font-size:12px;color:var(--muted);margin:4px 0 0}.option select{max-width:175px}.switch{appearance:none;width:42px;height:25px;border-radius:20px;background:var(--line);position:relative;cursor:pointer;flex-shrink:0;border:0}.switch:before{content:"";position:absolute;top:4px;left:4px;width:17px;height:17px;border-radius:100%;background:white;transition:transform .2s}.switch:checked{background:var(--purple)}.switch:checked:before{transform:translateX(17px)}.notice{font-size:12px;color:var(--muted);padding:13px 16px;background:var(--panel2);border-radius:9px;margin-top:18px}.banner{padding:15px 25px;background:var(--panel2);border-bottom:1px solid var(--line);font-size:13px}.banner .row{justify-content:center}.toast.saved{background:#137d52;color:#fff;border:1px solid #6be6ab}.toast.error{background:#a72b48;color:#fff}.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);z-index:100;background:var(--text);color:var(--bg);padding:12px 22px;border-radius:10px;font-size:13px;box-shadow:var(--shadow);max-width:calc(100% - 28px);text-align:center}.hidden{display:none!important}.backup-choice{display:grid;gap:12px}.backup-choice .btn{white-space:normal;text-align:left;justify-content:flex-start;padding:18px}.cards-count{margin-bottom:0}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.theme-sun{color:var(--accent)}.mobile-options{display:none}
+    @media(min-width:1500px){.page{padding-top:60px}.deck-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:1050px){.sidebar{width:190px;padding:27px 16px}.content{margin-left:190px}.topbar{padding:0 28px}.page{padding:35px 28px}.deck-grid{grid-template-columns:1fr}.hero{align-items:flex-start}.summary{gap:10px}.stat{padding:16px}}
+    @media(max-width:700px){.mobile-options{display:inline-flex}.topbar .breadcrumb{max-width:95px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.sidebar{position:static;width:auto;flex-direction:row;align-items:center;justify-content:space-between;border-right:0;border-bottom:1px solid var(--line);padding:15px 19px}.brand{font-size:23px}.brand-mark{width:30px;height:30px;font-size:20px}.nav{margin:0;display:flex;gap:5px}.nav-button{width:auto;padding:8px;font-size:12px;gap:6px}.nav-button svg{width:17px}.nav-button:last-child,.side-note{display:none}.shell{display:block}.content{margin:0}.topbar{height:64px;padding:0 20px}.topbar .breadcrumb{font-size:12px}.top-actions .btn{padding:8px 10px;font-size:11px}.page{padding:29px 19px 40px}.hero{display:block;margin-bottom:25px}.hero>.btn{margin-top:20px}.summary{gap:8px;margin-bottom:27px}.stat{padding:14px 10px}.stat-number{font-size:23px}.stat-label{font-size:10px}.section-head{align-items:flex-start;flex-wrap:wrap}.search{max-width:none;flex:1;min-width:150px}.deck{padding:20px}.question{padding:22px 18px;border-radius:15px}.choices{grid-template-columns:1fr}.choice{min-height:60px;padding:14px}.prompt{margin-bottom:25px;font-size:25px}.study-header h1{font-size:21px}.question-top{margin-bottom:23px}.checkpoint .question{padding:26px 18px}.checkpoint-stats{gap:7px}.checkpoint-stat strong{font-size:22px}.modal-head,.modal-body{padding:20px 17px}.modal-foot{padding:16px 17px}.card-row{grid-template-columns:18px 1fr 30px;gap:7px;position:relative;margin-bottom:20px}.card-row textarea[name=definition]{grid-column:2;grid-row:2}.card-row .icon-btn{grid-column:3;grid-row:1}.card-labels{display:none}.card-number{grid-row:1 / 3}.option{gap:10px}.option select{max-width:135px}.result{padding:12px 10px;gap:9px}.study-footer{align-items:flex-start;gap:10px}.hero h1{font-size:32px}.resume{padding:15px}.resume .row{flex-wrap:wrap}}
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body class="antialiased">
+  <div id="app"></div>
+  <dialog oncancel="Learn.closeModal()" id="modal" aria-labelledby="modal-title"></dialog>
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <input id="json-file" onchange="Learn.readImport(this.files[0])" class="sr-only" type="file" accept=".json,application/json" aria-label="Choose a Learn backup">
+  <script>
+  'use strict';
+  (() => {
+    const KEY = 'learn.local.v1';
+    const icons = {
+      home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/>',
+      plus:'<path d="M12 5v14M5 12h14"/>',
+      cards:'<rect x="5" y="6" width="15" height="15" rx="3"/><path d="M16 3H5a3 3 0 0 0-3 3v10"/>',
+      star:'<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/>',
+      speaker:'<path d="m11 4-6 5H2v6h3l6 5Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/>',
+      arrow:'<path d="M5 12h14m-6-6 6 6-6 6"/>',
+      back:'<path d="M19 12H5m6-6-6 6 6 6"/>',
+      edit:'<path d="m15 5 4 4M4 20l5-1L21 7a2.8 2.8 0 0 0-4-4L5 15Z"/>',
+      trash:'<path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7"/>',
+      close:'<path d="m6 6 12 12M6 18 18 6"/>',
+      settings:'<path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="15" cy="17" r="3"/>',
+      download:'<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>',
+      upload:'<path d="M12 16V4m-5 5 5-5 5 5M4 16v5h16v-5"/>',
+      check:'<path d="m5 12 4 4L19 6"/>',
+      trophy:'<path d="M8 3h8v6a4 4 0 0 1-8 0ZM8 5H4v3a4 4 0 0 0 4 4m8-7h4v3a4 4 0 0 1-4 4m-4 1v6m-4 2h8"/>',
+      moon:'<path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"/>',
+      sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/>',
+      spark:'<path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5Z"/>'
+    };
+    const $ = (s, root = document) => root.querySelector(s);
+    const svg = (name) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name] || icons.cards}</svg>`;
+    const esc = (v) => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const uid = () => typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2);
+    const shuffle = (a) => { a = [...a]; for (let i=a.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+    const tier = n => ['Unseen', 'Still learning', 'Mastered'][n];
+    const cardNew = (term='', definition='') => ({id:uid(),term,definition,level:0,starred:false,attempts:0,correct:0});
+    const defaults = () => ({version:1,decks:[],settings:{answerWith:'definition',written:true,starredOnly:false,theme:window.matchMedia?.('(prefers-color-scheme: light)').matches?'light':'dark'},session:null});
+    let state = defaults(), page = 'home', search = '', editor = null, pendingImport = null, toastTimer, storageIssue = '', corruptRaw = null;
+    let storageConflict = false;
+    function validateBackup(raw) {
+      if (!raw || raw.version !== 1 || !Array.isArray(raw.decks) || raw.decks.length > 200) throw new Error('Choose a version 1 Learn backup with a decks array (up to 200 decks).');
+      const ids = new Set(); let total=0;
+      const identifier = id => { if(typeof id!=='string'||!id||id.length>100||ids.has(id)) throw new Error('The backup contains missing or duplicate IDs.'); ids.add(id); return id; };
+      const text = (v,max,label) => { if(typeof v!=='string'||!v.trim()||v.length>max) throw new Error(`Invalid ${label} in backup.`); return v.trim(); };
+      const decks = raw.decks.map(d => {
+        if(!d || !Array.isArray(d.cards) || d.cards.length>10000) throw new Error('Each deck must have a cards array, with at most 10,000 cards.');
+        total += d.cards.length; if(total>50000) throw new Error('A backup can contain at most 50,000 cards.');
+        return {id:identifier(d.id),title:text(d.title,120,'deck title'),description:typeof d.description==='string'?d.description.slice(0,500):'',createdAt:Number.isFinite(d.createdAt)?d.createdAt:Date.now(),updatedAt:Number.isFinite(d.updatedAt)?d.updatedAt:Date.now(),cards:d.cards.map(c => {
+          if(!c||![0,1,2].includes(c.level)||typeof c.starred!=='boolean') throw new Error('Invalid card progress in backup.');
+          const attempts=Number.isSafeInteger(c.attempts)&&c.attempts>=0?c.attempts:0;
+          return {id:identifier(c.id),term:text(c.term,5000,'term'),definition:text(c.definition,5000,'definition'),level:c.level,starred:c.starred,attempts,correct:Number.isSafeInteger(c.correct)&&c.correct>=0?Math.min(c.correct,attempts):0};
+        })};
+      });
+      const s = raw.settings || {};
+      return {version:1,decks,settings:{answerWith:s.answerWith==='term'?'term':'definition',written:s.written!==false,starredOnly:s.starredOnly===true,theme:s.theme==='light'?'light':'dark'},session:null};
+    }
+    function validSession(s) {
+      if(!s||typeof s!=='object') return false;
+      const d=state.decks.find(d=>d.id===s.deckId); if(!d) return false;
+      const ids=new Set(d.cards.map(c=>c.id));
+      if(!Array.isArray(s.cardIds)||!s.cardIds.length||!s.cardIds.every(id=>ids.has(id))||new Set(s.cardIds).size!==s.cardIds.length) return false;
+      if(!Array.isArray(s.queue)||!s.queue.every(id=>s.cardIds.includes(id))||new Set(s.queue).size!==s.queue.length) return false;
+      if(!['question','checkpoint','complete'].includes(s.screen)||!Number.isSafeInteger(s.round)||s.round<1||!Number.isSafeInteger(s.total)||s.total<0||!Number.isSafeInteger(s.hits)||s.hits<0||s.hits>s.total) return false;
+      if(!s.options||!['term','definition'].includes(s.options.answerWith)||typeof s.options.written!=='boolean'||typeof s.options.starredOnly!=='boolean') return false;
+      if(!Array.isArray(s.results)||s.results.length>7||!s.results.every(r=>r&&ids.has(r.cardId)&&[0,1,2].includes(r.from)&&[0,1,2].includes(r.to)&&typeof r.correct==='boolean'&&typeof r.override==='boolean')) return false;
+      if(!s.roundStart||!s.cardIds.every(id=>[0,1,2].includes(s.roundStart[id]))) return false;
+      if(s.screen==='question') {
+        const q=s.question;
+        if(!q||!s.cardIds.includes(q.cardId)||!['asking','correct','incorrect'].includes(q.phase)||![0,1].includes(q.from)||!['mc','written'].includes(q.type)||!Array.isArray(q.choices)||!q.choices.every(v=>typeof v==='string')||typeof q.draft!=='string') return false;
+        if(q.type==='mc'&&(q.choices.length<1||q.choices.length>4)) return false;
+        if(q.answerWith===undefined) q.answerWith=s.options.answerWith;
+        if(!['term','definition'].includes(q.answerWith)) return false;
+        if(q.phase!=='asking'&&(s.results.length<1||s.results[s.results.length-1].cardId!==q.cardId)) return false;
+      }
+      return true;
+    }
+    try {
+      const raw=localStorage.getItem(KEY);
+      if(raw) {
+        try { const loaded=JSON.parse(raw); state=validateBackup(loaded); if(validSession(loaded.session)) state.session=loaded.session; }
+        catch(e) {corruptRaw=raw;storageIssue='Your saved data could not be read. Download it before resetting storage. It has not been overwritten.';}
+      }
+    } catch(e) {storageIssue='Browser storage is unavailable. You can study, but export a JSON backup before closing this page.';}
+    function save() {
+      if(corruptRaw!==null||storageConflict) return false;
+      try { localStorage.setItem(KEY,JSON.stringify(state)); storageIssue=''; return true; }
+      catch(e) {storageIssue='Progress is only in memory: browser storage is unavailable or full. Export a JSON backup before closing.';renderBanner();return false;}
+    }
+    function toast(message,kind='info') { clearTimeout(toastTimer); const host=document.getElementById('toast');const dialog=document.getElementById('modal');(dialog.open?dialog:document.body).appendChild(host);host.textContent=message;host.className='toast'+(kind==='saved'?' saved':kind==='error'?' error':'');toastTimer=setTimeout(()=>host.classList.add('hidden'),4500); }
+    function savedNotice(ok) {toast(ok?'✓ Saved!':'✓ Saved! In this tab only — export a JSON backup to keep it.', 'saved');}
+    function persist(message) {const ok=save(); if(message) toast(message+(ok?'':' · Export a backup to keep it.'));}
+    function applyTheme() {document.documentElement.classList.toggle('light',state.settings.theme==='light');document.documentElement.classList.toggle('dark',state.settings.theme!=='light');}
+    const deckById=id=>state.decks.find(d=>d.id===id);
+    function stats(cards) { const mastered=cards.filter(c=>c.level===2).length, learning=cards.filter(c=>c.level===1).length;return {mastered,learning,unseen:cards.length-mastered-learning,percent:cards.length?Math.round((mastered*2+learning)/(cards.length*2)*100):0}; }
+    function progress(cards,label='Learning progress') {const s=stats(cards);return `<div class="progress-label"><span>${esc(label)}</span><span>${s.percent}% · ${s.mastered}/${cards.length} mastered</span></div><div class="progress-track" role="progressbar" aria-label="${esc(label)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${s.percent}"><div class="progress-fill" style="width:${s.percent}%"></div></div>`;}
+    function renderBanner() {const host=$('#storage-banner');if(!host)return;host.innerHTML=storageIssue?`<div class="banner" role="alert"><div class="row wrap"><span>${esc(storageIssue)}</span>${corruptRaw!==null?'<button onclick="Learn.action(this)" type="button" class="btn" data-action="recover">Download saved data</button><button onclick="Learn.action(this)" type="button" class="btn danger" data-action="reset-storage">Reset storage</button>':''}${storageConflict?'<button onclick="Learn.action(this)" type="button" class="btn" data-action="export">Export this tab</button><button onclick="Learn.action(this)" type="button" class="btn" data-action="reload">Reload latest data</button>':''}</div></div>`:'';}
+    function render() {
+      applyTheme();
+      $('#app').innerHTML=`<div id="storage-banner"></div><div class="shell"><aside class="sidebar"><button onclick="Learn.action(this)" type="button" class="brand" data-action="home" aria-label="Learn home"><span class="brand-mark">l.</span>learn<span style="color:var(--accent)">.</span></button><nav class="nav" aria-label="Main navigation"><button onclick="Learn.action(this)" type="button" class="nav-button ${page==='home'?'selected':''}" data-action="home">${svg('home')}Your library</button><button onclick="Learn.action(this)" type="button" class="nav-button" data-action="new">${svg('plus')}Create a deck</button><button onclick="Learn.showOptions()" type="button" class="nav-button" data-action="options">${svg('settings')}Study options</button></nav><div class="side-note"><span class="live-dot"></span>Made for your own pace.<br><span style="display:block;margin-top:10px">Your cards stay in this browser.<br>No account. Just learning.</span></div></aside><div class="content"><header class="topbar"><span class="breadcrumb">Your space <span style="margin:0 8px;opacity:.5">/</span> ${page==='study'?'Learn mode':'Study library'}</span><div class="top-actions"><button onclick="Learn.showOptions()" type="button" class="icon-btn mobile-options" data-action="options" aria-label="Study options" title="Study options">${svg('settings')}</button><button onclick="Learn.action(this)" type="button" class="icon-btn theme-sun" data-action="theme" aria-label="Switch to ${state.settings.theme==='dark'?'light':'dark'} theme" title="Switch theme">${svg(state.settings.theme==='dark'?'sun':'moon')}</button><button onclick="Learn.action(this)" type="button" class="btn ghost" data-action="backup">${svg('download')}Backups</button></div></header><main class="page" id="main">${page==='study'&&state.session?renderStudy():renderHome()}</main></div></div>`;
+      renderBanner();
+      if(page==='home'&&search) {const input=$('#search');if(input)input.value=search;filterDecks();}
+      if(page==='study'&&state.session?.screen==='question'&&!$('#modal').open) {const q=state.session.question;if(q.type==='written'&&q.phase==='asking') $('#written-answer')?.focus();else if(q.phase==='incorrect') $('#correction')?.focus();else if(q.phase==='correct') $('#continue')?.focus();}
+    }
+    function renderHome() {
+      const cards=state.decks.flatMap(d=>d.cards), s=stats(cards), session=state.session, resumeDeck=session&&deckById(session.deckId);
+      return `<div class="hero"><div><div class="eyebrow">A little practice. A lot of progress.</div><h1>Your next lightbulb moment.</h1><p>Pick a set, find your rhythm, and make it stick.</p></div><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="new">${svg('plus')}Create a deck</button></div><div class="summary"><div class="stat"><div class="row spread"><span class="stat-number">${state.decks.length}</span><span style="color:var(--accent)">${svg('cards')}</span></div><div class="stat-label">Study decks</div></div><div class="stat"><div class="row spread"><span class="stat-number">${s.mastered}<span class="small muted" style="font-weight:400"> / ${cards.length}</span></span><span class="success">${svg('check')}</span></div><div class="stat-label">Cards mastered</div></div><div class="stat"><div class="row spread"><span class="stat-number">${cards.filter(c=>c.starred).length}</span><span style="color:#e7bb68">${svg('star')}</span></div><div class="stat-label">Starred for extra practice</div></div></div>${resumeDeck?`<div class="resume"><div class="row spread"><div><div class="small" style="font-weight:700">Pick up where you left off</div><div class="small muted">${esc(resumeDeck.title)} · Round ${session.round}${session.screen==='complete'?' · Complete':''}</div></div><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="resume">Resume ${svg('arrow')}</button></div></div>`:''}<div class="section-head"><div class="row"><h2>Your decks</h2><span class="badge">${state.decks.length}</span></div><input id="search" class="field search" oninput="Learn.searchDecks(this.value)" type="search" placeholder="Search your decks" aria-label="Search decks"></div>${state.decks.length?`<div class="deck-grid" id="deck-grid">${[...state.decks].sort((a,b)=>b.updatedAt-a.updatedAt).map(renderDeck).join('')}</div><p id="no-results" class="muted hidden">No decks match your search.</p>`:`<div class="empty"><div class="empty-symbol">${svg('cards')}</div><h2>Big ideas start with a few cards.</h2><p class="muted">Create your first deck or paste a Quizlet export.<br>Your terms, your pace, your progress.</p><div class="row wrap" style="justify-content:center"><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="new">${svg('plus')}Create your first deck</button><button onclick="Learn.action(this)" type="button" class="btn" data-action="example">Try an example deck</button></div></div>`}<div class="footer-note">${svg('spark').replace('<svg ','<svg style="display:inline;width:13px;height:13px;vertical-align:-2px;margin-right:5px" ')}Built for focus. Saved on this device. Back up your decks anytime.</div>`;
+    }
+    function renderDeck(d) {
+      const s=stats(d.cards), stars=d.cards.filter(c=>c.starred).length;
+      return `<article class="deck" data-deck-id="${esc(d.id)}"><div class="row spread"><h3>${esc(d.title)}</h3><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="edit" data-id="${esc(d.id)}" aria-label="Edit ${esc(d.title)}" title="Edit deck">${svg('edit')}</button></div><div class="deck-meta">${d.cards.length} ${d.cards.length===1?'card':'cards'}${stars?` <span style="margin:0 8px">·</span> ★ ${stars} starred`:''}</div><p>${esc(d.description||'A little closer to knowing it by heart.')}</p><div class="deck-bottom">${progress(d.cards)}<div class="deck-footer"><span class="badge ${s.mastered===d.cards.length&&d.cards.length?'green':'purple'}">${s.mastered===d.cards.length&&d.cards.length?'✓ All mastered':s.learning?'In progress':'Ready when you are'}</span><div class="row" style="gap:4px"><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="delete" data-id="${esc(d.id)}" aria-label="Delete ${esc(d.title)}" title="Delete deck">${svg('trash')}</button><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="learn" data-id="${esc(d.id)}" ${d.cards.length?'':'disabled'}>Learn ${svg('arrow')}</button></div></div></div></article>`;
+    }
+    function filterDecks() {let visible=0;document.querySelectorAll('[data-deck-id]').forEach(el=>{const d=deckById(el.dataset.deckId);const show=(d.title+' '+d.description).toLocaleLowerCase().includes(search.toLocaleLowerCase());el.classList.toggle('hidden',!show);if(show)visible++;});$('#no-results')?.classList.toggle('hidden',visible>0);}
+    function modal(title,body,foot='',small=false) {const m=$('#modal');const notification=document.getElementById('toast');if(m.contains(notification))document.body.appendChild(notification);m.style.maxWidth=small?'510px':'760px';m.innerHTML=`<div class="modal-head"><h2 id="modal-title">${esc(title)}</h2><button onclick="Learn.closeModal()" type="button" class="icon-btn" data-action="close-modal" aria-label="Close dialog">${svg('close')}</button></div>${body}${foot}`;if(!m.open)m.showModal();}
+    function closeModal() {const notification=document.getElementById('toast');if(notification)document.body.appendChild(notification);$('#modal').close();editor=null;pendingImport=null;}
+    function confirmAction(title,message,action,label='Confirm') {modal(title,`<div class="modal-body"><p class="muted" style="margin:0;white-space:pre-wrap">${esc(message)}</p></div>`,`<div class="modal-foot"><button onclick="Learn.closeModal()" type="button" class="btn" data-action="close-modal">Cancel</button><button onclick="Learn.action(this)" type="button" class="btn ${action.startsWith('delete')?'danger':'primary'}" data-action="${esc(action)}">${esc(label)}</button></div>`,true);}
+    function editDeck(id) {const d=deckById(id);editor=d?JSON.parse(JSON.stringify(d)):{id:uid(),title:'',description:'',cards:[cardNew()],createdAt:Date.now()};editor.bulk='';editor.status='';renderEditor();}
+    function renderEditor() {
+      modal(deckById(editor.id)?'Edit your deck':'Create a study deck',`<div id="deck-editor"><div class="modal-body"><div class="form-group"><label for="deck-title">Deck title</label><input id="deck-title" class="field" required maxlength="120" placeholder="e.g. Biology · Cell structures" value="${esc(editor.title)}"></div><div class="form-group"><label for="deck-description">Description <span class="muted" style="font-weight:400">(optional)</span></label><input id="deck-description" class="field" maxlength="500" placeholder="What are you learning?" value="${esc(editor.description)}"></div><div class="bulk"><label for="bulk-input">Bulk import from Quizlet</label><p class="small muted">Paste terms and definitions separated by a tab or comma, one card per line. Quoted CSV fields are supported.</p><textarea id="bulk-input" class="field" rows="4" placeholder="Mitochondria&#9;The powerhouse of the cell&#10;Nucleus&#9;Stores genetic information">${esc(editor.bulk)}</textarea><div class="row spread wrap" style="margin-top:12px"><span class="tiny muted">Import appends cards. Your edits stay intact.</span><button onclick="Learn.action(this)" class="btn" type="button" data-action="bulk-add">${svg('plus')}Add imported cards</button></div><div id="bulk-status" class="small ${editor.statusError?'error':'success'}" role="status" style="margin-top:${editor.status?'12':'0'}px">${esc(editor.status)}</div></div><div class="section-head"><h3 class="cards-count">Cards <span class="small muted">(${editor.cards.length})</span></h3><span class="tiny muted">★ Star cards to practice them later</span></div><div class="card-labels"><span></span><span>TERM</span><span>DEFINITION</span><span></span></div><div id="editor-cards">${editor.cards.map((c,i)=>`<div class="card-row" data-card="${esc(c.id)}"><div class="card-number">${i+1}<button onclick="Learn.action(this)" type="button" class="icon-btn ${c.starred?'starred':''}" data-action="editor-star" data-id="${esc(c.id)}" aria-label="${c.starred?'Unstar':'Star'} card ${i+1}" aria-pressed="${c.starred}" style="padding:7px 0">${svg('star')}</button></div><textarea class="field" name="term" required maxlength="5000" aria-label="Term ${i+1}" placeholder="Term">${esc(c.term)}</textarea><textarea class="field" name="definition" required maxlength="5000" aria-label="Definition ${i+1}" placeholder="Definition">${esc(c.definition)}</textarea><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="remove-card" data-id="${esc(c.id)}" aria-label="Remove card ${i+1}">${svg('trash')}</button></div>`).join('')}</div><button onclick="Learn.action(this)" class="btn" type="button" data-action="add-card">${svg('plus')}Add a card</button><p class="hint">Changing a term or definition resets that card’s mastery. Saving edits ends this deck’s active session.</p></div><div class="modal-foot"><button onclick="Learn.closeModal()" class="btn" type="button" data-action="close-modal">Cancel</button><button class="btn primary" type="button" onclick="Learn.saveDeck()">Save deck ${svg('check')}</button></div></div>`);
+    }
+    function syncEditor() {editor.title=$('#deck-title').value;editor.description=$('#deck-description').value;editor.bulk=$('#bulk-input').value;document.querySelectorAll('#editor-cards [data-card]').forEach(row=>{const c=editor.cards.find(c=>c.id===row.dataset.card);if(c){c.term=$('[name=term]',row).value;c.definition=$('[name=definition]',row).value;}});}
+    function parseBulk(input) {
+      const lines=input.replace(/^\uFEFF/,'').split(/\r?\n/), cards=[];
+      lines.forEach((line,index)=>{
+        if(!line.trim())return;
+        let term,definition;
+        if(line.includes('\t')) {const parts=line.split('\t');term=parts.shift();definition=parts.join('\t');}
+        else {const fields=[];let value='',quoted=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'){if(quoted&&line[i+1]==='"'){value+='"';i++;}else quoted=!quoted;}else if(c===','&&!quoted){fields.push(value);value='';}else value+=c;}if(quoted)throw new Error(`Line ${index+1}: close the quotation marks.`);fields.push(value);if(fields.length<2)throw new Error(`Line ${index+1}: separate the term and definition with a tab or comma.`);term=fields.shift();definition=fields.join(',');}
+        if(!term.trim()||!definition.trim())throw new Error(`Line ${index+1}: both a term and definition are required.`);
+        if(term.length>5000||definition.length>5000)throw new Error(`Line ${index+1}: each field must be 5,000 characters or fewer.`);
+        cards.push(cardNew(term.trim(),definition.trim()));
+      });
+      if(!cards.length)throw new Error('Paste at least one term and definition first.');return cards;
+    }
+    function saveDeck() {
+      if(!editor)return;
+      syncEditor();
+      if(!editor.title.trim()){toast('Give your deck a title.','error');document.getElementById('deck-title').focus();return;}
+      let draft=editor.cards.filter(c=>c.term.trim()||c.definition.trim());
+      if(editor.bulk.trim()) {
+        try {draft=draft.concat(parseBulk(editor.bulk));}
+        catch(e){toast(e.message,'error');document.getElementById('bulk-input').focus();return;}
+      }
+      if(!draft.length){toast('Add at least one complete card.','error');return;}
+      if(editor.title.trim().length>120||editor.description.length>500||draft.some(c=>c.term.length>5000||c.definition.length>5000)){toast('Limit: 120 characters for titles, 500 for descriptions, and 5,000 per card field.','error');return;}
+      const incomplete=draft.find(c=>!c.term.trim()||!c.definition.trim());
+      if(incomplete){toast('Each card needs both a term and a definition.','error');return;}
+      const old=deckById(editor.id);
+      if(draft.length>10000||state.decks.filter(d=>d.id!==editor.id).reduce((n,d)=>n+d.cards.length,0)+draft.length>50000){toast('Limit: 10,000 cards per deck and 50,000 cards in total.','error');return;}
+      if(!old&&state.decks.length>=200){toast('Limit: 200 decks. Export or delete a deck first.','error');return;}
+      const cards=draft.map(c=>{const before=old?.cards.find(b=>b.id===c.id);const changed=before&&(before.term!==c.term.trim()||before.definition!==c.definition.trim());return {...c,term:c.term.trim(),definition:c.definition.trim(),...(changed?{level:0,attempts:0,correct:0}:{})};});
+      const next={id:editor.id,title:editor.title.trim(),description:editor.description.trim(),cards,createdAt:editor.createdAt,updatedAt:Date.now()};
+      if(old)state.decks[state.decks.indexOf(old)]=next;else state.decks.unshift(next);
+      if(state.session?.deckId===next.id)state.session=null;
+      page='home';closeModal();const stored=save();render();savedNotice(stored);
+    }
+    function showOptions() {
+      const s={...state.settings,...(state.session?{answerWith:state.session.options.answerWith,written:state.session.options.written}:{})};
+      modal('Make Learn your own',`<div id="options-panel"><div class="modal-body"><div class="option"><div><label class="option-title" for="answer-with">Answer with</label><p>The other side becomes the question.</p></div><select id="answer-with" class="field" onchange="Learn.applyStudyOptions()"><option value="definition" ${s.answerWith==='definition'?'selected':''}>Definition</option><option value="term" ${s.answerWith==='term'?'selected':''}>Term</option></select></div><div class="option"><div><label class="option-title" for="written-on">Written questions</label><p>Type the answer to reach mastery. Turn off to use multiple choice at every tier.</p></div><input id="written-on" class="switch" onchange="Learn.applyStudyOptions()" type="checkbox" role="switch" ${s.written?'checked':''}></div><div class="option"><div><label class="option-title" for="starred-only">Starred cards only</label><p>Focus your next session on the cards you’ve starred.</p></div><input id="starred-only" class="switch" onchange="Learn.applyStudyOptions()" type="checkbox" role="switch" ${s.starredOnly?'checked':''}></div><div class="notice">Answer direction and written questions update your active session immediately. Submitted answers and corrections keep their original direction. Starred-only selection applies to your next session.</div></div><div class="modal-foot"><span class="small muted" style="margin-right:auto;align-self:center">Changes save automatically</span><button class="btn primary" type="button" onclick="Learn.saveOptions()">Save settings</button></div></div>`, '',true);
+    }
+    function applyStudyOptions() {
+      const answerWith=$('#answer-with').value;
+      const written=$('#written-on').checked;
+      state.settings.answerWith=answerWith;
+      state.settings.written=written;
+      state.settings.starredOnly=$('#starred-only').checked;
+      const session=state.session;
+      if(session) {
+        const changed=session.options.answerWith!==answerWith||session.options.written!==written;
+        session.options.answerWith=answerWith;
+        session.options.written=written;
+        if(changed&&session.screen==='question'&&session.question?.phase==='asking') {
+          const card=deckById(session.deckId).cards.find(c=>c.id===session.question.cardId);
+          session.question=buildQuestion(card,session.options);
+        }
+      }
+      persist();
+      render();
+    }
+    function scopeCards(s=state.session) {const d=deckById(s.deckId);return d.cards.filter(c=>s.cardIds.includes(c.id));}
+    function startSession(id) {
+      const d=deckById(id);if(!d)return;
+      const selected=d.cards.filter(c=>!state.settings.starredOnly||c.starred);
+      if(!selected.length){modal('No starred cards yet',`<div class="modal-body"><p class="muted">Star cards in the deck editor, or turn off “Starred cards only” in study options.</p></div>`,`<div class="modal-foot"><button onclick="Learn.action(this)" type="button" class="btn" data-action="edit" data-id="${esc(d.id)}">Edit deck</button><button onclick="Learn.showOptions()" type="button" class="btn primary" data-action="options">Study options</button></div>`,true);return;}
+      const s={deckId:id,cardIds:selected.map(c=>c.id),options:{answerWith:state.settings.answerWith,written:state.settings.written,starredOnly:state.settings.starredOnly},queue:shuffle(selected.filter(c=>c.level<2).map(c=>c.id)),round:1,total:0,hits:0,results:[],roundStart:Object.fromEntries(selected.map(c=>[c.id,c.level])),question:null,screen:'question'};
+      state.session=s;page='study';nextQuestion();persist();render();window.scrollTo(0,0);
+    }
+    function nextQuestion() {
+      const s=state.session,d=deckById(s.deckId);
+      s.queue=s.queue.filter(id=>d.cards.some(c=>c.id===id&&c.level<2));
+      if(!s.queue.length){s.screen=s.results.length?'checkpoint':'complete';s.question=null;return;}
+      if(s.results.length>=7){s.screen='checkpoint';s.question=null;return;}
+      const nextId=s.queue.shift();
+      const card=d.cards.find(c=>c.id===nextId);
+      s.question=buildQuestion(card,s.options);s.screen='question';
+    }
+    function buildQuestion(card,options) {
+      const d=deckById(state.session.deckId);
+      const type=card.level===1&&options.written?'written':'mc';
+      const correct=card[options.answerWith], unique=new Map();
+      for(const c of shuffle(d.cards)){const value=c[options.answerWith],key=normalize(value);if(key!==normalize(correct)&&!unique.has(key))unique.set(key,value);}
+      const choices=type==='mc'?shuffle([correct,...[...unique.values()].slice(0,3)]):[];
+      return {cardId:card.id,from:card.level,type,answerWith:options.answerWith,choices,phase:'asking',draft:'',submitted:'',typo:false};
+    }
+    function selectChoice(index) {
+      const session=state.session,q=session?.question;
+      if(page!=='study'||$('#modal').open||session?.screen!=='question'||!q||q.type!=='mc'||q.phase!=='asking')return;
+      if(!Number.isInteger(index)||index<0||index>=q.choices.length)return;
+      submitAnswer(q.choices[index]);
+    }
+    function normalize(text) {const base=String(text).normalize('NFKC').toLocaleLowerCase().trim();const clean=base.replace(/[\p{P}\p{S}]/gu,'').replace(/\s+/gu,' ').trim();return clean||base.replace(/\s+/gu,' ').trim();}
+    function levenshtein(a,b) {a=Array.from(a);b=Array.from(b);let prev=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){const row=[i];for(let j=1;j<=b.length;j++)row[j]=Math.min(row[j-1]+1,prev[j]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));prev=row;}return prev[b.length];}
+    function grade(input,expected) {
+      const a=normalize(input),b=normalize(expected);if(!a)return {correct:false,typo:false};if(a===b)return {correct:true,typo:false};
+      const aw=a.split(' '),bw=b.split(' ');let edits=0;
+      if(aw.length!==bw.length)return {correct:false,typo:false};
+      for(let i=0;i<bw.length;i++)if(aw[i]!==bw[i]){if(Array.from(bw[i]).length<=5||Math.abs(Array.from(aw[i]).length-Array.from(bw[i]).length)>1||levenshtein(aw[i],bw[i])!==1)return {correct:false,typo:false};edits++;if(edits>1)return {correct:false,typo:false};}
+      return {correct:edits===1,typo:edits===1};
+    }
+    function requeue(id,early) {const s=state.session;s.queue=s.queue.filter(x=>x!==id);const card=deckById(s.deckId).cards.find(c=>c.id===id);if(card.level<2){if(early)s.queue.splice(Math.min(2,s.queue.length),0,id);else s.queue.push(id);}}
+    function submitAnswer(value) {
+      const s=state.session,q=s?.question;if(page!=='study'||s?.screen!=='question'||!q||q.phase!=='asking')return;
+      if(!String(value).trim()){toast('Enter an answer first.');return;}
+      const d=deckById(s.deckId),card=d.cards.find(c=>c.id===q.cardId),result=q.type==='written'?grade(value,card[q.answerWith]):{correct:value===card[q.answerWith],typo:false};
+      card.attempts++;if(result.correct)card.correct++;card.level=result.correct?Math.min(2,q.from+1):0;d.updatedAt=Date.now();
+      s.total++;if(result.correct)s.hits++;
+      s.results.push({cardId:card.id,from:q.from,to:card.level,correct:result.correct,override:false});
+      q.submitted=value;q.typo=result.typo;q.phase=result.correct?'correct':'incorrect';q.draft='';requeue(card.id,!result.correct);persist();render();
+    }
+    function override() {
+      const s=state.session,q=s?.question;if(!q||q.type!=='written'||q.phase!=='incorrect')return;
+      const card=deckById(s.deckId).cards.find(c=>c.id===q.cardId),r=s.results[s.results.length-1];card.level=q.from+1;card.correct++;r.correct=true;r.override=true;r.to=card.level;s.hits++;q.phase='correct';q.overridden=true;requeue(card.id,false);persist();render();
+    }
+    function advance() {const q=state.session?.question;if(!q||q.phase!=='correct')return;nextQuestion();persist();render();window.scrollTo(0,0);}
+    function correction(value) {
+      const s=state.session,q=s?.question;if(!q||q.phase!=='incorrect')return;
+      const card=deckById(s.deckId).cards.find(c=>c.id===q.cardId);
+      if(normalize(value)!==normalize(card[q.answerWith])){const hint=$('#correction-hint');hint.textContent='Copy the correct answer above to reinforce it. Spelling must match; case and punctuation are ignored.';hint.className='small error';$('#correction').setAttribute('aria-invalid','true');$('#correction').focus();return;}
+      nextQuestion();persist();render();window.scrollTo(0,0);
+    }
+    function renderStudy() {
+      const s=state.session,d=deckById(s.deckId),cards=scopeCards();
+      if(s.screen!=='question')return renderCheckpoint();
+      const q=s.question,c=d.cards.find(c=>c.id===q.cardId),answer=c[q.answerWith],prompt=c[q.answerWith==='term'?'definition':'term'];
+      const feedback=q.phase==='correct'?`<div class="feedback" role="status"><h3 class="success">${q.overridden?'You know it. Grading updated.':q.typo?'Correct — just a small spelling fix.':q.from===1?'You’ve mastered this one!':'Nice work. One step closer.'}</h3>${q.typo?`<div class="small muted">Exact spelling</div><div class="answer-text">${esc(answer)}</div>`:''}<div class="row spread wrap" style="margin-top:18px"><span class="badge green">${tier(q.from)} → ${tier(c.level)}</span><button onclick="Learn.action(this)" type="button" id="continue" class="btn primary" data-action="continue">Continue ${svg('arrow')}</button></div></div>`:q.phase==='incorrect'?`<div class="feedback" aria-live="polite"><h3 class="error">Let’s give that another look.</h3><div class="small muted">Correct ${q.answerWith}</div><div class="row"><div class="answer-text" style="flex:1">${esc(answer)}</div><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="speak-answer" aria-label="Read correct answer aloud">${svg('speaker')}</button></div><div id="correction-panel"><label for="correction">Type the correct answer to keep going</label><input id="correction" class="field answer-input" oninput="Learn.captureDraft(this)" value="${esc(q.draft)}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="correction-hint" required><p id="correction-hint" class="hint">This card returns to Unseen and will come back soon.</p><div class="row spread wrap" style="margin-top:18px">${q.type==='written'?'<button onclick="Learn.action(this)" class="btn ghost" type="button" data-action="override" title="Alt + R">Override: I was right <kbd>Alt R</kbd></button>':'<span></span>'}<button class="btn primary" type="button" onclick="Learn.checkCorrection()">Check correction ${svg('arrow')}</button></div></div></div>`:'';
+      return `<div class="study"><div class="study-header"><div class="row spread"><div class="row" style="min-width:0"><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="home" aria-label="Back to library">${svg('back')}</button><div><div class="eyebrow" style="margin-bottom:4px">Learn mode${s.options.starredOnly?' · Starred selection':''}</div><h1>${esc(d.title)}</h1></div></div><button onclick="Learn.showOptions()" type="button" class="icon-btn" data-action="options" aria-label="Session options" title="Study options">${svg('settings')}</button></div><div class="round-meta"><span>Round ${s.round} <span style="margin:0 7px">·</span> Question ${Math.min(7,s.results.length+(q.phase==='asking'?1:0))} of 7</span><span>${stats(cards).mastered} / ${cards.length} mastered</span></div><div class="progress-track" role="progressbar" aria-label="Round progress" aria-valuemin="0" aria-valuemax="7" aria-valuenow="${s.results.length}"><div class="progress-fill" style="width:${s.results.length/7*100}%"></div></div></div><section class="question" aria-label="Study question"><div class="question-top"><div class="row"><span class="badge purple">${q.type==='mc'?'Multiple choice':'Written response'}</span><span class="tiny muted">${tier(q.from)}</span></div><div class="row" style="gap:3px"><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="speak-prompt" aria-label="Read question aloud" title="Read aloud">${svg('speaker')}</button><button onclick="Learn.action(this)" type="button" class="icon-btn ${c.starred?'starred':''}" data-action="study-star" aria-label="${c.starred?'Unstar':'Star'} this card" aria-pressed="${c.starred}" title="${c.starred?'Unstar':'Star'} card">${svg('star')}</button></div></div><div class="eyebrow" style="color:var(--muted);letter-spacing:1px">${q.answerWith==='term'?'Definition':'Term'}</div><h2 class="prompt">${esc(prompt)}</h2>${q.type==='mc'?`<div class="choices">${q.choices.map((choice,i)=>`<button onclick="Learn.action(this)" type="button" class="choice ${q.phase!=='asking'?(choice===answer?'correct':choice===q.submitted?'wrong':''):''}" data-action="choose" data-index="${i}" ${q.phase==='asking'?'':'disabled'}><span class="key">${i+1}</span><span>${esc(choice)}</span></button>`).join('')}</div>${q.choices.length<4?'<p class="hint">This deck has fewer than four distinct answers, so you’ll see fewer choices. Add cards for more distractors.</p>':''}`:q.phase==='asking'?`<div id="written-panel"><label for="written-answer">Your ${q.answerWith}</label><input id="written-answer" class="field answer-input" oninput="Learn.captureDraft(this)" value="${esc(q.draft)}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type what you remember…" required><div class="row spread" style="margin-top:18px"><span class="tiny muted">Meaningful practice, not perfect punctuation.</span><button class="btn primary" type="button" onclick="Learn.checkWritten()">Check answer ${svg('arrow')}</button></div></div>`:`<div class="small muted">Your answer</div><div class="answer-text">${esc(q.submitted)}</div>`}${feedback}</section><div class="study-footer"><span>${q.phase==='asking'?(q.type==='mc'?'<kbd>1</kbd> – <kbd>4</kbd> Choose an answer':'<kbd>Enter</kbd> Check answer'):q.phase==='correct'?'<kbd>Enter</kbd> Continue':'<kbd>Enter</kbd> Check correction'}${q.phase==='incorrect'&&q.type==='written'?' · <kbd>Alt R</kbd> Override':''}</span><span>Progress saves automatically</span></div></div>`;
+    }
+    function renderCheckpoint() {
+      const s=state.session,d=deckById(s.deckId),cards=scopeCards(),complete=cards.every(c=>c.level===2),hits=s.results.filter(r=>r.correct).length,accuracy=s.results.length?Math.round(hits/s.results.length*100):100;
+      const leveled=cards.filter(c=>c.level>s.roundStart[c.id]);
+      return `<div class="study checkpoint"><div class="row spread" style="margin-bottom:25px"><button onclick="Learn.action(this)" type="button" class="btn ghost" data-action="home">${svg('back')}Library</button><span class="badge purple">${esc(d.title)}${s.options.starredOnly?' · Starred selection':''}</span></div><div class="question"><div class="completion-icon">${svg(complete?'trophy':'spark')}</div><div class="eyebrow">${complete?'Look at you go':'A moment to see your progress'}</div><h1>${complete?'You’ve mastered '+(s.options.starredOnly?'your starred selection.':'this deck.'):'Round '+s.round+' complete.'}</h1><p class="muted">${complete?'Take a breath. That knowledge is yours to keep practicing.':'Every little bit is sticking. Ready for the next seven?'}</p><div class="checkpoint-stats"><div class="checkpoint-stat"><strong class="success">${s.results.length?accuracy+'%':'—'}</strong><span class="tiny muted">Round accuracy</span></div><div class="checkpoint-stat"><strong style="color:var(--accent)">${leveled.length}</strong><span class="tiny muted">Cards leveled up</span></div><div class="checkpoint-stat"><strong>${stats(cards).mastered}<span class="small muted"> / ${cards.length}</span></strong><span class="tiny muted">${s.options.starredOnly?'Selected cards':'Deck cards'} mastered</span></div></div><div style="text-align:left">${progress(d.cards,'Overall deck progress')}${s.options.starredOnly?`<div style="margin-top:15px">${progress(cards,'Starred selection progress')}</div>`:''}</div>${s.results.length?`<div class="results"><div class="result" style="background:var(--panel2)"><strong>This round’s cards</strong><span class="tiny muted">${hits}/${s.results.length} correct${s.results.some(r=>r.override)?' · includes overrides':''}</span></div>${[...new Set(s.results.map(r=>r.cardId))].map(id=>{const c=d.cards.find(c=>c.id===id),from=s.roundStart[id],missed=s.results.some(r=>r.cardId===id&&!r.correct);return `<div class="result"><span class="result-name">${esc(c.term)}${missed?'<span class="tiny muted" style="display:block">Correction practiced this round</span>':''}</span><span class="badge ${c.level>from?'green':''}">${c.level>from?`${tier(from)} → `:''}${tier(c.level)}</span></div>`;}).join('')}</div>`:'<div class="notice">These cards were already mastered. Reset their progress below to practice again.</div>'}<p class="small muted">Session accuracy: ${s.total?Math.round(s.hits/s.total*100)+'% ('+s.hits+'/'+s.total+')':'No questions answered in this session'}. Corrections don’t count as new questions.</p><div class="row wrap" style="justify-content:center;margin-top:25px">${complete?'<button onclick="Learn.action(this)" type="button" class="btn" data-action="reset-selected">Practice again</button><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="finish">Back to library '+svg('check')+'</button>':'<button onclick="Learn.action(this)" type="button" id="next-round" class="btn primary" data-action="next-round">Start round '+(s.round+1)+' '+svg('arrow')+'</button>'}</div></div><p class="hint">${s.options.written?'Unseen → multiple choice → written response → mastered.':'Multiple choice at both tiers. Two correct answers bring a card to mastery.'}</p></div>`;
+    }
+    function download(text,name,type='application/json') {const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+    function exportBackup() {download(JSON.stringify({version:1,exportedAt:new Date().toISOString(),decks:state.decks,settings:state.settings},null,2),'learn-backup-'+new Date().toISOString().slice(0,10)+'.json');toast('Backup downloaded with decks, stars, and mastery.');}
+    function showBackups() {modal('Keep your learning safe',`<div class="modal-body"><p class="muted small">Decks, stars, study options, and mastery are saved in this browser. A JSON backup lets you move them to another browser or keep a copy on your PC.</p><div class="backup-choice"><button onclick="Learn.action(this)" type="button" class="btn" data-action="export">${svg('download')}Export to JSON · Download all ${state.decks.length} decks</button><button onclick="Learn.action(this)" type="button" class="btn" data-action="import">${svg('upload')}Import from JSON · Merge or replace after preview</button></div><p class="hint">Backups include progress, but not the current round. Clearing browser data or moving this HTML file may create a fresh library; keep a backup.</p></div>`, '',true);}
+    async function readImport(file) {
+      if(!file)return;if(file.size>25*1024*1024){toast('Choose a backup smaller than 25 MB.');return;}
+      try {pendingImport=validateBackup(JSON.parse(await file.text()));const count=pendingImport.decks.reduce((n,d)=>n+d.cards.length,0);modal('Your backup is ready',`<div class="modal-body"><p><strong>${pendingImport.decks.length} decks · ${count} cards</strong></p><p class="muted small">Merge adds new decks and updates matching deck IDs from the backup. Replace removes this browser’s current library. Both restore the backup’s study options and keep its mastery and stars.</p><p class="small muted">Import ends the active study session. Export first if you want to preserve your current library.</p><div class="backup-choice"><button onclick="Learn.applyImport(false)" type="button" class="btn" data-action="import-merge">${svg('plus')}Merge into this library</button><button onclick="Learn.action(this)" type="button" class="btn danger" data-action="import-replace">${svg('upload')}Replace this library</button></div></div>`, '',true);}
+      catch(e){toast('Import failed: '+e.message);pendingImport=null;}
+    }
+    function applyImport(replace) {
+      if(!pendingImport)return;
+      const merged=replace?pendingImport.decks:[...state.decks.filter(d=>!pendingImport.decks.some(n=>n.id===d.id)),...pendingImport.decks];
+      let checked;try {checked=validateBackup({version:1,decks:merged,settings:pendingImport.settings});}catch(e){toast('Import failed: '+e.message);return;}
+      if(corruptRaw!==null||storageConflict){toast('Resolve the storage warning before importing. Export your current data first.');return;}
+      state=checked;page='home';search='';closeModal();const stored=save();render();savedNotice(stored);
+    }
+    function speak(text) {if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)){toast('Text-to-speech is unavailable in this browser.');return;}try {window.speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.rate=.9;utterance.onerror=e=>{if(!['canceled','interrupted'].includes(e.error))toast('Audio is unavailable. Check your browser’s speech voices.');};window.speechSynthesis.speak(utterance);}catch(e){toast('Could not start audio in this browser.');}}
+    function exampleDeck() {const pairs=[['HTML','The markup language used to structure web pages'],['CSS','The language used to style web pages'],['JavaScript','The programming language that adds interactivity to web pages'],['DOM','A tree representation of an HTML document'],['localStorage','Browser storage that persists data across sessions'],['Flexbox','A CSS layout system for arranging items in one dimension'],['Grid','A CSS layout system for arranging items in two dimensions'],['API','An interface that lets software systems communicate']];const now=Date.now();state.decks.unshift({id:uid(),title:'Web essentials',description:'Eight building blocks of the web. A small set for your first lightbulb moment.',createdAt:now,updatedAt:now,cards:pairs.map(p=>cardNew(...p))});persist('Example deck added');render();}
+    function action(btn) {
+      if(!btn||btn.disabled)return;const a=btn.dataset.action,id=btn.dataset.id;
+      if(a==='home'){page='home';render();window.scrollTo(0,0);}
+      else if(a==='new')editDeck();
+      else if(a==='edit')editDeck(id);
+      else if(a==='close-modal')closeModal();
+      else if(a==='theme'){state.settings.theme=state.settings.theme==='dark'?'light':'dark';persist();render();}
+      else if(a==='options')showOptions();
+      else if(a==='backup')showBackups();
+      else if(a==='export')exportBackup();
+      else if(a==='import'){$('#json-file').value='';$('#json-file').click();}
+      else if(a==='import-merge')applyImport(false);
+      else if(a==='import-replace') {if(pendingImport){const backup=pendingImport;confirmAction('Replace your library?','Your current decks and progress will be replaced with this backup. This cannot be undone without another backup.','confirm-replace','Replace library');pendingImport=backup;}}
+      else if(a==='confirm-replace')applyImport(true);
+      else if(a==='example')exampleDeck();
+      else if(a==='add-card'){syncEditor();editor.cards.push(cardNew());renderEditor();const rows=document.querySelectorAll('#editor-cards [name=term]');rows[rows.length-1]?.focus();}
+      else if(a==='remove-card'){syncEditor();editor.cards=editor.cards.filter(c=>c.id!==id);renderEditor();}
+      else if(a==='editor-star'){syncEditor();const c=editor.cards.find(c=>c.id===id);c.starred=!c.starred;btn.classList.toggle('starred',c.starred);btn.setAttribute('aria-pressed',String(c.starred));btn.setAttribute('aria-label',(c.starred?'Unstar':'Star')+' card');}
+      else if(a==='bulk-add'){syncEditor();try {const cards=parseBulk(editor.bulk);if(editor.cards.length+cards.length>10000)throw new Error('Limit: 10,000 cards per deck.');editor.cards=editor.cards.filter(c=>c.term.trim()||c.definition.trim()).concat(cards);editor.bulk='';editor.status=`${cards.length} cards added. Review them below, then save your deck.`;editor.statusError=false;}catch(e){editor.status=e.message;editor.statusError=true;}renderEditor();}
+      else if(a==='delete'){const d=deckById(id);if(d)confirmAction('Delete this deck?',`“${d.title}” and all its progress will be removed. Export a JSON backup first if you want to keep it.`,`delete-confirm:${id}`,'Delete deck');}
+      else if(a.startsWith('delete-confirm:')){const target=a.slice(15);state.decks=state.decks.filter(d=>d.id!==target);if(state.session?.deckId===target)state.session=null;closeModal();page='home';persist('Deck deleted');render();}
+      else if(a==='learn'){
+        if(state.session?.deckId===id){modal('Continue your learning',`<div class="modal-body"><p class="muted small">You have a saved session for this deck. Resume it, or start fresh with your current study options. Starting fresh keeps card mastery.</p></div>`,`<div class="modal-foot"><button onclick="Learn.action(this)" type="button" class="btn" data-action="restart" data-id="${esc(id)}">New session</button><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="resume">Resume session</button></div>`,true);}
+        else if(state.session){confirmAction('Start a new session?','Your card mastery is saved. The other deck’s current round will end.','switch-session:'+id,'Start session');}
+        else startSession(id);
+      }
+      else if(a.startsWith('switch-session:')){closeModal();startSession(a.slice(15));}
+      else if(a==='restart'){closeModal();startSession(id);}
+      else if(a==='resume'){closeModal();page='study';render();window.scrollTo(0,0);}
+      else if(a==='choose')selectChoice(Number(btn.dataset.index));
+      else if(a==='continue')advance();
+      else if(a==='override')override();
+      else if(a==='session-info')showOptions();
+      else if(a==='study-star'){const s=state.session,c=deckById(s.deckId).cards.find(c=>c.id===s.question.cardId);c.starred=!c.starred;persist();btn.classList.toggle('starred',c.starred);btn.setAttribute('aria-pressed',String(c.starred));btn.setAttribute('aria-label',(c.starred?'Unstar':'Star')+' this card');btn.title=(c.starred?'Unstar':'Star')+' card';}
+      else if(a==='speak-prompt'||a==='speak-answer'){const s=state.session,c=deckById(s.deckId).cards.find(c=>c.id===s.question.cardId);speak(c[a==='speak-answer'?s.question.answerWith:s.question.answerWith==='term'?'definition':'term']);}
+      else if(a==='next-round'){const s=state.session;if(s.screen==='question')return;s.round++;s.results=[];s.roundStart=Object.fromEntries(scopeCards().map(c=>[c.id,c.level]));nextQuestion();persist();render();window.scrollTo(0,0);}
+      else if(a==='finish'){state.session=null;page='home';persist();render();window.scrollTo(0,0);}
+      else if(a==='reset-selected')confirmAction('Practice these cards again?','This resets mastery and answer statistics for the cards in this session. Other cards keep their progress.','confirm-practice','Reset and study');
+      else if(a==='confirm-practice'){const s=state.session;for(const c of scopeCards()){c.level=0;c.attempts=0;c.correct=0;}s.queue=shuffle(s.cardIds);s.round=1;s.total=0;s.hits=0;s.results=[];s.roundStart=Object.fromEntries(scopeCards().map(c=>[c.id,0]));closeModal();nextQuestion();persist();render();}
+      else if(a==='recover')download(corruptRaw,'learn-storage-recovery.json');
+      else if(a==='reset-storage')confirmAction('Reset unreadable storage?','Download the saved data first if you need it. Reset replaces the unreadable data with this tab’s current library.','confirm-storage','Reset storage');
+      else if(a==='confirm-storage'){corruptRaw=null;closeModal();persist('Storage reset');render();}
+      else if(a==='reload')window.location.reload();
+    }
+    function saveOptions() {if(!document.getElementById('options-panel'))return;applyStudyOptions();closeModal();const stored=save();render();savedNotice(stored);}
+    function checkWritten() {const input=document.getElementById('written-answer');if(input)submitAnswer(input.value);}
+    function checkCorrection() {const input=document.getElementById('correction');if(input)correction(input.value);}
+    function captureDraft(input) {if(state.session?.question){state.session.question.draft=input.value;save();}}
+    function searchDecks(value) {search=value;filterDecks();}
+    document.addEventListener('keydown',e=>{
+      if(e.repeat||e.isComposing||$('#modal').open||page!=='study'||!state.session)return;
+      const s=state.session,q=s.question,typing=/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.target.isContentEditable;
+      if(s.screen!=='question'){if(e.key==='Enter'&&!typing&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&e.target===document.body){e.preventDefault();(s.screen==='checkpoint'?$('#next-round'):null)?.click();}return;}
+      if(e.altKey&&!e.ctrlKey&&!e.metaKey&&e.key.toLowerCase()==='r'&&q.type==='written'&&q.phase==='incorrect'){e.preventDefault();override();return;}
+      if(e.key==='Enter'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&e.target.id==='written-answer'&&q.phase==='asking'){e.preventDefault();checkWritten();return;}
+      if(e.key==='Enter'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&e.target.id==='correction'&&q.phase==='incorrect'){e.preventDefault();checkCorrection();return;}
+      if(e.ctrlKey||e.metaKey||e.altKey||typing)return;
+      if(q.phase==='asking'&&q.type==='mc'&&/^[1-4]$/.test(e.key)){e.preventDefault();selectChoice(Number(e.key)-1);}
+      else if(e.key==='Enter'&&q.phase==='correct'){e.preventDefault();advance();}
+    });
+    window.addEventListener('storage',e=>{if(e.key===KEY&&e.newValue!==JSON.stringify(state)){storageConflict=true;storageIssue='Your library changed in another tab. Export this tab if needed, then reload to use the latest saved library. Saving here is paused to prevent overwriting it.';renderBanner();}});
+    window.addEventListener('pagehide',()=>{if('speechSynthesis' in window)window.speechSynthesis.cancel();});
+    window.Learn={action,saveDeck,saveOptions,closeModal,showOptions,applyStudyOptions,applyImport,readImport,checkWritten,checkCorrection,captureDraft,searchDecks};
+    render();
+  })();
+  </script>
+</body>
+</html>
