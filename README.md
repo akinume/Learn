@@ -45,3 +45,4 @@ Data Limits and Backups
 - Maximum field length: 120 characters for title, 500 for description, 5,000 per term or definition
 - Import formats: Tab-separated or comma-separated text (Quizlet export format) and Learn v1 JSON backup files (up to 25 MB).
 - <img width="1919" height="974" alt="image" src="https://github.com/user-attachments/assets/d7781335-7248-4c86-bb31-fe92a9c34e9c" />
+<img width="590" height="1278" alt="IMG_8410" src="https://github.com/user-attachments/assets/958d5c6d-3b32-49e0-808a-36bba4aa0c93" />
