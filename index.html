@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark light">
-  <title>Learn — your next lightbulb moment</title>
+  <title>Learn · v3.0.0</title>
   <style>
     :root{--bg:#0c1021;--panel:#151a30;--panel2:#1c223c;--line:#2b3353;--text:#f1f3ff;--muted:#a8b0d1;--accent:#a89cff;--purple:#7763ee;--green:#78ddbd;--red:#ff9eac;--shadow:0 24px 80px #0005}
     html.light{--bg:#f5f5fc;--panel:#fff;--panel2:#eeedf8;--line:#dbdced;--text:#20243f;--muted:#626986;--accent:#6550cd;--purple:#6853de;--green:#148062;--red:#bb3152;--shadow:0 24px 80px #24205118;color-scheme:light}
@@ -105,6 +105,40 @@
     @media(max-width:700px){.card-row>.accuracy-badge{grid-column:2;grid-row:1}.card-row textarea[name=term]{grid-column:2;grid-row:2}.card-row textarea[name=definition]{grid-column:2;grid-row:3}.card-row>.icon-btn{grid-column:3;grid-row:2}.card-row .card-number{grid-row:1 / 4}.deck-footer>.row{justify-content:flex-start}.study-footer{flex-wrap:wrap}}
 
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.confetti{display:none!important}}
+
+    .mode-switcher{display:flex;justify-content:center;gap:5px;margin:0 auto 27px;padding:5px;border:1px solid var(--line);border-radius:50px;background:var(--panel);width:max-content;max-width:100%}
+    .mode-button{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 22px;border:0;border-radius:40px;background:transparent;color:var(--muted);font-size:13px;font-weight:700;transition:transform .22s cubic-bezier(.16,1,.3,1),background-color .18s}
+    .mode-button.active{background:var(--panel2);color:var(--accent)}.mode-button:hover{transform:translate3d(0,-1px,0);color:var(--accent)}
+    .akx-sig{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:10px 12px;margin-top:22px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}
+    .version-tag{display:inline-block;padding:2px 7px;border:1px solid var(--line);border-radius:15px;color:var(--muted);font-family:ui-monospace,SFMono-Regular,monospace;font-size:10px}
+    .inline-toggle{background:none;border:0;padding:10px 0 0;color:var(--accent);font-size:12px;text-decoration:underline;text-underline-offset:3px}
+    .site-footer{flex-wrap:wrap}.deck-footer>.row{gap:6px!important}.deck-footer .btn{padding:10px 12px}
+    @media(max-width:700px){.mode-button{padding:10px 14px;font-size:12px}.mode-button svg{width:16px;height:16px}.mode-switcher{gap:2px}.site-footer{gap:6px}}
+
+    .flashcards .flash-heading{margin:20px 0 23px}.flash-heading h1{font-size:25px;letter-spacing:-.7px;margin:0;overflow-wrap:anywhere}
+    .flash-toolbar{display:flex;gap:18px;flex-wrap:wrap;border:1px solid var(--line);border-radius:13px;background:var(--panel);padding:16px 18px}
+    .flash-toggle{display:flex;align-items:center;gap:11px;margin:0;font-size:12px;font-weight:650;white-space:nowrap}.flash-toggle .switch{margin:0;flex-shrink:0}
+    .flash-status-line{margin:18px 0 12px}
+    .flashcard-scene{position:relative;perspective:1100px;margin:0 0 24px;border-radius:20px;isolation:isolate}
+    .flashcard-inner{position:relative;z-index:2;height:380px;width:100%;transform-style:preserve-3d;transition:transform .42s cubic-bezier(.22,1,.36,1);pointer-events:none;border-radius:20px}
+    .flashcard-inner.flipped{transform:rotateX(180deg)}
+    .flash-flip-target{position:absolute;z-index:1;inset:0;width:100%;height:100%;background:transparent;border:0;border-radius:20px;padding:0;touch-action:manipulation}
+    .flashcard-scene:has(.flash-flip-target:focus-visible){outline:3px solid var(--accent);outline-offset:5px}
+    .flash-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:65px 34px 55px;border:1px solid var(--line);border-radius:20px;background:var(--panel);color:var(--text);backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:var(--shadow)}
+    .flash-back{transform:rotateX(180deg);background:var(--panel2)}
+    .flash-face-tools{position:absolute;left:23px;right:23px;top:17px;display:flex;align-items:center;justify-content:space-between;gap:12px}.flash-face-tools>.eyebrow{margin:0;font-size:11px}.flash-face button{pointer-events:auto}
+    .flash-card-text{max-width:100%;max-height:245px;overflow:auto;overscroll-behavior:contain;white-space:pre-wrap;overflow-wrap:anywhere;font-size:clamp(23px,3vw,32px);line-height:1.45;font-weight:650;letter-spacing:-.5px;text-align:center}
+    .flash-face-hint{position:absolute;bottom:19px;left:16px;right:16px;text-align:center;font-weight:400}
+    .flash-rating-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.flash-rating{padding:15px 12px;white-space:normal;min-height:56px}.flash-learning{color:var(--accent)}.flash-rating kbd{font-size:10px;background:transparent}
+    @media(max-width:700px){.flash-toolbar{gap:12px;padding:14px}.flash-toggle{font-size:11px;gap:7px}.flash-heading h1{font-size:21px}.flashcard-inner{height:355px}.flash-face{padding:62px 19px 48px}.flash-face-tools{left:16px;right:16px}.flash-rating-row{gap:10px}.flash-rating{gap:6px;font-size:12px}.flash-rating kbd{font-size:9px}.flash-card-text{max-height:218px}.flash-rating svg{width:17px}.flashcards .flash-heading{align-items:flex-start}}
+    @media(prefers-reduced-motion:reduce){.flashcard-inner{transition:none!important}}
+    .test-mode-heading{margin:22px 0 26px;gap:18px}.test-mode-heading h1{font-size:27px;margin:0;overflow-wrap:anywhere}.test-count{max-width:150px}.test-type-options{display:flex;flex-wrap:wrap;gap:10px}.test-type-option{display:flex;gap:9px;align-items:center;margin:0;padding:12px 15px;border:1px solid var(--line);border-radius:10px;background:var(--bg);font-size:13px;cursor:pointer}.test-type-option input{accent-color:var(--purple);width:17px;height:17px}.test-directions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.test-directions .active,.test-choice.selected{color:var(--accent);border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--panel))}.test-progress-header{padding-bottom:22px}.test-progress-header h2{font-size:21px;margin-bottom:8px}.test-progress-header .progress-track{margin-top:12px}.test-progress-fill{width:100%;height:100%;background:var(--accent);transform-origin:left;transition:transform .25s ease;border-radius:8px}.test-question-list{display:grid;gap:20px}.test-question{box-shadow:none;padding:25px}.test-question-prompt{font-size:21px;line-height:1.55;letter-spacing:-.3px;white-space:pre-wrap;overflow-wrap:anywhere;margin:22px 0}.test-statement{padding:15px 17px;border:1px solid var(--line);border-radius:10px;background:var(--bg);font-size:17px;white-space:pre-wrap;overflow-wrap:anywhere}.test-tf-choices{display:flex;gap:12px}.test-tf-choices .btn{min-width:110px}.test-submit{text-align:center;padding:27px 12px 10px}.test-submit .btn{min-width:190px}.test-breakdown{display:flex;justify-content:center;gap:12px;margin-top:24px}.test-breakdown>.checkpoint-stat{flex:1}.test-review{text-align:left;margin-top:34px}.test-review-question{box-shadow:none;padding:24px;margin-bottom:17px}.test-review-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.test-review-answer{white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 0;font-size:15px}.test-incorrect-badge{color:var(--red);border-color:color-mix(in srgb,var(--red) 35%,var(--line))}.test-view .confetti{max-height:720px}.test-view .test-question:focus-within{border-color:var(--accent)}
+    @media(max-width:700px){.test-mode-heading{align-items:flex-start;flex-wrap:wrap}.test-mode-heading h1{font-size:23px}.test-question,.test-review-question{padding:20px 17px}.test-question-prompt{font-size:19px}.test-review-grid{grid-template-columns:1fr;gap:17px}.test-type-options{gap:7px}.test-type-option{padding:10px 12px}.test-breakdown{gap:7px}.test-breakdown strong{font-size:22px}}
+    @media(prefers-reduced-motion:reduce){.test-progress-fill{transition:none!important}}
+
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.confetti{display:none!important}}
+
+    .flash-card-text{pointer-events:auto;cursor:pointer}
   </style>
 </head>
 <body class="antialiased">
@@ -115,6 +149,7 @@
   <script>
   'use strict';
   (() => {
+    const VERSION = 'v3.0.0';
     const KEY = 'learn.local.v1';
     const icons = {
       home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/>',
@@ -143,7 +178,7 @@
     const shuffle = (a) => { a = [...a]; for (let i=a.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
     const tier = n => ['Unseen', 'Still learning', 'Mastered'][n];
     const cardNew = (term='', definition='') => ({id:uid(),term,definition,level:0,starred:false,attempts:0,correct:0});
-    const defaults = () => ({version:1,decks:[],settings:{answerWith:'definition',questionFormat:'adaptive',written:true,sound:true,quickSkip:true,autoAdvance:false,autoSpeak:false,studyScope:'all',starredOnly:false,theme:window.matchMedia?.('(prefers-color-scheme: light)').matches?'light':'dark'},session:null});
+    const defaults = () => ({version:1,decks:[],settings:{answerWith:'definition',questionFormat:'adaptive',written:true,sound:true,requireRetype:false,quickSkip:true,autoAdvance:false,autoSpeak:false,studyScope:'all',starredOnly:false,theme:window.matchMedia?.('(prefers-color-scheme: light)').matches?'light':'dark'},session:null,flashcards:null,test:null});
     let state = defaults(), page = 'home', search = '', editor = null, pendingImport = null, toastTimer, storageIssue = '', corruptRaw = null;
     let storageConflict = false;
     let motion = '';
@@ -151,7 +186,7 @@
     let lastMainView = '';
     const scopeOf = options => ['all','starred','hard'].includes(options.studyScope) ? options.studyScope : options.starredOnly ? 'starred' : 'all';
     function optionDefaults(options) {
-      return {questionFormat:formatOf(options),written:formatOf(options)!=='mc',studyScope:scopeOf(options),starredOnly:scopeOf(options)==='starred',quickSkip:options.quickSkip!==false,autoAdvance:options.autoAdvance===true,autoSpeak:options.autoSpeak===true};
+      return {questionFormat:formatOf(options),written:formatOf(options)!=='mc',studyScope:scopeOf(options),starredOnly:scopeOf(options)==='starred',requireRetype:options.requireRetype===true,quickSkip:options.quickSkip!==false,autoAdvance:options.autoAdvance===true,autoSpeak:options.autoSpeak===true};
     }
     function selectedCards(deck,options) {
       const scope=scopeOf(options);
@@ -164,6 +199,7 @@
       }
       return [...deck.cards];
     }
+    function scheduleSave() {cancelDraftSave();draftTimer=setTimeout(()=>{draftTimer=null;save();},300);}
     function cancelDraftSave() {clearTimeout(draftTimer);draftTimer=null;}
     function flushDraft() {if(draftTimer!==null){cancelDraftSave();save();}}
     function cancelAutoAdvance() {
@@ -277,6 +313,478 @@
       };
     })();
 
+    function validFlashcards(raw, decks = state.decks) {
+      if (!raw || typeof raw !== 'object' || typeof raw.deckId !== 'string') return null;
+      const deck = decks.find(item => item.id === raw.deckId);
+      if (!deck || !Array.isArray(raw.cardIds) || raw.cardIds.length > 10000) return null;
+      const ids = new Set(deck.cards.map(card => card.id));
+      if (!raw.cardIds.every(id => typeof id === 'string' && ids.has(id)) || new Set(raw.cardIds).size !== raw.cardIds.length) return null;
+      const cardIds = [...raw.cardIds];
+      const member = new Set(cardIds);
+      const order = raw.order === undefined ? [...cardIds] : raw.order;
+      if (!Array.isArray(order) || order.length !== cardIds.length || new Set(order).size !== order.length || !order.every(id => member.has(id))) return null;
+      for (const name of ['trackProgress', 'shuffle', 'flipped', 'reviewOnly']) {
+        if (raw[name] !== undefined && typeof raw[name] !== 'boolean') return null;
+      }
+      const trackProgress = raw.trackProgress !== false;
+      const position = raw.position === undefined ? (Number.isSafeInteger(raw.index) ? raw.index : 0) : raw.position;
+      if (!Number.isSafeInteger(position) || position < 0 || position > order.length) return null;
+      const queue = raw.queue === undefined ? order.slice(Math.min(position, order.length)) : raw.queue;
+      if (!Array.isArray(queue) || queue.length > cardIds.length || new Set(queue).size !== queue.length || !queue.every(id => member.has(id))) return null;
+      const ratings = raw.ratings === undefined ? [] : raw.ratings;
+      if (!Array.isArray(ratings) || ratings.length > 10000) return null;
+      const latest = new Map();
+      for (const rating of ratings) {
+        if (!rating || !member.has(rating.cardId) || typeof rating.known !== 'boolean') return null;
+        latest.set(rating.cardId, {cardId: rating.cardId, known: rating.known});
+      }
+      const reviewed = raw.reviewed === undefined ? ratings.length : raw.reviewed;
+      if (!Number.isSafeInteger(reviewed) || reviewed < 0) return null;
+      const frontKey = raw.frontKey === undefined ? 'term' : raw.frontKey;
+      if (!['term', 'definition'].includes(frontKey)) return null;
+      const studyScope = raw.studyScope === undefined ? 'all' : raw.studyScope;
+      if (!['all', 'starred', 'hard'].includes(studyScope)) return null;
+      return {
+        deckId: deck.id,
+        cardIds,
+        order: [...order],
+        queue: [...queue],
+        position,
+        flipped: raw.flipped === true,
+        trackProgress,
+        shuffle: raw.shuffle === true,
+        frontKey,
+        studyScope,
+        reviewed,
+        ratings: [...latest.values()],
+        reviewOnly: raw.reviewOnly === true,
+        complete: cardIds.length > 0 && (trackProgress ? queue.length === 0 : position === order.length)
+      };
+    }
+
+    function createFlashcards(deckId, cardIds, preferences = {}) {
+      const deck = deckById(deckId);
+      const chosen = cardIds || selectedCards(deck, state.settings).map(card => card.id);
+      const order = preferences.shuffle ? shuffle(chosen) : [...chosen];
+      return {
+        deckId,
+        cardIds: [...chosen],
+        order,
+        queue: [...order],
+        position: 0,
+        flipped: false,
+        trackProgress: preferences.trackProgress !== false,
+        shuffle: preferences.shuffle === true,
+        frontKey: preferences.frontKey || (state.settings.answerWith === 'term' ? 'definition' : 'term'),
+        studyScope: scopeOf(state.settings),
+        reviewed: 0,
+        ratings: [],
+        reviewOnly: preferences.reviewOnly === true,
+        complete: false
+      };
+    }
+
+    function flashcardCurrent() {
+      const flash = state.flashcards;
+      if (!flash || flash.complete) return null;
+      const id = flash.trackProgress ? flash.queue[0] : flash.order[flash.position];
+      return deckById(flash.deckId)?.cards.find(card => card.id === id) || null;
+    }
+
+    function focusFlashcards(id = 'flash-flip') {
+      requestAnimationFrame(() => {
+        if (page === 'flashcards' && !document.getElementById('modal').open) document.getElementById(id)?.focus({preventScroll: true});
+      });
+    }
+
+    function startFlashcards(deckId) {
+      const deck = deckById(deckId);
+      if (!deck) return;
+      prepareMode();
+      const existing = validFlashcards(state.flashcards);
+      state.flashcards = existing?.deckId === deckId ? existing : createFlashcards(deckId, null, existing || {});
+      page = 'flashcards';
+      sfx.click();persist();render();window.scrollTo(0, 0);
+      focusFlashcards(state.flashcards.complete ? 'flash-review-again' : 'flash-flip');
+    }
+
+    function restartFlashcards() {
+      const flash = state.flashcards;
+      if (!flash || !deckById(flash.deckId)) return;
+      prepareMode();
+      state.flashcards = createFlashcards(flash.deckId, null, flash);
+      page = 'flashcards';sfx.click();persist();render();window.scrollTo(0, 0);focusFlashcards();
+    }
+
+    function reviewUnmasteredFlashcards() {
+      const flash = state.flashcards, deck = flash && deckById(flash.deckId);
+      if (!deck) return;
+      const ids = flash.cardIds.filter(id => deck.cards.find(card => card.id === id)?.level < 2);
+      if (!ids.length) { toast('All cards in this selection are mastered. Restart to review them again.'); return; }
+      prepareMode();
+      state.flashcards = createFlashcards(flash.deckId, ids, {...flash, trackProgress: true, reviewOnly: true});
+      page = 'flashcards';sfx.click();persist();render();window.scrollTo(0, 0);focusFlashcards();
+    }
+
+    function flipFlashcard() {
+      const flash = state.flashcards;
+      if (page !== 'flashcards' || !flashcardCurrent() || document.getElementById('modal').open) return;
+      flash.flipped = !flash.flipped;
+      document.getElementById('flashcard-inner')?.classList.toggle('flipped', flash.flipped);
+      const flip = document.getElementById('flash-flip');
+      if (flip) {
+        flip.setAttribute('aria-pressed', String(flash.flipped));
+        flip.setAttribute('aria-describedby', (flash.flipped ? 'flash-back-face' : 'flash-front-face') + ' flash-key-hint');
+      }
+      for (const [id, visible] of [['flash-front-face', !flash.flipped], ['flash-back-face', flash.flipped]]) {
+        const face = document.getElementById(id);
+        if (!face) continue;
+        face.setAttribute('aria-hidden', String(!visible));
+        face.toggleAttribute('inert', !visible);
+        face.querySelectorAll('button').forEach(button => button.tabIndex = visible ? 0 : -1);
+      }
+      const side = flash.flipped ? (flash.frontKey === 'term' ? 'definition' : 'term') : flash.frontKey;
+      const status = document.getElementById('flash-status');
+      if (status) status.textContent = `Showing the ${side}.`;
+      sfx.click();persist();
+    }
+
+    function speakFlashcard(side) {
+      const flash = state.flashcards, card = flashcardCurrent();
+      if (!flash || !card) return;
+      if (!['term', 'definition'].includes(side)) side = flash.flipped ? (flash.frontKey === 'term' ? 'definition' : 'term') : flash.frontKey;
+      speak(card[side]);
+    }
+
+    function starFlashcard() {
+      const card = flashcardCurrent(), flash = state.flashcards;
+      if (!card || page !== 'flashcards' || document.getElementById('modal').open) return;
+      card.starred = !card.starred;
+      deckById(flash.deckId).updatedAt = Date.now();
+      document.querySelectorAll('[data-flash-star]').forEach(button => {
+        button.classList.toggle('starred', card.starred);
+        button.setAttribute('aria-pressed', String(card.starred));
+        button.setAttribute('aria-label', (card.starred ? 'Unstar' : 'Star') + ' current card');
+      });
+      sfx.click();persist();
+    }
+
+    function toggleFlashTrack(enabled) {
+      const flash = state.flashcards;
+      if (!flash || document.getElementById('modal').open) return;
+      const currentId = flashcardCurrent()?.id;
+      flash.trackProgress = enabled === true;
+      flash.flipped = false;
+      if (flash.trackProgress) {
+        if (currentId && flash.queue.includes(currentId)) flash.queue = [currentId, ...flash.queue.filter(id => id !== currentId)];
+        flash.complete = flash.cardIds.length > 0 && flash.queue.length === 0;
+      } else {
+        flash.position = currentId ? Math.max(0, flash.order.indexOf(currentId)) : 0;
+        flash.complete = false;
+      }
+      sfx.click();persist();render();focusFlashcards('flash-track-progress');
+    }
+
+    function toggleFlashShuffle(enabled) {
+      const flash = state.flashcards;
+      if (!flash || document.getElementById('modal').open) return;
+      const currentId = flashcardCurrent()?.id;
+      flash.shuffle = enabled === true;
+      if (flash.shuffle) {
+        if (flash.trackProgress) {
+          flash.order = shuffle(flash.cardIds);
+          flash.queue = currentId ? [currentId, ...shuffle(flash.queue.filter(id => id !== currentId))] : shuffle(flash.queue);
+        } else {
+          const prefix = flash.order.slice(0, flash.position + 1);
+          flash.order = [...prefix, ...shuffle(flash.order.slice(flash.position + 1))];
+        }
+      } else {
+        flash.order = [...flash.cardIds];
+        if (!flash.trackProgress && currentId) flash.position = Math.max(0, flash.order.indexOf(currentId));
+        if (flash.trackProgress) flash.queue = currentId ? [currentId, ...flash.order.filter(id => id !== currentId && flash.queue.includes(id))] : flash.order.filter(id => flash.queue.includes(id));
+      }
+      sfx.click();persist();render();focusFlashcards('flash-shuffle');
+    }
+
+    function toggleFlashSide(enabled) {
+      const flash = state.flashcards;
+      if (!flash || document.getElementById('modal').open) return;
+      const original = state.settings.answerWith === 'term' ? 'definition' : 'term';
+      flash.frontKey = enabled === true ? (original === 'term' ? 'definition' : 'term') : original;
+      flash.flipped = false;
+      sfx.click();persist();render();focusFlashcards('flash-flip-side');
+    }
+
+    function finishFlashcards() {
+      const flash = state.flashcards;
+      flash.complete = true;flash.flipped = false;
+      persist();render();
+      if (flash.trackProgress) sfx.mastered();else sfx.checkpoint();
+      focusFlashcards('flash-review-again');
+    }
+
+    function navigateFlashcard(direction) {
+      const flash = state.flashcards;
+      if (page !== 'flashcards' || !flash || flash.trackProgress || document.getElementById('modal').open) return;
+      if (direction < 0) flash.position = Math.max(0, flash.position - 1);
+      else if (flash.position + 1 >= flash.order.length) {flash.position = flash.order.length;finishFlashcards();return;}
+      else flash.position++;
+      flash.flipped = false;flash.complete = false;
+      sfx.click();persist();render();focusFlashcards();
+    }
+
+    function rateFlashcard(known) {
+      const flash = state.flashcards;
+      if (page !== 'flashcards' || !flash || document.getElementById('modal').open) return;
+      if (!flash.trackProgress) {navigateFlashcard(known === true ? 1 : -1);return;}
+      const card = flashcardCurrent(), deck = deckById(flash.deckId);
+      if (!card) return;
+      const endedLearn = state.session?.deckId === deck.id;
+      if (endedLearn) state.session = null;
+      known = known === true;
+      card.attempts++;if (known) card.correct++;
+      card.level = known ? 2 : 1;deck.updatedAt = Date.now();
+      const rating = {cardId: card.id, known}, at = flash.ratings.findIndex(item => item.cardId === card.id);
+      if (at === -1) flash.ratings.push(rating);else flash.ratings[at] = rating;
+      flash.reviewed++;
+      flash.queue = flash.queue.filter(id => id !== card.id);
+      if (!known) flash.queue.push(card.id);
+      flash.flipped = false;
+      if (known) sfx.correct();else sfx.click();
+      if (!flash.queue.length) finishFlashcards();
+      else {persist();render();focusFlashcards();}
+      if (endedLearn) toast('Flashcard rating saved. Start a new Learn round to use the updated mastery.');
+    }
+
+    function renderFlashcards() {
+      const flash = state.flashcards, deck = flash && deckById(flash.deckId);
+      if (!deck) return `<div class="empty"><h2>Choose a deck to use Flashcards.</h2><button type="button" class="btn primary" onclick="Learn.action(this)" data-action="home">Back to library</button></div>`;
+      const count = flash.cardIds.length, card = flashcardCurrent();
+      const scope = flash.reviewOnly ? 'Unmastered cards' : flash.studyScope === 'starred' ? 'Starred cards' : flash.studyScope === 'hard' ? 'Hardest cards' : 'All cards';
+      const heading = `${modeSwitcher(deck.id, 'flashcards')}<div class="row spread flash-heading"><div class="row" style="min-width:0"><button type="button" class="icon-btn" onclick="Learn.action(this)" data-action="home" aria-label="Back to library">${svg('back')}</button><div><div class="eyebrow" style="margin-bottom:4px">Flashcards · ${esc(scope)}</div><h1>${esc(deck.title)}</h1></div></div><button type="button" class="icon-btn" onclick="Learn.showOptions()" aria-label="Study options">${svg('settings')}</button></div>`;
+      if (!count) return `<div class="study flashcards">${heading}<div class="empty"><div class="empty-symbol">${svg('cards')}</div><h2>No cards in this selection.</h2><p class="muted">Choose All cards in study options, or star some cards in the deck editor.</p><div class="row wrap" style="justify-content:center"><button type="button" class="btn" onclick="Learn.showOptions()">Study options</button><button type="button" class="btn primary" onclick="Learn.restartFlashcards()">Reload selection</button></div></div></div>`;
+      const unmastered = deck.cards.filter(item => flash.cardIds.includes(item.id) && item.level < 2).length;
+      if (!card) {
+        return `<div class="study flashcards checkpoint">${heading}${flash.trackProgress ? confetti() : ''}<section class="question card-enter" aria-label="Flashcards complete"><div class="completion-icon">${svg(flash.trackProgress ? 'trophy' : 'check')}</div><div class="eyebrow">A little more confident</div><h1>${flash.trackProgress ? 'You know this selection.' : 'You’ve reviewed your cards.'}</h1><p class="muted">${flash.trackProgress ? `${flash.reviewed} ratings · ${count} cards marked “Know it”.` : `${count} cards viewed · ${unmastered} not yet mastered.`}</p><div style="text-align:left">${progress(deck.cards, 'Overall deck progress')}</div><div class="results">${flash.cardIds.map(id => {const rated = deck.cards.find(item => item.id === id);return `<div class="result"><span class="result-name">${esc(rated.term)} ${accuracyBadge(rated)}</span><span class="badge ${rated.level === 2 ? 'green' : 'purple'}">${esc(tier(rated.level))}</span></div>`;}).join('')}</div><div class="row wrap" style="justify-content:center"><button type="button" class="btn" onclick="Learn.reviewUnmasteredFlashcards()" ${unmastered ? '' : 'disabled'}>Review unmastered (${unmastered})</button><button id="flash-review-again" type="button" class="btn primary" onclick="Learn.restartFlashcards()">Restart</button><button type="button" class="btn ghost" onclick="Learn.action(this)" data-action="home">Library</button></div></section></div>`;
+      }
+      const frontKey = flash.frontKey, backKey = frontKey === 'term' ? 'definition' : 'term';
+      const currentIndex = flash.order.indexOf(card.id) + 1;
+      const completed = flash.trackProgress ? count - flash.queue.length : flash.position;
+      const reversed = flash.frontKey !== (state.settings.answerWith === 'term' ? 'definition' : 'term');
+      const face = (key, back) => {
+        const visible = back === flash.flipped;
+        return `<section id="flash-${back ? 'back' : 'front'}-face" class="flash-face ${back ? 'flash-back' : 'flash-front'}" aria-hidden="${!visible}" ${visible ? '' : 'inert'}><div class="flash-face-tools"><span class="eyebrow">${key === 'term' ? 'Term' : 'Definition'}</span><div class="row" style="gap:2px"><button type="button" class="icon-btn" onclick="Learn.speakFlashcard('${key}')" aria-label="Read ${key} aloud" tabindex="${visible ? 0 : -1}">${svg('speaker')}</button><button type="button" class="icon-btn ${card.starred ? 'starred' : ''}" data-flash-star onclick="Learn.starFlashcard()" aria-label="${card.starred ? 'Unstar' : 'Star'} current card" aria-pressed="${card.starred}" tabindex="${visible ? 0 : -1}">${svg('star')}</button></div></div><div class="flash-card-text" onclick="Learn.flipFlashcard()">${esc(card[key])}</div><div class="flash-face-hint tiny muted">Click or press Space, ↑ or ↓ to flip</div></section>`;
+      };
+      return `<div class="study flashcards">${heading}<div class="flash-toolbar"><label class="flash-toggle" for="flash-track-progress"><span>Track progress</span><input id="flash-track-progress" type="checkbox" class="switch" role="switch" onchange="Learn.toggleFlashTrack(this.checked)" ${flash.trackProgress ? 'checked' : ''}></label><label class="flash-toggle" for="flash-shuffle"><span>Shuffle</span><input id="flash-shuffle" type="checkbox" class="switch" role="switch" onchange="Learn.toggleFlashShuffle(this.checked)" ${flash.shuffle ? 'checked' : ''}></label><label class="flash-toggle" for="flash-flip-side"><span>Flip side</span><input id="flash-flip-side" type="checkbox" class="switch" role="switch" onchange="Learn.toggleFlashSide(this.checked)" ${reversed ? 'checked' : ''}></label></div><div class="round-meta"><span>Card ${currentIndex} of ${count}</span><span>${flash.trackProgress ? `${count - flash.queue.length} known · ${flash.queue.length} to practice` : `${flash.position} viewed`}</span></div><div class="progress-track" role="progressbar" aria-label="Flashcard review progress" aria-valuemin="0" aria-valuemax="${count}" aria-valuenow="${completed}"><div class="progress-fill" style="transform:scaleX(${completed / count})"></div></div><div class="row spread flash-status-line"><span class="badge purple">${esc(tier(card.level))}</span>${accuracyBadge(card)}</div><div class="flashcard-scene"><button id="flash-flip" type="button" class="flash-flip-target" onclick="Learn.flipFlashcard()" aria-label="Flip flashcard" aria-pressed="${flash.flipped}" aria-describedby="${flash.flipped ? 'flash-back-face' : 'flash-front-face'} flash-key-hint"></button><div id="flashcard-inner" class="flashcard-inner ${flash.flipped ? 'flipped' : ''}">${face(frontKey, false)}${face(backKey, true)}</div></div><div id="flash-status" class="sr-only" role="status" aria-live="polite">Showing the ${flash.flipped ? backKey : frontKey}.</div><div class="flash-rating-row">${flash.trackProgress ? `<button type="button" class="btn flash-rating flash-learning" onclick="Learn.rateFlashcard(false)" aria-keyshortcuts="ArrowLeft 1">${svg('back')}Still learning <kbd>← / 1</kbd></button><button type="button" class="btn primary flash-rating" onclick="Learn.rateFlashcard(true)" aria-keyshortcuts="ArrowRight 2">Know it ${svg('check')}<kbd>→ / 2</kbd></button>` : `<button type="button" class="btn flash-rating" onclick="Learn.navigateFlashcard(-1)" aria-keyshortcuts="ArrowLeft 1" ${flash.position ? '' : 'disabled'}>${svg('back')}Previous <kbd>←</kbd></button><button type="button" class="btn primary flash-rating" onclick="Learn.navigateFlashcard(1)" aria-keyshortcuts="ArrowRight 2">Next ${svg('arrow')}<kbd>→</kbd></button>`}</div><p id="flash-key-hint" class="hint" style="text-align:center"><kbd>Space</kbd> / <kbd>↑</kbd> / <kbd>↓</kbd> Flip · <kbd>←</kbd> / <kbd>→</kbd> ${flash.trackProgress ? 'Grade' : 'Navigate'} · <kbd>S</kbd> Star · <kbd>A</kbd> Speak</p><p class="hint" style="text-align:center">${flash.trackProgress ? 'Still learning returns to the queue. Know it saves mastery and removes the card from this review.' : 'Browse freely: navigation does not change mastery or accuracy.'} Your place is saved automatically. Selection changes apply when you restart.</p></div>`;
+    }
+
+    function flashKeydown(event) {
+      if (page !== 'flashcards' || !state.flashcards || document.getElementById('modal').open || event.repeat || event.isComposing || event.altKey || event.ctrlKey || event.metaKey) return false;
+      const target = event.target;
+      if (/INPUT|TEXTAREA|SELECT/.test(target.tagName) || target.isContentEditable || !flashcardCurrent()) return false;
+      if (event.key === ' ' || event.code === 'Space' || event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+        if ((event.key === ' ' || event.code === 'Space') && target.closest('button') && !target.closest('#flash-flip')) return false;
+        event.preventDefault();flipFlashcard();return true;
+      }
+      if (event.key === 'ArrowLeft' || event.key === '1') {event.preventDefault();rateFlashcard(false);return true;}
+      if (event.key === 'ArrowRight' || event.key === '2') {event.preventDefault();rateFlashcard(true);return true;}
+      if (event.key.toLowerCase() === 's') {event.preventDefault();starFlashcard();return true;}
+      if (event.key.toLowerCase() === 'a') {event.preventDefault();speakFlashcard();return true;}
+      return false;
+    }
+    let pendingTestDeckId = null;
+
+    function testAnswered(question) {
+      return question.type === 'tf' ? typeof question.response === 'boolean'
+        : typeof question.response === 'string' && question.response.trim().length > 0;
+    }
+    function testResultFor(question) {
+      if (!testAnswered(question)) return {correct:false,typo:false};
+      if (question.type === 'written') return grade(question.response,question.expected);
+      return {correct:question.type === 'tf' ? question.response === question.truth : question.response === question.expected,typo:false};
+    }
+    function testTypeLabel(type) {
+      return {tf:'True / False',mc:'Multiple choice',written:'Written'}[type] || 'Question';
+    }
+    function validTest(raw,decks=state.decks) {
+      if (!raw || typeof raw !== 'object') return null;
+      const deck = decks.find(item => item.id === raw.deckId);
+      if (!deck || !['setup','taking','results'].includes(raw.phase)) return null;
+      const config = raw.config;
+      if (!config || !Number.isSafeInteger(config.count) || config.count < (deck.cards.length ? 1 : 0) || config.count > deck.cards.length || !['definition','term','both'].includes(config.answerWith) || !config.types || !['tf','mc','written'].every(key => typeof config.types[key] === 'boolean')) return null;
+      const ids = new Set(deck.cards.map(card => card.id));
+      let poolIds = null;
+      if (raw.poolIds !== null && raw.poolIds !== undefined) {
+        if (!Array.isArray(raw.poolIds) || !raw.poolIds.length || !raw.poolIds.every(id => ids.has(id)) || new Set(raw.poolIds).size !== raw.poolIds.length || config.count > raw.poolIds.length) return null;
+        poolIds = [...raw.poolIds];
+      }
+      if (!Array.isArray(raw.questions) || raw.questions.length > deck.cards.length || (raw.phase !== 'setup' && (raw.questions.length < 1 || raw.questions.length !== config.count))) return null;
+      const seenCards = new Set(), seenQuestions = new Set(), questions = [];
+      const isText = value => typeof value === 'string' && value.trim().length > 0 && value.length <= 5000;
+      for (const item of raw.questions) {
+        if (!item || typeof item.id !== 'string' || !item.id || item.id.length > 100 || seenQuestions.has(item.id) || !ids.has(item.cardId) || seenCards.has(item.cardId) || (poolIds && !poolIds.includes(item.cardId)) || !['tf','mc','written'].includes(item.type) || !['term','definition'].includes(item.answerWith) || !isText(item.prompt) || !isText(item.expected) || !Array.isArray(item.choices)) return null;
+        seenCards.add(item.cardId);seenQuestions.add(item.id);
+        const question = {id:item.id,cardId:item.cardId,type:item.type,answerWith:item.answerWith,prompt:item.prompt,expected:item.expected,choices:[],statement:'',truth:true,response:null,result:null};
+        if (item.type === 'mc') {
+          if (item.choices.length < 1 || item.choices.length > 4 || !item.choices.every(isText) || !item.choices.includes(item.expected) || new Set(item.choices.map(normalize)).size !== item.choices.length) return null;
+          question.choices = [...item.choices];
+          if (item.response !== null && item.response !== undefined && (typeof item.response !== 'string' || !question.choices.includes(item.response))) return null;
+          question.response = item.response ?? null;
+        } else if (item.type === 'tf') {
+          if (item.choices.length || !isText(item.statement) || typeof item.truth !== 'boolean' || item.truth !== (normalize(item.statement) === normalize(item.expected)) || (item.response !== null && item.response !== undefined && typeof item.response !== 'boolean')) return null;
+          question.statement = item.statement;question.truth = item.truth;question.response = item.response ?? null;
+        } else {
+          if (item.choices.length || (item.response !== null && item.response !== undefined && (typeof item.response !== 'string' || item.response.length > 5000))) return null;
+          question.response = item.response ?? '';
+        }
+        if (raw.phase === 'results') question.result = testResultFor(question);
+        questions.push(question);
+      }
+      return {deckId:deck.id,phase:raw.phase,config:{count:config.count,answerWith:config.answerWith,types:{tf:config.types.tf,mc:config.types.mc,written:config.types.written}},questions,poolIds,celebrate:false};
+    }
+    function testSetupState(deckId,config=null) {
+      const deck = deckById(deckId);
+      return {deckId,phase:'setup',config:config ? {count:Math.max(1,Math.min(deck.cards.length,config.count)),answerWith:config.answerWith,types:{...config.types}} : {count:Math.min(20,deck.cards.length),answerWith:'definition',types:{tf:true,mc:true,written:true}},questions:[],poolIds:null,celebrate:false};
+    }
+    function startTest(deckId) {
+      const deck = deckById(deckId);if (!deck) return;
+      prepareMode();
+      if (state.test && state.test.deckId !== deckId && state.test.phase === 'taking' && state.test.questions.some(testAnswered)) {
+        pendingTestDeckId = deckId;
+        modal('Replace unfinished test?',`<div class="modal-body"><p class="muted">Your unfinished test has answers. Starting a test for this deck replaces that attempt. Your decks and Learn progress stay saved.</p></div>`,`<div class="modal-foot"><button type="button" class="btn" onclick="Learn.closeModal()">Cancel</button><button type="button" class="btn primary" onclick="Learn.confirmNewTest()">Start new test</button></div>`,true);
+        return;
+      }
+      if (!state.test || state.test.deckId !== deckId) state.test = testSetupState(deckId);
+      page = 'test';persist();render();window.scrollTo(0,0);
+    }
+    function configureNewTest() {
+      if (!state.test) return;
+      prepareMode();
+      if (state.test.phase === 'taking' && state.test.questions.some(testAnswered)) {
+        pendingTestDeckId = state.test.deckId;
+        modal('Configure a new test?',`<div class="modal-body"><p class="muted">This replaces your current test answers. Your decks and Learn progress are unaffected.</p></div>`,`<div class="modal-foot"><button type="button" class="btn" onclick="Learn.closeModal()">Keep current test</button><button type="button" class="btn primary" onclick="Learn.confirmNewTest()">Configure new test</button></div>`,true);
+      } else {
+        state.test = testSetupState(state.test.deckId,state.test.config);page='test';persist();render();window.scrollTo(0,0);
+      }
+    }
+    function confirmNewTest() {
+      const deckId = pendingTestDeckId;pendingTestDeckId = null;
+      if (!deckById(deckId)) return;
+      const config = state.test?.deckId === deckId ? state.test.config : null;
+      Learn.closeModal();prepareMode();state.test = testSetupState(deckId,config);page='test';persist();render();window.scrollTo(0,0);
+    }
+    function testConfigChange(name,value) {
+      const test = state.test;if (page !== 'test' || test?.phase !== 'setup') return;
+      if (name === 'count') {
+        const number = Number(value),max = test.poolIds?.length || deckById(test.deckId).cards.length;
+        if (!Number.isFinite(number) || number < 1) return;
+        test.config.count = Math.max(1,Math.min(max,Math.floor(number)));
+      } else if (['tf','mc','written'].includes(name) && typeof value === 'boolean') test.config.types[name] = value;
+      else if (name === 'answerWith' && ['definition','term','both'].includes(value)) {
+        test.config.answerWith = value;
+        document.querySelectorAll('[data-test-direction]').forEach(button=>{const active=button.dataset.testDirection===value;button.classList.toggle('active',active);button.setAttribute('aria-checked',String(active));});
+      } else return;
+      const error = document.getElementById('test-setup-error');if (error) error.textContent='';
+      scheduleSave();
+    }
+    function makeTestQuestion(card,type,answerWith,deck) {
+      const expected = card[answerWith],prompt = card[answerWith === 'term' ? 'definition' : 'term'];
+      const unique = new Map();
+      for (const other of shuffle(deck.cards)) {
+        const answer = other[answerWith],key=normalize(answer);
+        if (key !== normalize(expected) && !unique.has(key)) unique.set(key,answer);
+      }
+      const question = {id:uid(),cardId:card.id,type,answerWith,prompt,expected,choices:[],statement:'',truth:true,response:type==='written'?'':null,result:null};
+      if (type === 'mc') question.choices = shuffle([expected,...[...unique.values()].slice(0,3)]);
+      if (type === 'tf') {
+        question.truth = !unique.size || Math.random() >= .5;
+        question.statement = question.truth ? expected : [...unique.values()][0];
+      }
+      return question;
+    }
+    function generateTest() {
+      const test = state.test;if (page !== 'test' || test?.phase !== 'setup') return;
+      const deck = deckById(test.deckId),enabled = shuffle(['tf','mc','written'].filter(type=>test.config.types[type]));
+      const countInput = document.getElementById('test-count'),value=Number(countInput?.value ?? test.config.count);
+      const pool=deck.cards.filter(card=>!test.poolIds||test.poolIds.includes(card.id));
+      if (!enabled.length || !pool.length || !Number.isSafeInteger(value) || value < 1 || value > pool.length) {
+        document.getElementById('test-setup-error').textContent = !enabled.length ? 'Choose at least one question type.' : `Choose a question count from 1 to ${pool.length}.`;
+        return;
+      }
+      test.config.count=value;
+      const bothStart=Math.random()<.5?0:1;
+      test.questions=shuffle(pool).slice(0,value).map((card,index)=>makeTestQuestion(card,enabled[index%enabled.length],test.config.answerWith==='both'?((index+bothStart)%2===0?'term':'definition'):test.config.answerWith,deck));
+      test.phase='taking';test.celebrate=false;sfx.click();persist();render();window.scrollTo(0,0);
+      requestAnimationFrame(()=>document.getElementById('test-heading')?.focus({preventScroll:true}));
+    }
+    function updateTestProgress() {
+      const test=state.test;if (test?.phase!=='taking') return;
+      const answered=test.questions.filter(testAnswered).length,total=test.questions.length;
+      const label=document.getElementById('test-progress-label');if(label)label.textContent=`Answered ${answered} of ${total}`;
+      const bar=document.getElementById('test-progress');if(bar)bar.setAttribute('aria-valuenow',String(answered));
+      const fill=document.getElementById('test-progress-fill');if(fill)fill.style.transform=`scaleX(${total?answered/total:0})`;
+    }
+    function captureTestAnswer(index,value) {
+      const test=state.test,question=test?.questions[index];
+      if(page!=='test'||test.phase!=='taking'||question?.type!=='written')return;
+      question.response=String(value).slice(0,5000);updateTestProgress();scheduleSave();
+    }
+    function answerTest(index,value) {
+      const test=state.test,question=test?.questions[index];
+      if(page!=='test'||test.phase!=='taking'||!question||question.type==='written')return;
+      if(question.type==='mc') {
+        if(!Number.isSafeInteger(value)||value<0||value>=question.choices.length)return;
+        question.response=question.choices[value];
+      } else {
+        if(typeof value!=='boolean')return;
+        question.response=value;
+      }
+      document.querySelectorAll(`[data-test-question="${index}"] [data-test-answer]`).forEach(button=>{
+        const active=question.type==='mc'?question.choices[Number(button.dataset.testAnswer)]===question.response:(button.dataset.testAnswer==='true')===question.response;
+        button.classList.toggle('selected',active);button.setAttribute('aria-pressed',String(active));
+      });
+      sfx.click();updateTestProgress();scheduleSave();
+    }
+    function submitTest() {
+      const test=state.test;if(page!=='test'||test?.phase!=='taking')return;
+      prepareMode();
+      test.questions.forEach(question=>{question.result=testResultFor(question);});
+      test.phase='results';
+      const score=Math.round(test.questions.filter(question=>question.result.correct).length/test.questions.length*100);
+      test.celebrate=score>=85;
+      if(test.celebrate)sfx.mastered();else sfx.checkpoint();
+      persist();render();test.celebrate=false;window.scrollTo(0,0);
+      requestAnimationFrame(()=>document.getElementById('test-score-heading')?.focus({preventScroll:true}));
+    }
+    function retakeMissedTest() {
+      const test=state.test;if(test?.phase!=='results')return;
+      const missed=test.questions.filter(question=>!question.result.correct);if(!missed.length)return;
+      const deck=deckById(test.deckId);prepareMode();
+      test.poolIds=missed.map(question=>question.cardId);test.config.count=missed.length;
+      test.questions=shuffle(missed).map(question=>makeTestQuestion(deck.cards.find(card=>card.id===question.cardId),question.type,question.answerWith,deck));
+      test.phase='taking';test.celebrate=false;page='test';persist();render();window.scrollTo(0,0);
+    }
+    function practiceMissedTest() {
+      const test=state.test;if(test?.phase!=='results')return;
+      const missed=[...new Set(test.questions.filter(question=>!question.result.correct).map(question=>question.cardId))];
+      if(missed.length)startLearnForCards(test.deckId,missed);
+    }
+    function renderTest() {
+      const test=state.test,deck=test&&deckById(test.deckId);
+      if(!deck)return `<div class="empty"><h2>Choose a deck to take a test.</h2><button type="button" class="btn primary" onclick="Learn.action(this)" data-action="home">Library</button></div>`;
+      const header=`${modeSwitcher(deck.id,'test')}<div class="row spread test-mode-heading"><div><div class="eyebrow">Test mode</div><h1>${esc(deck.title)}</h1></div>${test.phase!=='setup'?'<button type="button" class="btn ghost" onclick="Learn.configureNewTest()">Configure test</button>':''}</div>`;
+      if(!deck.cards.length)return `<div class="study test-view">${header}<div class="empty"><h2>Add cards to build a test.</h2><button type="button" class="btn" onclick="Learn.action(this)" data-action="edit" data-id="${esc(deck.id)}">Edit deck</button></div></div>`;
+      if(test.phase==='setup') {
+        const max=test.poolIds?.length||deck.cards.length;
+        return `<div class="study test-view">${header}<section class="question card-enter" aria-labelledby="test-setup-heading"><h2 id="test-setup-heading">Build your test</h2><p class="muted small">One question per card. Your answers stay saved if you switch modes or reload. Test scores do not change card mastery.</p><div class="form-group"><label for="test-count">Number of questions <span class="muted">(1–${max})</span></label><input id="test-count" class="field test-count" type="number" min="1" max="${max}" step="1" inputmode="numeric" value="${test.config.count}" oninput="Learn.testConfigChange('count',this.value)"></div><div class="form-group"><label>Question types</label><div class="test-type-options">${['tf','mc','written'].map(type=>`<label class="test-type-option" for="test-type-${type}"><input id="test-type-${type}" type="checkbox" ${test.config.types[type]?'checked':''} onchange="Learn.testConfigChange('${type}',this.checked)"><span>${testTypeLabel(type)}</span></label>`).join('')}</div></div><div class="form-group"><div id="test-direction-label" class="option-title">Answer with</div><div class="test-directions" role="radiogroup" aria-labelledby="test-direction-label">${[['definition','Definition'],['term','Term'],['both','Both']].map(([value,label])=>`<button type="button" class="btn ${test.config.answerWith===value?'active':''}" role="radio" aria-checked="${test.config.answerWith===value}" data-test-direction="${value}" onclick="Learn.testConfigChange('answerWith','${value}')">${label}</button>`).join('')}</div><p class="hint">Both mixes term and definition answers throughout the test.</p></div><p id="test-setup-error" class="small error" role="alert"></p><button type="button" class="btn primary" onclick="Learn.generateTest()">Start test ${svg('arrow')}</button></section></div>`;
+      }
+      if(test.phase==='taking') {
+        const answered=test.questions.filter(testAnswered).length,total=test.questions.length;
+        return `<div class="study test-view">${header}<div class="test-progress-header"><h2 id="test-heading" tabindex="-1">Take your time. You’ve got this.</h2><span id="test-progress-label" class="small muted" role="status" aria-live="polite">Answered ${answered} of ${total}</span><div id="test-progress" class="progress-track" role="progressbar" aria-label="Test answers completed" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${answered}"><div id="test-progress-fill" class="test-progress-fill" style="transform:scaleX(${answered/total})"></div></div></div><div class="test-question-list">${test.questions.map((question,index)=>`<section class="question test-question" data-test-question="${index}" aria-labelledby="test-question-title-${index}"><div class="row spread"><span class="badge purple">${testTypeLabel(question.type)}</span><span class="tiny muted">Question ${index+1} of ${total}</span></div><h3 id="test-question-title-${index}" class="test-question-prompt">${esc(question.prompt)}</h3>${question.type==='written'?`<label for="test-answer-${index}">Your ${question.answerWith}</label><input id="test-answer-${index}" class="field answer-input" value="${esc(question.response)}" maxlength="5000" autocomplete="off" autocapitalize="off" spellcheck="false" oninput="Learn.captureTestAnswer(${index},this.value)">`:question.type==='mc'?`<div class="choices">${question.choices.map((choice,choiceIndex)=>`<button type="button" class="choice test-choice ${question.response===choice?'selected':''}" aria-pressed="${question.response===choice}" data-test-answer="${choiceIndex}" onclick="Learn.answerTest(${index},${choiceIndex})"><span class="key">${String.fromCharCode(65+choiceIndex)}</span><span>${esc(choice)}</span></button>`).join('')}</div>${question.choices.length<4?'<p class="hint">This deck has fewer than four distinct answers, so this question has fewer choices.</p>':''}`:`<p class="test-statement">${esc(question.statement)}</p><div class="test-tf-choices">${[true,false].map(value=>`<button type="button" class="btn test-choice ${question.response===value?'selected':''}" aria-pressed="${question.response===value}" data-test-answer="${value}" onclick="Learn.answerTest(${index},${value})">${value?'True':'False'}</button>`).join('')}</div>`}</section>`).join('')}</div><div class="test-submit"><p class="small muted">Unanswered questions count as incorrect. Submit when you’re ready to see your score.</p><button type="button" class="btn primary" onclick="Learn.submitTest()">Submit test ${svg('check')}</button></div></div>`;
+      }
+      const correct=test.questions.filter(question=>question.result?.correct).length,total=test.questions.length,score=Math.round(correct/total*100),missed=total-correct;
+      return `<div class="study test-view checkpoint">${header}${test.celebrate?confetti():''}<section class="question card-enter" aria-labelledby="test-score-heading"><div class="completion-icon">${svg(score>=85?'trophy':'spark')}</div><div class="eyebrow">${score>=85?'Look at you go':'A clear path for your next practice'}</div><h1 id="test-score-heading" tabindex="-1">${score}% · ${correct} / ${total} Correct</h1><p class="muted">${missed?'Every missed answer is a useful place to practice.':'You answered every question correctly.'}</p><div class="test-breakdown">${['tf','mc','written'].map(type=>{const questions=test.questions.filter(question=>question.type===type);return questions.length?`<div class="checkpoint-stat"><strong>${questions.filter(question=>question.result.correct).length}/${questions.length}</strong><span class="tiny muted">${testTypeLabel(type)}</span></div>`:'';}).join('')}</div><div class="row wrap" style="justify-content:center;margin-top:24px"><button type="button" class="btn" onclick="Learn.retakeMissedTest()" ${missed?'':'disabled'}>Retake missed questions</button><button type="button" class="btn primary" onclick="Learn.practiceMissedTest()" ${missed?'':'disabled'}>Practice missed in Learn</button><button type="button" class="btn" onclick="Learn.configureNewTest()">New test</button></div></section><div class="test-review"><h2>Your full review</h2>${test.questions.map((question,index)=>{const result=question.result,user=!testAnswered(question)?'No answer':question.type==='tf'?(question.response?'True':'False'):question.response;return `<section class="question test-review-question"><div class="row spread"><span class="badge ${result.correct?'green':'test-incorrect-badge'}">${result.correct?'✓ Correct':'Review this one'}</span><span class="tiny muted">${index+1} · ${testTypeLabel(question.type)}</span></div><h3 class="test-question-prompt">${esc(question.prompt)}</h3>${question.type==='tf'?`<p class="test-statement">${esc(question.statement)}</p>`:''}<div class="test-review-grid"><div><div class="tiny muted">YOUR ANSWER</div><p class="test-review-answer ${result.correct?'success':'error'}">${esc(user)}</p></div><div><div class="tiny muted">CORRECT ANSWER</div><p class="test-review-answer">${question.type==='tf'?`${question.truth?'True':'False'} · `:''}${esc(question.expected)}</p></div></div>${result.typo?'<p class="hint success">Accepted with minor spelling differences. Exact spelling is shown above.</p>':''}</section>`;}).join('')}</div></div>`;
+    }
     function validateBackup(raw) {
       if (!raw || raw.version !== 1 || !Array.isArray(raw.decks) || raw.decks.length > 200) throw new Error('Choose a version 1 Learn backup with a decks array (up to 200 decks).');
       const ids = new Set(); let total=0;
@@ -295,9 +803,9 @@
       if(s.questionFormat!==undefined&&!['adaptive','written','mc'].includes(s.questionFormat))throw new Error('Invalid question format in backup.');
       if(s.sound!==undefined&&typeof s.sound!=='boolean')throw new Error('Invalid sound setting in backup.');
       if(s.studyScope!==undefined&&!['all','starred','hard'].includes(s.studyScope))throw new Error('Invalid study scope in backup.');
-      for(const name of ['quickSkip','autoAdvance','autoSpeak'])if(s[name]!==undefined&&typeof s[name]!=='boolean')throw new Error('Invalid '+name+' setting in backup.');
+      for(const name of ['requireRetype','quickSkip','autoAdvance','autoSpeak'])if(s[name]!==undefined&&typeof s[name]!=='boolean')throw new Error('Invalid '+name+' setting in backup.');
       const questionFormat=formatOf(s);
-      return {version:1,decks,settings:{answerWith:s.answerWith==='term'?'term':'definition',questionFormat,written:questionFormat!=='mc',sound:s.sound!==false,...optionDefaults(s),theme:s.theme==='light'?'light':'dark'},session:null};
+      return {version:1,decks,settings:{answerWith:s.answerWith==='term'?'term':'definition',questionFormat,written:questionFormat!=='mc',sound:s.sound!==false,...optionDefaults(s),theme:s.theme==='light'?'light':'dark'},session:null,flashcards:validFlashcards(raw.flashcards,decks),test:validTest(raw.test,decks)};
     }
     function validSession(s) {
       if(!s||typeof s!=='object') return false;
@@ -308,8 +816,9 @@
       if(!['question','checkpoint','complete','empty'].includes(s.screen)||!Number.isSafeInteger(s.round)||s.round<1||!Number.isSafeInteger(s.total)||s.total<0||!Number.isSafeInteger(s.hits)||s.hits<0||s.hits>s.total) return false;
       if(!s.options||!['term','definition'].includes(s.options.answerWith))return false;
       if(s.options.studyScope!==undefined&&!['all','starred','hard'].includes(s.options.studyScope))return false;
-      for(const name of ['quickSkip','autoAdvance','autoSpeak'])if(s.options[name]!==undefined&&typeof s.options[name]!=='boolean')return false;
+      for(const name of ['requireRetype','quickSkip','autoAdvance','autoSpeak'])if(s.options[name]!==undefined&&typeof s.options[name]!=='boolean')return false;
       if(s.pendingScope!==undefined&&!['all','starred','hard'].includes(s.pendingScope))return false;
+      if(s.selectionLabel!==undefined&&(typeof s.selectionLabel!=='string'||s.selectionLabel.length>100))return false;
       Object.assign(s.options,optionDefaults(s.options));
       if(s.options.questionFormat!==undefined&&!['adaptive','written','mc'].includes(s.options.questionFormat))return false;
       s.options.questionFormat=formatOf(s.options);
@@ -361,23 +870,57 @@
       const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const jobs=[...document.querySelectorAll('[role="progressbar"]')].map(bar=>{
         const fill=bar.querySelector('.progress-fill');if(!fill)return null;
-        const key=(bar.closest('[data-deck-id]')?.dataset.deckId||state.session?.deckId||'library')+':'+bar.getAttribute('aria-label');
+        const key=(bar.closest('[data-deck-id]')?.dataset.deckId||(page==='flashcards'?state.flashcards?.deckId:page==='test'?state.test?.deckId:state.session?.deckId)||'library')+':'+bar.getAttribute('aria-label');
         const max=Number(bar.getAttribute('aria-valuemax'))||100;
         const target=Math.max(0,Math.min(1,Number(bar.getAttribute('aria-valuenow'))/max));
-        const previous=progressMemory.get(key);progressMemory.set(key,target);
-        return {fill,target,previous};
+        const previous=progressMemory.get(key);progressMemory.set(key,target);return {fill,target,previous};
       }).filter(Boolean);
-      jobs.forEach(({fill,target,previous})=>{fill.style.transform=`scaleX(${!reduced&&previous!==undefined?previous:target})`;});
-      if(!reduced)requestAnimationFrame(()=>requestAnimationFrame(()=>jobs.forEach(({fill,target})=>{if(fill.isConnected)fill.style.transform=`scaleX(${target})`;})));
+      requestAnimationFrame(()=>jobs.forEach(({fill,target,previous})=>{
+        if(!fill.isConnected)return;
+        fill.style.transform=`scaleX(${target})`;
+        if(!reduced&&previous!==undefined&&previous!==target&&fill.animate){
+          fill.getAnimations().filter(animation=>animation.id==='progress').forEach(animation=>animation.cancel());
+          const animation=fill.animate([{transform:`scaleX(${previous})`},{transform:`scaleX(${target})`}],{duration:550,easing:'cubic-bezier(.22,1,.36,1)'});animation.id='progress';
+        }
+      }));
+    }
+    function prepareMode() {
+      flushDraft();cancelAutoAdvance();
+      if('speechSynthesis' in window)window.speechSynthesis.cancel();
+    }
+    function modeSwitcher(deckId,active) {
+      return `<nav class="mode-switcher" aria-label="Study mode">${[['flashcards','cards','Flashcards'],['study','spark','Learn'],['test','check','Test']].map(([mode,icon,label])=>`<button type="button" class="mode-button ${active===mode?'active':''}" data-mode="${mode}" data-deck-id="${esc(deckId)}" aria-current="${active===mode?'page':'false'}" onclick="Learn.switchMode(this.dataset.deckId,this.dataset.mode)">${svg(icon)}${label}</button>`).join('')}</nav>`;
+    }
+    function switchMode(deckId,mode) {
+      if(!deckById(deckId)||!['flashcards','study','test'].includes(mode))return;
+      prepareMode();
+      if(mode==='flashcards')startFlashcards(deckId);
+      else if(mode==='test')startTest(deckId);
+      else if(state.session?.deckId===deckId){page='study';motion='card-enter';render();}
+      else startSession(deckId);
+    }
+    function syncFlashCard(deckId,card) {
+      const flash=state.flashcards;
+      if(!flash||flash.deckId!==deckId||!flash.trackProgress||!flash.cardIds.includes(card.id))return;
+      if(card.level===2)flash.queue=flash.queue.filter(id=>id!==card.id);
+      else if(!flash.queue.includes(card.id))flash.queue.push(card.id);
+      flash.complete=flash.cardIds.length>0&&flash.queue.length===0;
+    }
+    function startLearnForCards(deckId,cardIds) {
+      const deck=deckById(deckId);if(!deck)return;
+      const selected=deck.cards.filter(card=>cardIds.includes(card.id));if(!selected.length)return;
+      prepareMode();selected.forEach(card=>{card.level=0;syncFlashCard(deckId,card);});
+      state.session={deckId,cardIds:selected.map(card=>card.id),options:{...state.settings,...optionDefaults(state.settings),studyScope:'all',starredOnly:false},selectionLabel:'Missed questions',queue:shuffle(selected.map(card=>card.id)),round:1,total:0,hits:0,streak:0,results:[],roundStart:Object.fromEntries(selected.map(card=>[card.id,0])),question:null,screen:'question'};
+      page='study';nextQuestion();persist();render();window.scrollTo(0,0);
     }
     function mountShell() {
       if(document.getElementById('main'))return;
-      document.getElementById('app').innerHTML=`<div id="storage-banner"></div><div class="shell"><aside class="sidebar"><button onclick="Learn.action(this)" type="button" class="brand" data-action="home" aria-label="Learn home"><span class="brand-mark">l.</span>learn<span style="color:var(--accent)">.</span></button><nav class="nav" aria-label="Main navigation"><button onclick="Learn.action(this)" type="button" class="nav-button ${page==='home'?'selected':''}" data-action="home">${svg('home')}Your library</button><button onclick="Learn.action(this)" type="button" class="nav-button" data-action="new">${svg('plus')}Create a deck</button><button onclick="Learn.showOptions()" type="button" class="nav-button" data-action="options">${svg('settings')}Study options</button></nav><div class="side-note"><div class="akx-credit">Crafted by <span class="akx-badge">AKX</span></div><span class="live-dot"></span>Made for your own pace.<br><span style="display:block;margin-top:10px">Your cards stay in this browser.<br>No account. Just learning.</span></div></aside><div class="content"><header class="topbar"><span class="breadcrumb">Your space <span style="margin:0 8px;opacity:.5">/</span> ${page==='study'?'Learn mode':'Study library'}</span><div class="top-actions"><button onclick="Learn.showOptions()" type="button" class="icon-btn mobile-options" data-action="options" aria-label="Study options" title="Study options">${svg('settings')}</button><button onclick="Learn.action(this)" type="button" class="icon-btn theme-sun" data-action="theme" aria-label="Switch to ${state.settings.theme==='dark'?'light':'dark'} theme" title="Switch theme">${svg(state.settings.theme==='dark'?'sun':'moon')}</button><button onclick="Learn.action(this)" type="button" class="btn ghost" data-action="backup">${svg('download')}Backups</button></div></header><main class="page" id="main"></main><footer class="site-footer">${svg('spark')}<span>Built for focus · Crafted by</span><span class="akx-badge">AKX</span></footer></div></div>`;
+      document.getElementById('app').innerHTML=`<div id="storage-banner"></div><div class="shell"><aside class="sidebar"><button onclick="Learn.action(this)" type="button" class="brand" data-action="home" aria-label="Learn home"><span class="brand-mark">l.</span>learn<span style="color:var(--accent)">.</span></button><nav class="nav" aria-label="Main navigation"><button onclick="Learn.action(this)" type="button" class="nav-button ${page==='home'?'selected':''}" data-action="home">${svg('home')}Your library</button><button onclick="Learn.action(this)" type="button" class="nav-button" data-action="new">${svg('plus')}Create a deck</button><button onclick="Learn.showOptions()" type="button" class="nav-button" data-action="options">${svg('settings')}Study options</button></nav><div class="side-note"><span class="live-dot"></span>Made for your own pace.<br><span style="display:block;margin-top:10px">Your cards stay in this browser.<br>No account. Just learning.</span><div class="akx-sig">Made by <span class="akx-badge">AKX</span> <span class="version-tag">${VERSION}</span></div></div></aside><div class="content"><header class="topbar"><span class="breadcrumb">Your space <span style="margin:0 8px;opacity:.5">/</span> ${page==='study'?'Learn mode':'Study library'}</span><div class="top-actions"><button onclick="Learn.showOptions()" type="button" class="icon-btn mobile-options" data-action="options" aria-label="Study options" title="Study options">${svg('settings')}</button><button onclick="Learn.action(this)" type="button" class="icon-btn theme-sun" data-action="theme" aria-label="Switch to ${state.settings.theme==='dark'?'light':'dark'} theme" title="Switch theme">${svg(state.settings.theme==='dark'?'sun':'moon')}</button><button onclick="Learn.action(this)" type="button" class="btn ghost" data-action="backup">${svg('download')}Backups</button></div></header><main class="page" id="main"></main><footer class="site-footer">${svg('spark')}<span>Built for focus · Made by</span><span class="akx-badge">AKX</span><span class="version-tag">${VERSION}</span></footer></div></div>`;
     }
     function updateChrome() {
       applyTheme();
       const crumb=document.querySelector('.breadcrumb');
-      if(crumb)crumb.innerHTML=`Your space <span style="margin:0 8px;opacity:.5">/</span> ${page==='study'?'Learn mode':page==='flashcards'?'Flashcards':'Study library'}`;
+      if(crumb)crumb.innerHTML=`Your space <span style="margin:0 8px;opacity:.5">/</span> ${page==='study'?'Learn mode':page==='flashcards'?'Flashcards':page==='test'?'Test':'Study library'}`;
       document.querySelectorAll('.nav-button[data-action="home"]').forEach(button=>button.classList.toggle('selected',page==='home'));
       const theme=document.querySelector('[data-action="theme"]');
       if(theme){theme.innerHTML=svg(state.settings.theme==='dark'?'sun':'moon');theme.setAttribute('aria-label',`Switch to ${state.settings.theme==='dark'?'light':'dark'} theme`);}
@@ -388,12 +931,12 @@
       const q=state.session.question;
       if(q.phase==='asking'&&q.type==='written')document.getElementById('written-answer')?.focus({preventScroll:true});
       else if(q.phase==='asking'&&q.type==='mc'){const card=document.querySelector('#main section.question');if(card){card.tabIndex=-1;card.focus({preventScroll:true});}}
-      else if(q.phase==='incorrect')document.getElementById('correction')?.focus({preventScroll:true});
+      else if(q.phase==='incorrect'){if(state.session.options.requireRetype)document.getElementById('correction')?.focus({preventScroll:true});else document.getElementById('continue')?.focus({preventScroll:true});}
       else if(q.phase==='correct')document.getElementById('continue')?.focus({preventScroll:true});
     }
     function render() {
       cancelAutoAdvance();mountShell();updateChrome();
-      document.getElementById('main').innerHTML=page==='flashcards'?renderFlashcards():page==='study'&&state.session?renderStudy():renderHome();
+      document.getElementById('main').innerHTML=page==='test'?renderTest():page==='flashcards'?renderFlashcards():page==='study'&&state.session?renderStudy():renderHome();
       lastMainView=page;animateProgress();motion='';
       if(page==='home'&&search){const input=document.getElementById('search');if(input)input.value=search;filterDecks();}
       focusStudy();syncAutoAdvance();
@@ -417,7 +960,7 @@
     }
     function renderDeck(d) {
       const s=stats(d.cards), stars=d.cards.filter(c=>c.starred).length;
-      return `<article class="deck" data-deck-id="${esc(d.id)}"><div class="row spread"><h3>${esc(d.title)}</h3><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="edit" data-id="${esc(d.id)}" aria-label="Edit ${esc(d.title)}" title="Edit deck">${svg('edit')}</button></div><div class="deck-meta">${d.cards.length} ${d.cards.length===1?'card':'cards'}${stars?` <span style="margin:0 8px">·</span> ★ ${stars} starred`:''}</div><p>${esc(d.description||'A little closer to knowing it by heart.')}</p><div class="deck-bottom">${progress(d.cards)}<div class="deck-footer"><span class="badge ${s.mastered===d.cards.length&&d.cards.length?'green':'purple'}">${s.mastered===d.cards.length&&d.cards.length?'✓ All mastered':s.learning?'In progress':'Ready when you are'}</span><div class="row" style="gap:4px"><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="delete" data-id="${esc(d.id)}" aria-label="Delete ${esc(d.title)}" title="Delete deck">${svg('trash')}</button><button type="button" class="btn" onclick="Learn.startFlashcards(this.dataset.id)" data-id="${esc(d.id)}" ${d.cards.length?'':'disabled'}>Flashcards</button><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="learn" data-id="${esc(d.id)}" ${d.cards.length?'':'disabled'}>Learn ${svg('arrow')}</button></div></div></div></article>`;
+      return `<article class="deck" data-deck-id="${esc(d.id)}"><div class="row spread"><h3>${esc(d.title)}</h3><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="edit" data-id="${esc(d.id)}" aria-label="Edit ${esc(d.title)}" title="Edit deck">${svg('edit')}</button></div><div class="deck-meta">${d.cards.length} ${d.cards.length===1?'card':'cards'}${stars?` <span style="margin:0 8px">·</span> ★ ${stars} starred`:''}</div><p>${esc(d.description||'A little closer to knowing it by heart.')}</p><div class="deck-bottom">${progress(d.cards)}<div class="deck-footer"><span class="badge ${s.mastered===d.cards.length&&d.cards.length?'green':'purple'}">${s.mastered===d.cards.length&&d.cards.length?'✓ All mastered':s.learning?'In progress':'Ready when you are'}</span><div class="row" style="gap:4px"><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="delete" data-id="${esc(d.id)}" aria-label="Delete ${esc(d.title)}" title="Delete deck">${svg('trash')}</button><button type="button" class="btn" onclick="Learn.startFlashcards(this.dataset.id)" data-id="${esc(d.id)}" ${d.cards.length?'':'disabled'}>Flashcards</button><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="learn" data-id="${esc(d.id)}" ${d.cards.length?'':'disabled'}>Learn ${svg('arrow')}</button><button type="button" class="btn" data-action="test" data-id="${esc(d.id)}" onclick="Learn.startTest(this.dataset.id)" ${d.cards.length?'':'disabled'}>Test</button></div></div></div></article>`;
     }
     function filterDecks() {let visible=0;document.querySelectorAll('[data-deck-id]').forEach(el=>{const d=deckById(el.dataset.deckId);const show=(d.title+' '+d.description).toLocaleLowerCase().includes(search.toLocaleLowerCase());el.classList.toggle('hidden',!show);if(show)visible++;});$('#no-results')?.classList.toggle('hidden',visible>0);}
     function modal(title,body,foot='',small=false) {flushDraft();cancelAutoAdvance();const m=$('#modal');const notification=document.getElementById('toast');if(m.contains(notification))document.body.appendChild(notification);m.style.maxWidth=small?'510px':'760px';m.innerHTML=`<div class="modal-head"><h2 id="modal-title">${esc(title)}</h2><button onclick="Learn.closeModal()" type="button" class="icon-btn" data-action="close-modal" aria-label="Close dialog">${svg('close')}</button></div>${body}${foot}`;if(!m.open)m.showModal();}
@@ -461,6 +1004,8 @@
       const next={id:editor.id,title:editor.title.trim(),description:editor.description.trim(),cards,createdAt:editor.createdAt,updatedAt:Date.now()};
       if(old)state.decks[state.decks.indexOf(old)]=next;else state.decks.unshift(next);
       if(state.session?.deckId===next.id)state.session=null;
+      if(state.flashcards?.deckId===next.id)state.flashcards=null;
+      if(state.test?.deckId===next.id)state.test=null;
       page='home';closeModal();const stored=save();render();savedNotice(stored);
     }
     function optionsValues() {
@@ -477,7 +1022,7 @@
         <section class="options-section" aria-labelledby="format-label"><h3 id="format-label" class="options-section-title">How do you want to answer?</h3><p class="small muted">Choose the practice that works for you.</p><div class="format-grid" role="radiogroup" aria-labelledby="format-label" data-option-group="questionFormat">${formats.map(([value,icon,title,subtitle])=>`<button type="button" class="format-card ${format===value?'active':''}" role="radio" aria-checked="${format===value}" tabindex="${format===value?'0':'-1'}" data-option="questionFormat" data-value="${value}" onclick="Learn.setStudyOption('questionFormat','${value}')" onkeydown="Learn.optionKey(event,this)"><span class="format-icon">${svg(icon)}</span><span class="format-title">${title}</span><span class="format-subtitle">${subtitle}</span><span class="format-check" aria-hidden="true">${svg('check')}</span></button>`).join('')}</div></section>
         <section class="options-section" aria-labelledby="answer-label"><h3 id="answer-label" class="options-section-title">Answer with</h3><div id="answer-with" class="segmented" role="radiogroup" aria-labelledby="answer-label" data-option-group="answerWith" style="--segments:2;--selected:${current.answerWith==='term'?1:0}"><span class="segment-highlight" aria-hidden="true"></span>${optionRadio('answerWith','definition','Definition',current.answerWith!=='term')}${optionRadio('answerWith','term','Term',current.answerWith==='term')}</div></section>
         <section class="options-section" aria-labelledby="scope-label"><h3 id="scope-label" class="options-section-title">Cards to study</h3><div id="study-scope" class="segmented" role="radiogroup" aria-labelledby="scope-label" data-option-group="studyScope" style="--segments:3;--selected:${Math.max(0,['all','starred','hard'].indexOf(scope))}"><span class="segment-highlight" aria-hidden="true"></span>${optionRadio('studyScope','all','All cards',scope==='all')}${optionRadio('studyScope','starred','Starred ★',scope==='starred')}${optionRadio('studyScope','hard','Hardest 🔥',scope==='hard')}</div><p class="tiny muted scope-help">Hardest focuses on missed cards and lower lifetime accuracy.</p></section>
-        <section class="options-toggles" aria-label="Study preferences">${toggle('sound','sound-on','Sound effects','Gentle synthesized chimes and encouragement.')}${toggle('quickSkip','quick-skip-on','Quick skip','Use an empty Enter to skip or move past retyping.')}${toggle('autoAdvance','auto-advance-on','Auto-advance','Continue 900 ms after a correct answer.')}${toggle('autoSpeak','auto-speak-on','Read questions aloud','Automatically speak each new question.')}</section>
+        <section class="options-toggles" aria-label="Study preferences">${toggle('starredOnly','starred-only','Starred cards only','Limit your next unanswered selection to starred cards.')}${toggle('sound','sound-on','Sound effects','Gentle synthesized chimes and encouragement.')}${toggle('requireRetype','require-retype-on','Retype answer when wrong/skipped','Practice the exact answer before continuing. You can always skip retyping.')}${toggle('quickSkip','quick-skip-on','Quick-skip with Enter / Space','Empty Enter skips written answers; Enter or Space skips an MC question.')}${toggle('autoAdvance','auto-advance-on','Auto-advance','Continue 900 ms after a correct answer.')}${toggle('autoSpeak','auto-speak-on','Read questions aloud','Automatically speak each new question.')}</section>
         <div class="notice">Changes apply immediately to unanswered questions. Submitted answers and corrections keep their original format and direction; card-selection changes wait until that feedback is finished.</div>
       </div><div class="modal-foot"><span class="small muted" style="margin-right:auto;align-self:center">Changes save automatically</span><button type="button" class="btn primary" onclick="Learn.saveOptions()">Save settings</button></div></div>`;
     }
@@ -506,7 +1051,7 @@
     function setStudyOption(name,value) {
       const allowed={questionFormat:['adaptive','written','mc'],answerWith:['definition','term'],studyScope:['all','starred','hard']};
       if(allowed[name]){if(!allowed[name].includes(value))return;}
-      else if(!['sound','quickSkip','autoAdvance','autoSpeak'].includes(name)||typeof value!=='boolean')return;
+      else if(!['sound','starredOnly','requireRetype','quickSkip','autoAdvance','autoSpeak'].includes(name)||typeof value!=='boolean')return;
       updateStudyOptions({[name]:value});
       syncOptionsControls();
     }
@@ -525,6 +1070,7 @@
       next.focus();
     }
     function updateStudyOptions(patch = {}) {
+      if(Object.prototype.hasOwnProperty.call(patch,'starredOnly')&&!Object.prototype.hasOwnProperty.call(patch,'studyScope'))patch={...patch,studyScope:patch.starredOnly?'starred':'all'};
       const oldSound=state.settings.sound;
       const old=state.session?{...state.session.options}:{...state.settings};
       Object.assign(state.settings,patch);Object.assign(state.settings,optionDefaults(state.settings));
@@ -532,7 +1078,7 @@
       const session=state.session;
       let redraw=false;
       if(session) {
-        for(const key of ['answerWith','questionFormat','written','studyScope','starredOnly','quickSkip','autoAdvance','autoSpeak'])session.options[key]=state.settings[key];
+        for(const key of ['answerWith','questionFormat','written','studyScope','starredOnly','requireRetype','quickSkip','autoAdvance','autoSpeak'])session.options[key]=state.settings[key];
         if(scopeOf(old)!==scopeOf(session.options)) {
           if(session.question&&session.question.phase!=='asking')session.pendingScope=session.options.studyScope;
           else {setSessionScope(session);nextQuestion();redraw=true;}
@@ -541,6 +1087,7 @@
           session.question=buildQuestion(card,session.options);motion='card-flip';redraw=true;
         }
       }
+      if(session?.question?.phase==='incorrect'&&old.requireRetype!==session.options.requireRetype)redraw=true;
       if(patch.autoSpeak===false&&'speechSynthesis' in window)window.speechSynthesis.cancel();
       persist();syncOptionsControls();
       if(redraw&&page==='study')updateStudyView();
@@ -703,23 +1250,24 @@
     function requeue(id,early) {const s=state.session;s.queue=s.queue.filter(x=>x!==id);const card=deckById(s.deckId).cards.find(c=>c.id===id);if(card.level<2){if(early)s.queue.splice(Math.min(2,s.queue.length),0,id);else s.queue.push(id);}}
     function submitAnswer(value,skipped=false) {
       const s=state.session,q=s?.question;if(page!=='study'||s?.screen!=='question'||!q||q.phase!=='asking')return;
-      if(!skipped&&!String(value).trim()){if(q.type==='written'&&s.options.quickSkip!==false){skipQuestion();return;}toast('Enter an answer first.');return;}
+      if(!skipped&&!String(value).trim()){if(s.options.quickSkip!==false){skipQuestion();return;}toast('Enter an answer first.');return;}
       flushDraft();cancelAutoAdvance();
       const d=deckById(s.deckId),card=d.cards.find(c=>c.id===q.cardId),result=skipped?{correct:false,typo:false}:q.type==='written'?grade(value,q.answerText):{correct:value===q.answerText,typo:false};
-      card.attempts++;if(result.correct)card.correct++;card.level=result.correct?Math.min(2,q.from+1):0;d.updatedAt=Date.now();
+      card.attempts++;if(result.correct)card.correct++;card.level=result.correct?Math.min(2,q.from+1):0;syncFlashCard(d.id,card);d.updatedAt=Date.now();
       q.streakBefore=s.streak;q.skipped=skipped;
       s.total++;if(result.correct){s.hits++;s.streak++;}else s.streak=0;
       s.results.push({cardId:card.id,from:q.from,to:card.level,correct:result.correct,override:false});
       q.submitted=value;q.typo=result.typo;q.phase=result.correct?'correct':'incorrect';q.draft='';requeue(card.id,!result.correct);motion=result.correct?'answer-correct':'answer-wrong';if(result.correct)sfx.correct();else sfx.wrong();persist();updateStudyView();
     }
     function override() {
-      const s=state.session,q=s?.question;if(!q||q.type!=='written'||q.phase!=='incorrect')return;
-      const card=deckById(s.deckId).cards.find(c=>c.id===q.cardId),r=s.results[s.results.length-1];card.level=q.from+1;card.correct++;r.correct=true;r.override=true;r.to=card.level;s.hits++;s.streak=q.streakBefore+1;q.phase='correct';q.overridden=true;requeue(card.id,false);motion='answer-correct';sfx.correct();persist();updateStudyView();
+      const s=state.session,q=s?.question;if(!q||q.type!=='written'||q.skipped||q.phase!=='incorrect')return;
+      const card=deckById(s.deckId).cards.find(c=>c.id===q.cardId),r=s.results[s.results.length-1];card.level=q.from+1;syncFlashCard(s.deckId,card);card.correct++;r.correct=true;r.override=true;r.to=card.level;s.hits++;s.streak=q.streakBefore+1;q.phase='correct';q.overridden=true;requeue(card.id,false);motion='answer-correct';sfx.correct();persist();updateStudyView();
     }
-    function advance() {cancelAutoAdvance();const q=state.session?.question;if(!q||q.phase!=='correct')return;nextQuestion();persist();render();window.scrollTo(0,0);}
+    function advance() {cancelAutoAdvance();const q=state.session?.question;if(!q||(q.phase!=='correct'&&!(q.phase==='incorrect'&&state.session.options.requireRetype!==true)))return;nextQuestion();persist();render();window.scrollTo(0,0);}
     function correction(value) {
       const s=state.session,q=s?.question;if(!q||q.phase!=='incorrect')return;
       flushDraft();
+      if(s.options.requireRetype!==true){advance();return;}
       if(!String(value).trim()&&s.options.quickSkip!==false){skipRetyping();return;}
       if(normalize(value)!==normalize(q.answerText)){const hint=$('#correction-hint');hint.textContent='Copy the correct answer above to reinforce it. Spelling must match; case and punctuation are ignored.';hint.className='small error';$('#correction').setAttribute('aria-invalid','true');$('#correction').focus();return;}
       nextQuestion();persist();render();window.scrollTo(0,0);
@@ -740,16 +1288,22 @@
       if(!term||!definition||term.length>5000||definition.length>5000){toast('Enter both sides, up to 5,000 characters each.','error');return;}
       const deck=deckById(cardEdit.deckId),card=deck?.cards.find(c=>c.id===cardEdit.cardId),session=state.session;
       if(!card||session?.question?.cardId!==card.id){closeModal();return;}
-      if(card.term!==term||card.definition!==definition){Object.assign(card,{term,definition,level:0});deck.updatedAt=Date.now();session.question=buildQuestion(card,session.options);motion='card-flip';}
+      if(card.term!==term||card.definition!==definition){Object.assign(card,{term,definition,level:0});syncFlashCard(deck.id,card);deck.updatedAt=Date.now();session.question=buildQuestion(card,session.options);motion='card-flip';}
       closeModal();const stored=save();updateStudyView();savedNotice(stored);
+    }
+    function renderFeedback(session,question,card,answer) {
+      if(question.phase==='correct')return `<div class="feedback" role="status">${session.options.autoAdvance?'<div class="auto-advance-track" aria-hidden="true"><span class="auto-advance-fill"></span></div>':''}<h3 class="success">${question.overridden?'You know it. Grading updated.':question.typo?'Correct — just a small spelling fix.':card.level===2?'You’ve mastered this one!':session.streak>=3?`${session.streak} in a row — keep it going!`:'Nice work. One step closer.'}</h3>${question.typo?`<div class="small muted">Exact spelling</div><div class="answer-text">${esc(answer)}</div>`:''}<div class="row spread wrap" style="margin-top:18px"><span class="badge green">${tier(question.from)} → ${tier(card.level)}</span><button type="button" class="btn primary" id="continue" data-action="continue" onclick="Learn.action(this)">Continue ${svg('arrow')}</button></div></div>`;
+      if(question.phase!=='incorrect')return '';
+      const overrideButton=question.type==='written'&&!question.skipped?'<button type="button" class="btn ghost" data-action="override" onclick="Learn.action(this)" aria-keyshortcuts="Alt+R">Override: I was right <kbd>Alt R</kbd></button>':'';
+      return `<div class="feedback" aria-live="polite"><h3 class="error">${question.skipped?'No worries — let’s learn it now.':'Let’s give that another look.'}</h3><div class="small muted">Correct ${question.answerWith}</div><div class="row"><div class="answer-text" style="flex:1">${esc(answer)}</div><button type="button" class="icon-btn" data-action="speak-answer" onclick="Learn.action(this)" aria-label="Read correct answer aloud">${svg('speaker')}</button></div>${session.options.requireRetype===true?`<div id="correction-panel"><label for="correction">Type the correct answer to keep going</label><input id="correction" class="field answer-input" oninput="Learn.captureDraft(this)" value="${esc(question.draft)}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="correction-hint"><p id="correction-hint" class="hint">This card returns to Unseen. ${session.options.quickSkip!==false?'Empty Enter skips retyping; it still counts as a miss.':'Type the answer, or use Skip retyping.'}</p><div class="row wrap spread" style="margin-top:18px">${overrideButton}<button type="button" class="btn ghost" onclick="Learn.skipRetyping()" aria-keyshortcuts="Alt+S">Skip retyping <kbd>Alt S</kbd></button><button type="button" class="btn primary" onclick="Learn.checkCorrection()">Check correction ${svg('arrow')}</button></div><button type="button" class="inline-toggle" onclick="Learn.setStudyOption('requireRetype',false)">Turn off retyping</button></div>`:`<div class="row wrap spread" style="margin-top:18px">${overrideButton}<button type="button" id="continue" class="btn primary" data-action="continue" onclick="Learn.action(this)">Continue ${svg('arrow')}</button></div><p class="hint">Enter or Space to continue. This card stays queued for review.</p>`}</div>`;
     }
     function renderStudy() {
       const s=state.session,d=deckById(s.deckId),cards=scopeCards();
-      if(s.screen==='empty')return `<div class="study empty"><h2>No cards in this selection.</h2><p class="muted">Choose All cards or star cards in the deck editor.</p><button type="button" class="btn primary" onclick="Learn.showOptions()">Study options</button><button type="button" class="btn" onclick="Learn.action(this)" data-action="home">Library</button></div>`;
-      if(s.screen!=='question')return renderCheckpoint();
+      if(s.screen==='empty')return `${modeSwitcher(d.id,'study')}<div class="study empty"><h2>No cards in this selection.</h2><p class="muted">Choose All cards or star cards in the deck editor.</p><button type="button" class="btn primary" onclick="Learn.showOptions()">Study options</button><button type="button" class="btn" onclick="Learn.action(this)" data-action="home">Library</button></div>`;
+      if(s.screen!=='question')return modeSwitcher(d.id,'study')+renderCheckpoint();
       const q=s.question,c=d.cards.find(c=>c.id===q.cardId),answer=q.answerText,prompt=q.promptText;
-      const feedback=q.phase==='correct'?`<div class="feedback" role="status">${s.options.autoAdvance?'<div class="auto-advance-track" aria-hidden="true"><span class="auto-advance-fill"></span></div>':''}<h3 class="success">${q.overridden?'You know it. Grading updated.':q.typo?'Correct — just a small spelling fix.':c.level===2?'You’ve mastered this one!':s.streak>=3?`${s.streak} in a row — keep it going!`:'Nice work. One step closer.'}</h3>${q.typo?`<div class="small muted">Exact spelling</div><div class="answer-text">${esc(answer)}</div>`:''}<div class="row spread wrap" style="margin-top:18px"><span class="badge green">${tier(q.from)} → ${tier(c.level)}</span><button onclick="Learn.action(this)" type="button" id="continue" class="btn primary" data-action="continue">Continue ${svg('arrow')}</button></div></div>`:q.phase==='incorrect'?`<div class="feedback" aria-live="polite"><h3 class="error">${q.skipped?'No worries — let’s learn it now.':'Let’s give that another look.'}</h3><div class="small muted">Correct ${q.answerWith}</div><div class="row"><div class="answer-text" style="flex:1">${esc(answer)}</div><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="speak-answer" aria-label="Read correct answer aloud">${svg('speaker')}</button></div><div id="correction-panel"><label for="correction">Type the correct answer to keep going</label><input id="correction" class="field answer-input" oninput="Learn.captureDraft(this)" value="${esc(q.draft)}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="correction-hint" required><p id="correction-hint" class="hint">This card returns to Unseen. ${s.options.quickSkip!==false?'Empty Enter skips retyping; it still counts as a miss.':'Type the answer, or use Skip retyping.'}</p><div class="row spread wrap" style="margin-top:18px">${q.type==='written'?'<button onclick="Learn.action(this)" class="btn ghost" type="button" data-action="override" title="Alt + R">Override: I was right <kbd>Alt R</kbd></button>':'<span></span>'}<button type="button" class="btn ghost" onclick="Learn.skipRetyping()" aria-keyshortcuts="Alt+S">Skip retyping <kbd>Alt S</kbd></button><button class="btn primary" type="button" onclick="Learn.checkCorrection()">Check correction ${svg('arrow')}</button></div></div></div>`:'';
-      return `<div class="study ${motion==='answer-correct'?'progress-advanced':''}"><div class="study-header"><div class="row spread"><div class="row" style="min-width:0"><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="home" aria-label="Back to library">${svg('back')}</button><div><div class="eyebrow" style="margin-bottom:4px">Learn mode${scopeOf(s.options)==='all'?'':scopeOf(s.options)==='starred'?' · Starred selection':' · Hardest selection'}</div><h1>${esc(d.title)}</h1></div></div><button onclick="Learn.showOptions()" type="button" class="icon-btn" data-action="options" aria-label="Session options" title="Study options">${svg('settings')}</button></div><div class="round-meta"><span>Round ${s.round} <span style="margin:0 7px">·</span> Question ${Math.min(7,s.results.length+(q.phase==='asking'?1:0))} of 7</span><span>${stats(cards).mastered} / ${cards.length} mastered</span></div><div class="progress-track" role="progressbar" aria-label="Round progress" aria-valuemin="0" aria-valuemax="7" aria-valuenow="${s.results.length}"><div class="progress-fill" style="transform:scaleX(${s.results.length/7})"></div></div></div><section class="question ${motion}" aria-label="Study question"><div class="question-top"><div class="row"><button type="button" class="badge purple quick-switch" onclick="Learn.cycleFormat()" aria-label="Cycle question format" ${q.phase==='asking'?'':'disabled'}>${formatOf(s.options)==='adaptive'?'Adaptive · ':''}${q.type==='mc'?'Multiple choice':'Written response'} ⇄</button><span class="tiny muted">${tier(q.from)}</span>${s.streak>=2?`<span class="badge streak-badge" role="status" aria-label="${s.streak} correct answers in a row">🔥 ${s.streak} streak${s.streak>=5?'!':''}</span>`:''}</div><div class="row" style="gap:3px"><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="speak-prompt" aria-label="Read question aloud" title="Read aloud">${svg('speaker')}</button><button type="button" class="icon-btn" onclick="Learn.editStudyCard()" aria-label="Edit card" aria-keyshortcuts="Alt+E" title="Edit card · Alt E" ${q.phase==='asking'?'':'disabled'}>${svg('edit')}</button><button onclick="Learn.action(this)" type="button" class="icon-btn ${c.starred?'starred':''}" data-action="study-star" aria-label="${c.starred?'Unstar':'Star'} this card" aria-pressed="${c.starred}" title="${c.starred?'Unstar':'Star'} card">${svg('star')}</button></div></div><button type="button" class="eyebrow quick-direction" onclick="Learn.cycleDirection()" aria-label="Reverse answer direction" ${q.phase==='asking'?'':'disabled'}>${q.answerWith==='term'?'Definition':'Term'} ⇄ ${q.answerWith==='term'?'Term':'Definition'}</button><h2 class="prompt">${esc(prompt)}</h2>${q.type==='mc'?`<div class="choices">${q.choices.map((choice,i)=>`<button onclick="Learn.action(this)" type="button" class="choice ${q.phase!=='asking'?(choice===answer?'correct':choice===q.submitted?'wrong':''):''}" data-action="choose" data-index="${i}" ${q.phase==='asking'?'':'disabled'}><span class="key">${i+1}</span><span>${esc(choice)}</span></button>`).join('')}</div>${q.choices.length<4?'<p class="hint">This deck has fewer than four distinct answers, so you’ll see fewer choices. Add cards for more distractors.</p>':''}`:q.phase==='asking'?`<div id="written-panel"><label for="written-answer">Your ${q.answerWith}</label><input id="written-answer" class="field answer-input" oninput="Learn.captureDraft(this)" value="${esc(q.draft)}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type what you remember…" required aria-describedby="answer-hint"><div id="answer-hint" class="hint-reveal ${q.hintStep?'':'hidden'}" role="status" aria-live="polite" aria-atomic="true">${q.hintStep?esc(hintText(answer,q.hintStep)):''}</div><div class="row spread" style="margin-top:18px"><span class="tiny muted">Meaningful practice, not perfect punctuation.</span><button class="btn primary" type="button" onclick="Learn.checkWritten()">Check answer ${svg('arrow')}</button></div></div>`:`<div class="small muted">Your answer</div><div class="answer-text">${q.skipped?'Skipped — let’s learn it now.':esc(q.submitted)}</div>`}${q.phase==='asking'?`<div class="study-tools"><button type="button" class="btn ghost" onclick="Learn.skipQuestion()" data-action="skip" aria-keyshortcuts="Alt+D">Don’t know? <kbd>Alt D</kbd></button>${q.type==='written'?`<button type="button" class="btn ghost" onclick="Learn.getHint()" data-action="hint" aria-controls="answer-hint" aria-keyshortcuts="Alt+H" ${q.hintStep>=2?'disabled':''}>${q.hintStep===0?'Get a hint':q.hintStep===1?'Reveal more':'Hint revealed'} <kbd>Alt H</kbd></button>`:''}</div>`:''}${feedback}</section><div class="study-footer"><span>${q.phase==='asking'?(q.type==='mc'?'<kbd>1</kbd> – <kbd>4</kbd> Choose an answer':'<kbd>Enter</kbd> Check answer')+' · <kbd>Alt D</kbd> Don’t know'+(q.type==='written'?' · <kbd>Alt H</kbd> Hint':''):q.phase==='correct'?'<kbd>Enter</kbd> Continue':'<kbd>Enter</kbd> Check correction'}${q.phase==='incorrect'&&q.type==='written'?' · <kbd>Alt R</kbd> Override':''}</span><span>Progress saves automatically</span></div></div>`;
+      const feedback=renderFeedback(s,q,c,answer);
+      return `${modeSwitcher(d.id,'study')}<div class="study ${motion==='answer-correct'?'progress-advanced':''}"><div class="study-header"><div class="row spread"><div class="row" style="min-width:0"><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="home" aria-label="Back to library">${svg('back')}</button><div><div class="eyebrow" style="margin-bottom:4px">Learn mode${s.selectionLabel?' · '+esc(s.selectionLabel):''}${scopeOf(s.options)==='all'?'':scopeOf(s.options)==='starred'?' · Starred selection':' · Hardest selection'}</div><h1>${esc(d.title)}</h1></div></div><button onclick="Learn.showOptions()" type="button" class="icon-btn" data-action="options" aria-label="Session options" title="Study options">${svg('settings')}</button></div><div class="round-meta"><span>Round ${s.round} <span style="margin:0 7px">·</span> Question ${Math.min(7,s.results.length+(q.phase==='asking'?1:0))} of 7</span><span>${stats(cards).mastered} / ${cards.length} mastered</span></div><div class="progress-track" role="progressbar" aria-label="Round progress" aria-valuemin="0" aria-valuemax="7" aria-valuenow="${s.results.length}"><div class="progress-fill" style="transform:scaleX(${s.results.length/7})"></div></div></div><section class="question ${motion}" aria-label="Study question"><div class="question-top"><div class="row"><button type="button" class="badge purple quick-switch" onclick="Learn.cycleFormat()" aria-label="Cycle question format" ${q.phase==='asking'?'':'disabled'}>${formatOf(s.options)==='adaptive'?'Adaptive · ':''}${q.type==='mc'?'Multiple choice':'Written response'} ⇄</button><span class="tiny muted">${tier(q.from)}</span>${s.streak>=2?`<span class="badge streak-badge" role="status" aria-label="${s.streak} correct answers in a row">🔥 ${s.streak} streak${s.streak>=5?'!':''}</span>`:''}</div><div class="row" style="gap:3px"><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="speak-prompt" aria-label="Read question aloud" title="Read aloud">${svg('speaker')}</button><button type="button" class="icon-btn" onclick="Learn.editStudyCard()" aria-label="Edit card" aria-keyshortcuts="Alt+E" title="Edit card · Alt E" ${q.phase==='asking'?'':'disabled'}>${svg('edit')}</button><button onclick="Learn.action(this)" type="button" class="icon-btn ${c.starred?'starred':''}" data-action="study-star" aria-label="${c.starred?'Unstar':'Star'} this card" aria-pressed="${c.starred}" title="${c.starred?'Unstar':'Star'} card">${svg('star')}</button></div></div><button type="button" class="eyebrow quick-direction" onclick="Learn.cycleDirection()" aria-label="Reverse answer direction" ${q.phase==='asking'?'':'disabled'}>${q.answerWith==='term'?'Definition':'Term'} ⇄ ${q.answerWith==='term'?'Term':'Definition'}</button><h2 class="prompt">${esc(prompt)}</h2>${q.type==='mc'?`<div class="choices">${q.choices.map((choice,i)=>`<button onclick="Learn.action(this)" type="button" class="choice ${q.phase!=='asking'?(choice===answer?'correct':choice===q.submitted?'wrong':''):''}" data-action="choose" data-index="${i}" ${q.phase==='asking'?'':'disabled'}><span class="key">${i+1}</span><span>${esc(choice)}</span></button>`).join('')}</div>${q.choices.length<4?'<p class="hint">This deck has fewer than four distinct answers, so you’ll see fewer choices. Add cards for more distractors.</p>':''}`:q.phase==='asking'?`<div id="written-panel"><label for="written-answer">Your ${q.answerWith}</label><input id="written-answer" class="field answer-input" oninput="Learn.captureDraft(this)" value="${esc(q.draft)}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type what you remember…" required aria-describedby="answer-hint"><div id="answer-hint" class="hint-reveal ${q.hintStep?'':'hidden'}" role="status" aria-live="polite" aria-atomic="true">${q.hintStep?esc(hintText(answer,q.hintStep)):''}</div><div class="row spread" style="margin-top:18px"><span class="tiny muted">Meaningful practice, not perfect punctuation.</span><button class="btn primary" type="button" onclick="Learn.checkWritten()">Check answer ${svg('arrow')}</button></div></div>`:`<div class="small muted">Your answer</div><div class="answer-text">${q.skipped?'Skipped — let’s learn it now.':esc(q.submitted)}</div>`}${q.phase==='asking'?`<div class="study-tools"><button type="button" class="btn ghost" onclick="Learn.skipQuestion()" data-action="skip" aria-keyshortcuts="Alt+D">Don’t know? <kbd>Alt D</kbd></button>${q.type==='written'?`<button type="button" class="btn ghost" onclick="Learn.getHint()" data-action="hint" aria-controls="answer-hint" aria-keyshortcuts="Alt+H" ${q.hintStep>=2?'disabled':''}>${q.hintStep===0?'Get a hint':q.hintStep===1?'Reveal more':'Hint revealed'} <kbd>Alt H</kbd></button>`:''}</div>`:''}${feedback}</section><div class="study-footer"><span>${q.phase==='asking'?(q.type==='mc'?'<kbd>1</kbd> – <kbd>4</kbd> Choose an answer':'<kbd>Enter</kbd> Check answer')+' · <kbd>Alt D</kbd> Don’t know'+(q.type==='written'?' · <kbd>Alt H</kbd> Hint':''):q.phase==='correct'?'<kbd>Enter</kbd> Continue':s.options.requireRetype===true?'<kbd>Enter</kbd> Check correction · <kbd>Alt S</kbd> Skip':'<kbd>Enter</kbd> / <kbd>Space</kbd> Continue'}${q.phase==='incorrect'&&q.type==='written'&&!q.skipped?' · <kbd>Alt R</kbd> Override':''}</span><span>Progress saves automatically</span></div></div>`;
     }
     function confetti() {
       const colors=['#a89cff','#78ddbd','#f4ca73','#ff9eac','#81c7ff'];
@@ -762,10 +1316,10 @@
     function renderCheckpoint() {
       const s=state.session,d=deckById(s.deckId),cards=scopeCards(),complete=cards.every(c=>c.level===2),hits=s.results.filter(r=>r.correct).length,accuracy=s.results.length?Math.round(hits/s.results.length*100):100;
       const leveled=cards.filter(c=>c.level>s.roundStart[c.id]);
-      return `<div class="study checkpoint ${motion==='card-enter'?'card-enter':''}">${complete&&motion==='card-enter'?confetti():''}<div class="row spread" style="margin-bottom:25px"><button onclick="Learn.action(this)" type="button" class="btn ghost" data-action="home">${svg('back')}Library</button><span class="badge purple">${esc(d.title)}${scopeOf(s.options)==='all'?'':scopeOf(s.options)==='starred'?' · Starred selection':' · Hardest selection'}</span></div><div class="question"><div class="completion-icon">${svg(complete?'trophy':'spark')}</div><div class="eyebrow">${complete?'Look at you go':'A moment to see your progress'}</div><h1>${complete?'You’ve mastered '+(scopeOf(s.options)==='all'?'this deck.':scopeOf(s.options)==='starred'?'your starred selection.':'your hardest selection.'):'Round '+s.round+' complete.'}</h1><p class="muted">${complete?'Take a breath. That knowledge is yours to keep practicing.':'Every little bit is sticking. Ready for the next seven?'}</p><div class="checkpoint-stats"><div class="checkpoint-stat"><strong class="success">${s.results.length?accuracy+'%':'—'}</strong><span class="tiny muted">Round accuracy</span></div><div class="checkpoint-stat"><strong style="color:var(--accent)">${leveled.length}</strong><span class="tiny muted">Cards leveled up</span></div><div class="checkpoint-stat"><strong>${stats(cards).mastered}<span class="small muted"> / ${cards.length}</span></strong><span class="tiny muted">${scopeOf(s.options)!=='all'?'Selected cards':'Deck cards'} mastered</span></div></div><div style="text-align:left">${progress(d.cards,'Overall deck progress')}${scopeOf(s.options)!=='all'?`<div style="margin-top:15px">${progress(cards,scopeOf(s.options)==='starred'?'Starred selection progress':'Hardest selection progress')}</div>`:''}</div>${s.results.length?`<div class="results"><div class="result" style="background:var(--panel2)"><strong>This round’s cards</strong><span class="tiny muted">${hits}/${s.results.length} correct${s.results.some(r=>r.override)?' · includes overrides':''}</span></div>${[...new Set(s.results.map(r=>r.cardId))].map(id=>{const c=d.cards.find(c=>c.id===id),from=s.roundStart[id],missed=s.results.some(r=>r.cardId===id&&!r.correct);return `<div class="result"><span class="result-name">${esc(c.term)} ${accuracyBadge(c)}${missed?'<span class="tiny muted" style="display:block">Correction practiced this round</span>':''}</span><span class="badge ${c.level>from?'green':''}">${c.level>from?`${tier(from)} → `:''}${tier(c.level)}</span></div>`;}).join('')}</div>`:'<div class="notice">These cards were already mastered. Reset their progress below to practice again.</div>'}<p class="small muted">Session accuracy: ${s.total?Math.round(s.hits/s.total*100)+'% ('+s.hits+'/'+s.total+')':'No questions answered in this session'}. Corrections don’t count as new questions.</p><div class="row wrap" style="justify-content:center;margin-top:25px">${complete?'<button onclick="Learn.action(this)" type="button" class="btn" data-action="reset-selected">Practice again</button><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="finish">Back to library '+svg('check')+'</button>':'<button onclick="Learn.action(this)" type="button" id="next-round" class="btn primary" data-action="next-round">Start round '+(s.round+1)+' '+svg('arrow')+'</button>'}</div></div><p class="hint">${formatHint(s.options)}</p></div>`;
+      return `<div class="study checkpoint ${motion==='card-enter'?'card-enter':''}">${complete&&motion==='card-enter'?confetti():''}<div class="row spread" style="margin-bottom:25px"><button onclick="Learn.action(this)" type="button" class="btn ghost" data-action="home">${svg('back')}Library</button><span class="badge purple">${esc(d.title)}${scopeOf(s.options)==='all'?'':scopeOf(s.options)==='starred'?' · Starred selection':' · Hardest selection'}</span></div><div class="question"><div class="completion-icon">${svg(complete?'trophy':'spark')}</div><div class="eyebrow">${complete?'Look at you go':'A moment to see your progress'}</div><h1>${complete?'You’ve mastered '+(s.selectionLabel?'your selected cards.':scopeOf(s.options)==='all'?'this deck.':scopeOf(s.options)==='starred'?'your starred selection.':'your hardest selection.'):'Round '+s.round+' complete.'}</h1><p class="muted">${complete?'Take a breath. That knowledge is yours to keep practicing.':'Every little bit is sticking. Ready for the next seven?'}</p><div class="checkpoint-stats"><div class="checkpoint-stat"><strong class="success">${s.results.length?accuracy+'%':'—'}</strong><span class="tiny muted">Round accuracy</span></div><div class="checkpoint-stat"><strong style="color:var(--accent)">${leveled.length}</strong><span class="tiny muted">Cards leveled up</span></div><div class="checkpoint-stat"><strong>${stats(cards).mastered}<span class="small muted"> / ${cards.length}</span></strong><span class="tiny muted">${scopeOf(s.options)!=='all'?'Selected cards':'Deck cards'} mastered</span></div></div><div style="text-align:left">${progress(d.cards,'Overall deck progress')}${scopeOf(s.options)!=='all'?`<div style="margin-top:15px">${progress(cards,scopeOf(s.options)==='starred'?'Starred selection progress':'Hardest selection progress')}</div>`:''}</div>${s.results.length?`<div class="results"><div class="result" style="background:var(--panel2)"><strong>This round’s cards</strong><span class="tiny muted">${hits}/${s.results.length} correct${s.results.some(r=>r.override)?' · includes overrides':''}</span></div>${[...new Set(s.results.map(r=>r.cardId))].map(id=>{const c=d.cards.find(c=>c.id===id),from=s.roundStart[id],missed=s.results.some(r=>r.cardId===id&&!r.correct);return `<div class="result"><span class="result-name">${esc(c.term)} ${accuracyBadge(c)}${missed?'<span class="tiny muted" style="display:block">Correction practiced this round</span>':''}</span><span class="badge ${c.level>from?'green':''}">${c.level>from?`${tier(from)} → `:''}${tier(c.level)}</span></div>`;}).join('')}</div>`:'<div class="notice">These cards were already mastered. Reset their progress below to practice again.</div>'}<p class="small muted">Session accuracy: ${s.total?Math.round(s.hits/s.total*100)+'% ('+s.hits+'/'+s.total+')':'No questions answered in this session'}. Corrections don’t count as new questions.</p><div class="row wrap" style="justify-content:center;margin-top:25px">${complete?'<button onclick="Learn.action(this)" type="button" class="btn" data-action="reset-selected">Practice again</button><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="finish">Back to library '+svg('check')+'</button>':'<button onclick="Learn.action(this)" type="button" id="next-round" class="btn primary" data-action="next-round">Start round '+(s.round+1)+' '+svg('arrow')+'</button>'}</div></div><p class="hint">${formatHint(s.options)}</p></div>`;
     }
     function download(text,name,type='application/json') {const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-    function exportBackup() {download(JSON.stringify({version:1,exportedAt:new Date().toISOString(),decks:state.decks,settings:state.settings},null,2),'learn-backup-'+new Date().toISOString().slice(0,10)+'.json');toast('Backup downloaded with decks, stars, and mastery.');}
+    function exportBackup() {download(JSON.stringify({version:1,exportedAt:new Date().toISOString(),decks:state.decks,settings:state.settings,flashcards:state.flashcards,test:state.test},null,2),'learn-backup-'+new Date().toISOString().slice(0,10)+'.json');toast('Backup downloaded with decks, stars, and mastery.');}
     function showBackups() {modal('Keep your learning safe',`<div class="modal-body"><p class="muted small">Decks, stars, study options, and mastery are saved in this browser. A JSON backup lets you move them to another browser or keep a copy on your PC.</p><div class="backup-choice"><button onclick="Learn.action(this)" type="button" class="btn" data-action="export">${svg('download')}Export to JSON · Download all ${state.decks.length} decks</button><button onclick="Learn.action(this)" type="button" class="btn" data-action="import">${svg('upload')}Import from JSON · Merge or replace after preview</button></div><p class="hint">Backups include progress, but not the current round. Clearing browser data or moving this HTML file may create a fresh library; keep a backup.</p></div>`, '',true);}
     async function readImport(file) {
       if(!file)return;if(file.size>25*1024*1024){toast('Choose a backup smaller than 25 MB.');return;}
@@ -775,7 +1329,7 @@
     function applyImport(replace) {
       if(!pendingImport)return;
       const merged=replace?pendingImport.decks:[...state.decks.filter(d=>!pendingImport.decks.some(n=>n.id===d.id)),...pendingImport.decks];
-      let checked;try {checked=validateBackup({version:1,decks:merged,settings:pendingImport.settings});}catch(e){toast('Import failed: '+e.message);return;}
+      let checked;try {checked=validateBackup({version:1,decks:merged,settings:pendingImport.settings,flashcards:pendingImport.flashcards,test:pendingImport.test});}catch(e){toast('Import failed: '+e.message);return;}
       if(corruptRaw!==null||storageConflict){toast('Resolve the storage warning before importing. Export your current data first.');return;}
       state=checked;page='home';search='';closeModal();const stored=save();render();savedNotice(stored);
     }
@@ -820,134 +1374,6 @@
       sfx.click();
       renderEditor();
     }
-    let flashState = null;
-
-    function flashcardCurrent() {
-      if (!flashState) return null;
-      const deck = deckById(flashState.deckId);
-      return deck?.cards.find(card => card.id === flashState.cardIds[flashState.index]) || null;
-    }
-
-    function startFlashcards(deckId) {
-      flushDraft();cancelAutoAdvance();
-      const deck = deckById(deckId);
-      if (!deck) return;
-      const chosen = selectedCards(deck, state.settings);
-      flashState = {
-        deckId,
-        cardIds: chosen.map(card => card.id),
-        index: 0,
-        flipped: false,
-        known: 0,
-        ratings: [],
-        frontKey: state.settings.answerWith === 'term' ? 'definition' : 'term',
-        studyScope: state.settings.studyScope || (state.settings.starredOnly ? 'starred' : 'all'),
-        learnSessionEnded: false
-      };
-      page = 'flashcards';
-      sfx.click();
-      render();
-      window.scrollTo(0, 0);
-      requestAnimationFrame(() => document.getElementById('flash-flip')?.focus());
-    }
-
-    function restartFlashcards() {
-      if (flashState) startFlashcards(flashState.deckId);
-    }
-
-    function flipFlashcard() {
-      if (page !== 'flashcards' || !flashcardCurrent() || document.getElementById('modal').open) return;
-      flashState.flipped = !flashState.flipped;
-      const button = document.getElementById('flash-flip');
-      if (!button) return;
-      button.classList.toggle('is-flipped', flashState.flipped);
-      button.setAttribute('aria-pressed', String(flashState.flipped));
-      button.setAttribute('aria-describedby', (flashState.flipped ? 'flash-back-face' : 'flash-front-face') + ' flash-key-hint');
-      document.getElementById('flash-front-face').setAttribute('aria-hidden', String(flashState.flipped));
-      document.getElementById('flash-back-face').setAttribute('aria-hidden', String(!flashState.flipped));
-      const side = flashState.flipped ? (flashState.frontKey === 'term' ? 'definition' : 'term') : flashState.frontKey;
-      document.getElementById('flash-status').textContent = `Showing the ${side}.`;
-      sfx.click();
-    }
-
-    function speakFlashcard() {
-      const card = flashcardCurrent();
-      if (!card) return;
-      const side = flashState.flipped ? (flashState.frontKey === 'term' ? 'definition' : 'term') : flashState.frontKey;
-      speak(card[side]);
-    }
-
-    function rateFlashcard(known) {
-      if (page !== 'flashcards' || document.getElementById('modal').open) return;
-      const card = flashcardCurrent();
-      if (!card) return;
-      const deck = deckById(flashState.deckId);
-      const endedLearn = state.session?.deckId === deck.id;
-      if (endedLearn) {
-        state.session = null;
-        flashState.learnSessionEnded = true;
-      }
-      known = known === true;
-      card.attempts++;
-      if (known) card.correct++;
-      card.level = known ? 2 : 1;
-      deck.updatedAt = Date.now();
-      flashState.ratings.push({cardId: card.id, known});
-      if (known) flashState.known++;
-      flashState.index++;
-      flashState.flipped = false;
-      if (known) sfx.correct();
-      else sfx.click();
-      persist();
-      render();
-      if (endedLearn) toast('Flashcard rating saved. Start a new Learn session to use the updated mastery.');
-      if (flashState.index >= flashState.cardIds.length) {
-        if (flashState.cardIds.every(id => deck.cards.find(item => item.id === id)?.level === 2)) sfx.mastered();
-        else sfx.checkpoint();
-        requestAnimationFrame(() => document.getElementById('flash-review-again')?.focus());
-      } else {
-        requestAnimationFrame(() => document.getElementById('flash-flip')?.focus());
-      }
-    }
-
-    function renderFlashcards() {
-      const deck = flashState && deckById(flashState.deckId);
-      if (!deck) return `<div class="empty"><h2>Choose a deck to use Flashcards.</h2><button type="button" class="btn primary" onclick="Learn.action(this)" data-action="home">Back to library</button></div>`;
-      const count = flashState.cardIds.length;
-      const card = flashcardCurrent();
-      const scopeLabel = flashState.studyScope === 'starred' ? 'Starred cards' : flashState.studyScope === 'hard' ? 'Hardest cards' : 'All cards';
-      const heading = `<div class="row spread flash-heading"><div class="row" style="min-width:0"><button type="button" class="icon-btn" onclick="Learn.action(this)" data-action="home" aria-label="Back to library">${svg('back')}</button><div><div class="eyebrow" style="margin-bottom:4px">Flashcards · ${esc(scopeLabel)}</div><h1>${esc(deck.title)}</h1></div></div><button type="button" class="icon-btn" onclick="Learn.showOptions()" aria-label="Study options">${svg('settings')}</button></div>`;
-      if (!count) return `<div class="study flashcards">${heading}<div class="empty"><div class="empty-symbol">${svg('cards')}</div><h2>No cards in this selection.</h2><p class="muted">Choose All cards in study options, or star a few cards in the deck editor.</p><div class="row wrap" style="justify-content:center"><button type="button" class="btn" onclick="Learn.showOptions()">Study options</button><button type="button" class="btn primary" onclick="Learn.restartFlashcards()">Reload selection</button></div></div></div>`;
-      if (!card) {
-        return `<div class="study flashcards checkpoint">${heading}<section class="question card-enter" aria-label="Flashcards complete"><div class="completion-icon">${svg('check')}</div><div class="eyebrow">One pass. More confidence.</div><h1>You’ve reviewed your cards.</h1><p class="muted">${flashState.known} marked “Know it” · ${count - flashState.known} still learning.</p><div style="text-align:left">${progress(deck.cards, 'Overall deck progress')}</div><div class="results">${flashState.ratings.map(rating => { const rated = deck.cards.find(item => item.id === rating.cardId); return rated ? `<div class="result"><span class="result-name">${esc(rated.term)}</span><span class="badge ${rating.known ? 'green' : 'purple'}">${rating.known ? 'Know it' : 'Still learning'}</span></div>` : ''; }).join('')}</div><div class="row wrap" style="justify-content:center"><button id="flash-review-again" type="button" class="btn" onclick="Learn.restartFlashcards()">Review again</button><button type="button" class="btn primary" onclick="Learn.action(this)" data-action="home">Back to library ${svg('arrow')}</button></div></section></div>`;
-      }
-      const frontKey = flashState.frontKey;
-      const backKey = frontKey === 'term' ? 'definition' : 'term';
-      return `<div class="study flashcards">${heading}<div class="round-meta"><span>Card ${flashState.index + 1} of ${count}</span><span>${flashState.index} reviewed · ${flashState.known} known</span></div><div class="progress-track" role="progressbar" aria-label="Flashcard review progress" aria-valuemin="0" aria-valuemax="${count}" aria-valuenow="${flashState.index}"><div class="flash-progress-fill" style="transform:scaleX(${flashState.index / count})"></div></div><div class="row spread flash-tools"><span class="badge purple">${esc(tier(card.level))}</span><button type="button" class="icon-btn" onclick="Learn.speakFlashcard()" aria-label="Read visible card side aloud">${svg('speaker')}</button></div><div class="flash-scene"><button id="flash-flip" type="button" class="flash-flip ${flashState.flipped ? 'is-flipped' : ''}" onclick="Learn.flipFlashcard()" aria-label="Flip flashcard" aria-pressed="${flashState.flipped}" aria-describedby="${flashState.flipped ? 'flash-back-face' : 'flash-front-face'} flash-key-hint"><span id="flash-front-face" class="flash-face flash-front" aria-hidden="${flashState.flipped}"><span class="eyebrow">${frontKey === 'term' ? 'Term' : 'Definition'}</span><span class="flash-card-text">${esc(card[frontKey])}</span><span class="tiny muted flash-face-hint">Click or press Space to reveal the answer</span></span><span id="flash-back-face" class="flash-face flash-back" aria-hidden="${!flashState.flipped}"><span class="eyebrow">${backKey === 'term' ? 'Term' : 'Definition'}</span><span class="flash-card-text">${esc(card[backKey])}</span><span class="tiny muted flash-face-hint">Click or press Space to return to the question</span></span></button></div><div id="flash-status" class="sr-only" role="status" aria-live="polite">Showing the ${flashState.flipped ? backKey : frontKey}.</div><div class="flash-rating-row"><button type="button" class="btn flash-rating flash-learning" onclick="Learn.rateFlashcard(false)" aria-keyshortcuts="ArrowLeft 1">${svg('back')}Still learning <kbd>← / 1</kbd></button><button type="button" class="btn primary flash-rating" onclick="Learn.rateFlashcard(true)" aria-keyshortcuts="ArrowRight 2">Know it ${svg('check')}<kbd>→ / 2</kbd></button></div><p id="flash-key-hint" class="hint" style="text-align:center"><kbd>Space</kbd> Flip · <kbd>←</kbd> or <kbd>1</kbd> Still learning · <kbd>→</kbd> or <kbd>2</kbd> Know it</p><p class="hint" style="text-align:center">Ratings update card mastery and lifetime accuracy. Study options apply when you reload the selection.</p></div>`;
-    }
-
-    function flashKeydown(event) {
-      if (page !== 'flashcards' || !flashState || document.getElementById('modal').open || event.repeat || event.isComposing || event.altKey || event.ctrlKey || event.metaKey) return false;
-      const target = event.target;
-      if (/INPUT|TEXTAREA|SELECT/.test(target.tagName) || target.isContentEditable || !flashcardCurrent()) return false;
-      if (event.key === ' ' || event.code === 'Space') {
-        if (target.closest('button') && !target.closest('#flash-flip')) return false;
-        event.preventDefault();
-        flipFlashcard();
-        return true;
-      }
-      if (event.key === 'ArrowLeft' || event.key === '1') {
-        event.preventDefault();
-        rateFlashcard(false);
-        return true;
-      }
-      if (event.key === 'ArrowRight' || event.key === '2') {
-        event.preventDefault();
-        rateFlashcard(true);
-        return true;
-      }
-      return false;
-    }
     function action(btn) {
       if(!btn||btn.disabled)return;const a=btn.dataset.action,id=btn.dataset.id;
       if(!['choose','continue','override','next-round'].includes(a))sfx.click();
@@ -969,7 +1395,7 @@
       else if(a==='editor-star'){syncEditor();const c=editor.cards.find(c=>c.id===id);c.starred=!c.starred;btn.classList.toggle('starred',c.starred);btn.setAttribute('aria-pressed',String(c.starred));btn.setAttribute('aria-label',(c.starred?'Unstar':'Star')+' card');}
       else if(a==='bulk-add'){syncEditor();try {const cards=parseBulk(editor.bulk);if(editor.cards.length+cards.length>10000)throw new Error('Limit: 10,000 cards per deck.');editor.cards=editor.cards.filter(c=>c.term.trim()||c.definition.trim()).concat(cards);editor.bulk='';editor.status=`${cards.length} cards added. Review them below, then save your deck.`;editor.statusError=false;}catch(e){editor.status=e.message;editor.statusError=true;}renderEditor();}
       else if(a==='delete'){const d=deckById(id);if(d)confirmAction('Delete this deck?',`“${d.title}” and all its progress will be removed. Export a JSON backup first if you want to keep it.`,`delete-confirm:${id}`,'Delete deck');}
-      else if(a.startsWith('delete-confirm:')){const target=a.slice(15);state.decks=state.decks.filter(d=>d.id!==target);if(state.session?.deckId===target)state.session=null;closeModal();page='home';persist('Deck deleted');render();}
+      else if(a.startsWith('delete-confirm:')){const target=a.slice(15);state.decks=state.decks.filter(d=>d.id!==target);if(state.session?.deckId===target)state.session=null;if(state.flashcards?.deckId===target)state.flashcards=null;if(state.test?.deckId===target)state.test=null;closeModal();page='home';persist('Deck deleted');render();}
       else if(a==='learn'){
         if(state.session?.deckId===id){modal('Continue your learning',`<div class="modal-body"><p class="muted small">You have a saved session for this deck. Resume it, or start fresh with your current study options. Starting fresh keeps card mastery.</p></div>`,`<div class="modal-foot"><button onclick="Learn.action(this)" type="button" class="btn" data-action="restart" data-id="${esc(id)}">New session</button><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="resume">Resume session</button></div>`,true);}
         else if(state.session){confirmAction('Start a new session?','Your card mastery is saved. The other deck’s current round will end.','switch-session:'+id,'Start session');}
@@ -987,7 +1413,7 @@
       else if(a==='next-round'){const s=state.session;if(s.screen==='question')return;s.round++;s.results=[];s.roundStart=Object.fromEntries(scopeCards().map(c=>[c.id,c.level]));nextQuestion();persist();render();window.scrollTo(0,0);}
       else if(a==='finish'){state.session=null;page='home';persist();render();window.scrollTo(0,0);}
       else if(a==='reset-selected')confirmAction('Practice these cards again?','This resets mastery and answer statistics for the cards in this session. Other cards keep their progress.','confirm-practice','Reset and study');
-      else if(a==='confirm-practice'){const s=state.session;for(const c of scopeCards()){c.level=0;c.attempts=0;c.correct=0;}s.queue=shuffle(s.cardIds);s.round=1;s.total=0;s.hits=0;s.streak=0;s.results=[];s.roundStart=Object.fromEntries(scopeCards().map(c=>[c.id,0]));closeModal();nextQuestion();persist();render();}
+      else if(a==='confirm-practice'){const s=state.session;for(const c of scopeCards()){c.level=0;c.attempts=0;c.correct=0;syncFlashCard(s.deckId,c);}s.queue=shuffle(s.cardIds);s.round=1;s.total=0;s.hits=0;s.streak=0;s.results=[];s.roundStart=Object.fromEntries(scopeCards().map(c=>[c.id,0]));closeModal();nextQuestion();persist();render();}
       else if(a==='recover')download(corruptRaw,'learn-storage-recovery.json');
       else if(a==='reset-storage')confirmAction('Reset unreadable storage?','Download the saved data first if you need it. Reset replaces the unreadable data with this tab’s current library.','confirm-storage','Reset storage');
       else if(a==='confirm-storage'){corruptRaw=null;closeModal();persist('Storage reset');render();}
@@ -1011,13 +1437,14 @@
       if(e.key==='Enter'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&e.target.id==='written-answer'&&q.phase==='asking'){e.preventDefault();checkWritten();return;}
       if(e.key==='Enter'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&e.target.id==='correction'&&q.phase==='incorrect'){e.preventDefault();checkCorrection();return;}
       if(e.ctrlKey||e.metaKey||e.altKey||typing)return;
+      if(q.phase==='incorrect'&&s.options.requireRetype!==true&&(e.key==='Enter'||e.key===' '||e.code==='Space')&&(!e.target.closest('button,a,[role=button]')||e.target.closest('#continue'))){e.preventDefault();advance();return;}
       if(q.phase==='asking'&&q.type==='mc'&&s.options.quickSkip!==false&&(e.key==='Enter'||e.key===' '||e.code==='Space')&&!e.target.closest('button,a,[role=button]')){e.preventDefault();skipQuestion();return;}
       if(q.phase==='asking'&&q.type==='mc'&&/^[1-4]$/.test(e.key)){e.preventDefault();selectChoice(Number(e.key)-1);}
-      else if(e.key==='Enter'&&q.phase==='correct'){e.preventDefault();advance();}
+      else if(e.key==='Enter'&&q.phase==='correct'&&(!e.target.closest('button,a,[role=button]')||e.target.closest('#continue'))){e.preventDefault();advance();}
     });
     window.addEventListener('storage',e=>{if(e.key===KEY&&e.newValue!==JSON.stringify(state)){storageConflict=true;storageIssue='Your library changed in another tab. Export this tab if needed, then reload to use the latest saved library. Saving here is paused to prevent overwriting it.';renderBanner();}});
     window.addEventListener('pagehide',()=>{flushDraft();cancelAutoAdvance();sfx.stop();if('speechSynthesis' in window)window.speechSynthesis.cancel();});
-    window.Learn={action,saveDeck,saveOptions,closeModal,showOptions,applyStudyOptions:updateStudyOptions,applyImport,readImport,checkWritten,checkCorrection,captureDraft,searchDecks,skipQuestion,getHint,setStudyOption,optionKey,cycleFormat,cycleDirection,skipRetyping,editStudyCard,saveStudyCard,swapEditorCards,deduplicateEditorCards,startFlashcards,restartFlashcards,flipFlashcard,speakFlashcard,rateFlashcard};
+    window.Learn={action,saveDeck,saveOptions,closeModal,showOptions,applyStudyOptions:updateStudyOptions,applyImport,readImport,checkWritten,checkCorrection,captureDraft,searchDecks,switchMode,skipQuestion,getHint,setStudyOption,optionKey,cycleFormat,cycleDirection,skipRetyping,editStudyCard,saveStudyCard,swapEditorCards,deduplicateEditorCards,startFlashcards,restartFlashcards,flipFlashcard,speakFlashcard,rateFlashcard,reviewUnmasteredFlashcards,starFlashcard,toggleFlashTrack,toggleFlashShuffle,toggleFlashSide,navigateFlashcard,startTest,configureNewTest,confirmNewTest,testConfigChange,generateTest,captureTestAnswer,answerTest,submitTest,retakeMissedTest,practiceMissedTest};
     render();
   })();
   </script>
