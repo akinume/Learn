@@ -1,5 +1,5 @@
 Learn v3.0.0
-Author: AKX
+AKX
 
 Overview
 Learn is a single-file browser application for studying term-and-definition decks. All data, settings, and session states are stored locally in browser localStorage under the key learn.local.v1. It has no external dependencies or network requirements.
