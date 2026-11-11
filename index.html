@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark light">
-  <title>Learn · v3.0.0</title>
+  <title>Learn · v3.1.0</title>
   <style>
     :root{--bg:#0c1021;--panel:#151a30;--panel2:#1c223c;--line:#2b3353;--text:#f1f3ff;--muted:#a8b0d1;--accent:#a89cff;--purple:#7763ee;--green:#78ddbd;--red:#ff9eac;--shadow:0 24px 80px #0005}
     html.light{--bg:#f5f5fc;--panel:#fff;--panel2:#eeedf8;--line:#dbdced;--text:#20243f;--muted:#626986;--accent:#6550cd;--purple:#6853de;--green:#148062;--red:#bb3152;--shadow:0 24px 80px #24205118;color-scheme:light}
@@ -139,6 +139,102 @@
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.confetti{display:none!important}}
 
     .flash-card-text{pointer-events:auto;cursor:pointer}
+    .image-editor-block{grid-column:1/-1;min-width:0;padding:2px 0 10px}.image-attach-toggle{font-size:11px;padding:7px 10px}.image-attach-toggle svg{width:17px;height:17px}
+    .image-attachment-bar{padding:13px;margin-top:9px;border:1px solid var(--line);border-radius:11px;background:var(--bg)}.image-attachment-bar[hidden]{display:none!important}
+    .image-attach-main{display:flex;align-items:flex-start;gap:13px}.image-source-controls{flex:1;min-width:0}.image-source-controls .row{gap:8px}.image-source-controls .btn{font-size:11px;padding:8px 10px}.image-source-controls .field{font-size:12px;padding:9px 10px}
+    .image-thumb,.image-empty-thumb{width:52px;height:52px;flex:0 0 52px;border:1px solid var(--line);border-radius:8px;background:var(--panel);display:grid;place-items:center;padding:3px;color:var(--muted)}.image-thumb img{display:block;max-width:100%;max-height:44px;object-fit:contain}.image-empty-thumb svg{width:23px;height:23px}
+    .image-url-row{display:flex;gap:7px;align-items:center;margin-top:9px}.image-url-row input{min-width:0}.image-placement{display:flex;gap:5px;flex-wrap:wrap;margin-top:11px}.image-placement-choice{padding:6px 8px;font-size:10px}.image-placement-choice.active{background:var(--panel2);border-color:var(--accent);color:var(--accent)}.image-attachment-note{margin:10px 0 0}.image-status{margin:9px 0 0}.image-status:empty{display:none}
+    .card-image-button{display:flex;align-items:center;justify-content:center;min-width:0;width:100%;padding:7px;border:1px solid var(--line);border-radius:11px;background:var(--bg);cursor:zoom-in;overflow:hidden}.card-diagram{display:block;width:100%;max-height:220px;object-fit:contain;border-radius:6px}.card-image-button:hover{border-color:var(--accent)}
+    .prompt-media-grid{display:grid;grid-template-columns:minmax(220px,1fr) minmax(200px,280px);gap:20px;align-items:center}.prompt-media-grid>*{min-width:0}.prompt-media-grid .prompt{margin-bottom:20px}
+    .flash-face .flashcard-image{width:min(100%,350px);padding:4px;margin-bottom:12px;flex:0 1 auto;max-height:170px;pointer-events:auto;cursor:zoom-in}.flash-face .flashcard-image .card-diagram{max-height:158px;width:100%;object-fit:contain}.flash-face:has(.flashcard-image){padding-top:58px;padding-bottom:39px;gap:0}.flash-face:has(.flashcard-image) .flash-card-text{font-size:clamp(18px,2.3vw,25px);max-height:110px;flex:0 1 auto}
+    .image-lightbox{width:calc(100vw - 24px);height:calc(100dvh - 24px);max-width:none!important;max-height:none!important;padding:0;border-radius:14px;overflow:hidden}.image-lightbox[open]{display:flex;flex-direction:column}.image-lightbox::backdrop{background:rgba(5,8,22,.9);backdrop-filter:none}.image-lightbox-head{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:14px 20px;border-bottom:1px solid var(--line);flex:0 0 auto}.image-lightbox-head h2{font-size:17px;margin:0}.image-lightbox-head .row{gap:6px}.image-lightbox-head .btn{padding:7px 11px;font-size:12px}.image-zoom-stage{display:flex;align-items:flex-start;justify-content:flex-start;overflow:auto;min-height:0;flex:1;padding:16px;overscroll-behavior:contain;background:var(--bg)}#image-preview-image{display:block;flex:none;margin:auto;max-width:none;height:auto;object-fit:contain;border-radius:5px}.image-lightbox-hint{padding:9px 15px;margin:0;border-top:1px solid var(--line);font-size:11px;color:var(--muted);text-align:center;flex:0 0 auto}
+    @media(max-width:700px){.prompt-media-grid{grid-template-columns:minmax(0,1fr);gap:13px}.prompt-media-grid>.card-image-button{order:-1}.study-image{max-height:135px;padding:4px}.study-image .card-diagram{max-height:125px}.image-attach-main{gap:9px}.image-source-controls .tiny{font-size:10px}.image-url-row{flex-wrap:wrap}.image-url-row .field{flex:1 1 100%}.image-placement-choice{font-size:10px}.image-lightbox{width:calc(100vw - 12px);height:calc(100dvh - 12px);border-radius:10px}.image-lightbox-head{padding:10px;gap:7px;flex-wrap:wrap}.image-lightbox-head h2{font-size:14px}.image-lightbox-head .btn{padding:7px 9px}.image-zoom-stage{padding:8px}.flash-face .flashcard-image{max-height:150px;margin-bottom:7px}.flash-face .flashcard-image .card-diagram{max-height:138px}.flash-face:has(.flashcard-image) .flash-card-text{max-height:100px;font-size:20px}}
+    @media(prefers-reduced-motion:reduce){.card-image-button{transition:none!important}}
+
+    .mode-shuffle{display:inline-flex;align-items:center;gap:9px;color:var(--muted);font-size:12px;margin:0}
+    .attempt-notice{margin:14px 0;padding:10px 13px;border:1px solid var(--accent);border-radius:9px;background:var(--panel2);color:var(--accent);font-size:12px}
+    .rewind-button{padding:7px 10px;font-size:11px}.rewind-button svg{width:15px;height:15px}
+    .deck-meta svg{width:13px;height:13px;display:inline;vertical-align:-2px}
+    .segment-button{display:inline-flex;align-items:center;justify-content:center;gap:6px}.segment-button svg{width:15px;height:15px}
+    .test-media-block{margin:16px 0}.test-review-question .card-image-button{max-width:280px;margin:16px auto}
+    .akx-logo,.site-footer .akx-logo,.side-note .akx-logo{display:block;height:24px;width:auto;flex-shrink:0;color:var(--text);opacity:.9}
+    .akx-sig{display:flex;align-items:center;justify-content:center;gap:10px;padding:10px 12px;margin-top:22px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+    .site-footer{display:flex;align-items:center;justify-content:center;gap:11px;padding:20px 18px 26px}
+    body.in-study .topbar{display:none!important}
+    body.in-study .page{padding-top:20px}
+    body.in-study .mode-switcher{margin-bottom:18px}
+    body.in-study .site-footer{padding-top:14px;padding-bottom:18px}
+    .nav-label,.brand-word{min-width:0}
+    @media(min-width:641px) and (max-width:1024px){
+      .shell{display:flex;min-height:100vh}
+      .sidebar{position:fixed;inset:0 auto 0 0;width:68px;padding:18px 8px;border-right:1px solid var(--line);border-bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:0}
+      .content{margin-left:68px;width:calc(100% - 68px);min-width:0}
+      .brand{display:flex;align-items:center;justify-content:center;width:48px;height:48px;gap:0;font-size:0}
+      .brand-mark{width:34px;height:34px;font-size:23px;border-radius:11px}
+      .brand-word{display:none}
+      .nav{display:grid;width:100%;gap:10px;margin-top:24px}
+      .nav-button,.nav-button:last-child{display:flex!important;align-items:center;justify-content:center;width:48px;min-height:48px;padding:12px;margin:0 auto;gap:0;font-size:0}
+      .nav-button svg{width:22px;height:22px}
+      .nav-label{display:none}
+      .side-note{display:block;margin-top:auto;padding-top:22px;font-size:0;width:100%;text-align:center}
+      .side-note>.live-dot,.side-note>span{display:none!important}
+      .side-note .akx-sig{display:flex;flex-direction:column;gap:7px;padding:8px 0;margin-top:0;border:0;background:transparent}
+      .side-note .version-tag{font-size:9px;padding:2px 5px;letter-spacing:0}
+      .topbar{height:68px;padding:0 22px}
+      .page{padding:24px 20px 30px}
+      .deck-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+      .study,.test-view,.flashcards{max-width:740px;width:100%;margin-left:auto;margin-right:auto}
+      .btn,.icon-btn,.segment-button,.mode-button,.choice,.quick-switch{min-height:48px}
+      .icon-btn{min-width:48px}
+      .flash-toggle,.test-type-option{min-height:48px}
+      .question{padding:24px}
+      .study-header{margin-bottom:16px}
+      .mode-switcher{max-width:100%}
+      .site-footer{gap:10px}
+    }
+    @media(max-height:820px){
+      .page,body.in-study .page{padding:16px 24px}
+      .question,.checkpoint .question{padding:20px 24px}
+      .prompt{margin-bottom:16px}
+      .question-top{margin-bottom:18px}
+      .study-header{margin-bottom:14px}
+      .study-header .round-meta{margin-top:14px}
+      .mode-switcher,body.in-study .mode-switcher{margin-bottom:16px}
+    }
+    @media(max-width:640px){
+      body.in-study .sidebar,body.in-study .topbar{display:none!important}
+      body.in-study .shell{display:block}
+      body.in-study .content{margin-left:0;width:100%}
+      body.in-study .page{padding:10px 12px 18px}
+      body.in-study .study-header{margin-bottom:10px}
+      body.in-study .question,body.in-study .checkpoint .question{padding:16px 14px}
+      body.in-study .prompt{font-size:clamp(18px,4.8vw,23px);margin-bottom:16px;line-height:1.35}
+      body.in-study .choice{min-height:50px;padding:12px;font-size:13px}
+      body.in-study .choices{gap:9px}
+      body.in-study .question-top{margin-bottom:16px;gap:7px;align-items:flex-start}
+      body.in-study .question-top>.row{gap:6px;flex-wrap:wrap}
+      body.in-study .study-header h1{font-size:19px;line-height:1.3}
+      body.in-study .round-meta{margin:12px 0 8px;font-size:11px;gap:9px}
+      body.in-study .answer-input{font-size:16px;padding:12px}
+      body.in-study .feedback{margin-top:18px;padding-top:18px}
+      body.in-study .answer-text{font-size:16px}
+      body.in-study .study-tools{gap:8px;margin-top:14px}
+      body.in-study .study-tools .btn{padding:9px 10px;font-size:12px}
+      body.in-study .study-footer{margin:13px 2px;font-size:11px;gap:9px}
+      body.in-study .mode-switcher{padding:4px;margin-bottom:12px}
+      body.in-study .mode-button{padding:9px 13px;font-size:12px;gap:6px}
+      body.in-study .mode-button svg{width:16px;height:16px}
+      body.in-study .site-footer{padding:12px 14px 20px}
+      body.in-study .test-mode-heading,body.in-study .flashcards .flash-heading{margin-top:12px;margin-bottom:18px}
+      body.in-study .test-question-prompt{font-size:18px;margin:17px 0}
+      body.in-study .test-question-list{gap:14px}
+      body.in-study .test-review-question{margin-bottom:13px}
+    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+
+    .question-controls{gap:3px;flex-wrap:wrap;justify-content:flex-end}.study-header-tools{flex-shrink:0}
+    @media(max-width:640px){body.in-study .question-controls{gap:1px}.rewind-button .rewind-label,.rewind-button kbd{display:none}.rewind-button{padding:8px}.study-header-tools{gap:3px}.mode-shuffle{font-size:10px;gap:5px}.study-header-tools .switch{width:38px}.question-controls .icon-btn{padding:7px}}
   </style>
 </head>
 <body class="antialiased">
@@ -149,7 +245,7 @@
   <script>
   'use strict';
   (() => {
-    const VERSION = 'v3.0.0';
+    const VERSION = 'v3.1.0';
     const KEY = 'learn.local.v1';
     const icons = {
       home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/>',
@@ -175,10 +271,72 @@
     const svg = (name) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name] || icons.cards}</svg>`;
     const esc = (v) => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const uid = () => typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2);
-    const shuffle = (a) => { a = [...a]; for (let i=a.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+    function cryptoProvider() {
+      return window.crypto && typeof window.crypto.getRandomValues === 'function' ? window.crypto : null;
+    }
+    function cryptoWords(length) {
+      const words = new Uint32Array(length), provider = cryptoProvider();
+      if (!provider) return null;
+      for (let offset = 0; offset < words.length; offset += 16384) {
+        provider.getRandomValues(words.subarray(offset, Math.min(offset + 16384, words.length)));
+      }
+      return words;
+    }
+    function cryptographicInt(min, max) {
+      if (!Number.isSafeInteger(min) || !Number.isSafeInteger(max) || max < min || max - min >= 4294967296) {
+        throw new RangeError('Invalid random integer range.');
+      }
+      const provider = cryptoProvider();
+      if (!provider || min === max) return min;
+      const range = max - min + 1, ceiling = 4294967296 - (4294967296 % range);
+      const word = new Uint32Array(1);
+      do { provider.getRandomValues(word); } while (word[0] >= ceiling);
+      return min + word[0] % range;
+    }
+    function protectRecentStart(items, recentIds = [], deckSize = items.length) {
+      const result = [...items];
+      if (deckSize <= 4 || !recentIds.length) return result;
+      const identity = item => item && typeof item === 'object' && 'id' in item ? item.id : item;
+      const excluded = new Set(recentIds.slice(-2).map(identity));
+      for (let position = 0; position < Math.min(2, result.length); position++) {
+        if (!excluded.has(identity(result[position]))) continue;
+        const replacement = result.findIndex((item, index) => index > position && !excluded.has(identity(item)));
+        if (replacement >= 0) [result[position], result[replacement]] = [result[replacement], result[position]];
+      }
+      return result;
+    }
+    function extremeShuffle(items, recentIds = []) {
+      const result = [...items], provider = cryptoProvider();
+      if (!provider || result.length < 2) return protectRecentStart(result, recentIds);
+      for (let pass = 0; pass < 2; pass++) {
+        const words = cryptoWords(result.length);
+        let cursor = 0;
+        for (let index = result.length - 1; index > 0; index--) {
+          const range = index + 1, ceiling = 4294967296 - (4294967296 % range);
+          let word;
+          do {
+            if (cursor < words.length) word = words[cursor++];
+            else {
+              const extra = new Uint32Array(1);
+              provider.getRandomValues(extra);
+              word = extra[0];
+            }
+          } while (word >= ceiling);
+          const replacement = word % range;
+          [result[index], result[replacement]] = [result[replacement], result[index]];
+        }
+      }
+      return protectRecentStart(result, recentIds);
+    }
+    const shuffle = items => extremeShuffle(items);
+    function randomRequeueOffset(queueLength) {
+      const length = Math.max(0, Math.floor(Number(queueLength) || 0));
+      return length <= 2 ? length : cryptographicInt(2, Math.min(5, length));
+    }
+
     const tier = n => ['Unseen', 'Still learning', 'Mastered'][n];
-    const cardNew = (term='', definition='') => ({id:uid(),term,definition,level:0,starred:false,attempts:0,correct:0});
-    const defaults = () => ({version:1,decks:[],settings:{answerWith:'definition',questionFormat:'adaptive',written:true,sound:true,requireRetype:false,quickSkip:true,autoAdvance:false,autoSpeak:false,studyScope:'all',starredOnly:false,theme:window.matchMedia?.('(prefers-color-scheme: light)').matches?'light':'dark'},session:null,flashcards:null,test:null});
+    const cardNew = (term='', definition='') => ({id:uid(),term,definition,image:'',imageSide:'prompt',level:0,starred:false,attempts:0,correct:0});
+    const defaults = () => ({version:1,decks:[],settings:{answerWith:'definition',questionFormat:'adaptive',written:true,sound:true,twoAttempts:false,shuffle:true,requireRetype:false,quickSkip:true,autoAdvance:false,autoSpeak:false,studyScope:'all',starredOnly:false,theme:window.matchMedia?.('(prefers-color-scheme: light)').matches?'light':'dark'},session:null,flashcards:null,test:null});
     let state = defaults(), page = 'home', search = '', editor = null, pendingImport = null, toastTimer, storageIssue = '', corruptRaw = null;
     let storageConflict = false;
     let motion = '';
@@ -186,7 +344,7 @@
     let lastMainView = '';
     const scopeOf = options => ['all','starred','hard'].includes(options.studyScope) ? options.studyScope : options.starredOnly ? 'starred' : 'all';
     function optionDefaults(options) {
-      return {questionFormat:formatOf(options),written:formatOf(options)!=='mc',studyScope:scopeOf(options),starredOnly:scopeOf(options)==='starred',requireRetype:options.requireRetype===true,quickSkip:options.quickSkip!==false,autoAdvance:options.autoAdvance===true,autoSpeak:options.autoSpeak===true};
+      return {questionFormat:formatOf(options),written:formatOf(options)!=='mc',studyScope:scopeOf(options),starredOnly:scopeOf(options)==='starred',twoAttempts:options.twoAttempts===true,shuffle:options.shuffle!==false,requireRetype:options.requireRetype===true,quickSkip:options.quickSkip!==false,autoAdvance:options.autoAdvance===true,autoSpeak:options.autoSpeak===true};
     }
     function selectedCards(deck,options) {
       const scope=scopeOf(options);
@@ -195,6 +353,7 @@
         let cards=deck.cards.filter(c=>c.attempts>c.correct);
         if(!cards.length)cards=deck.cards.filter(c=>c.level<2);
         if(!cards.length)cards=[...deck.cards];
+        if(options.shuffle===false){const ids=new Set(cards.map(c=>c.id));return deck.cards.filter(c=>ids.has(c.id));}
         return cards.sort((a,b)=>(b.attempts?(b.attempts-b.correct)/b.attempts:0)-(a.attempts?(a.attempts-a.correct)/a.attempts:0)||a.level-b.level||b.attempts-a.attempts);
       }
       return [...deck.cards];
@@ -208,7 +367,7 @@
     }
     function syncAutoAdvance() {
       const session=state.session,q=session?.question;
-      if(page!=='study'||document.getElementById('modal').open||q?.phase!=='correct'||session.options.autoAdvance!==true){cancelAutoAdvance();return;}
+      if(page!=='study'||document.getElementById('modal').open||imagePreviewOpen()||q?.reviewingPrevious||q?.phase!=='correct'||session.options.autoAdvance!==true){cancelAutoAdvance();return;}
       if(autoTimer!==null&&autoQuestion===q)return;
       cancelAutoAdvance();autoQuestion=q;
       document.querySelector('.auto-advance-fill')?.classList.add('running');
@@ -243,13 +402,16 @@
           try {
             oscillator = context.createOscillator();
             gain = context.createGain();
+            gain.gain.setValueAtTime(0.0001,context.currentTime);
             const at = start + (note.at || 0);
             const duration = note.duration || 0.16;
             oscillator.type = note.type || 'sine';
             oscillator.frequency.setValueAtTime(note.frequency, at);
             if (note.endFrequency) oscillator.frequency.exponentialRampToValueAtTime(note.endFrequency, at + duration);
-            gain.gain.setValueAtTime(0, at);
-            gain.gain.linearRampToValueAtTime(note.volume || 0.055, at + 0.009);
+            gain.gain.setValueAtTime(0.0001, at);
+            const peak=note.volume||0.055;
+            gain.gain.linearRampToValueAtTime(peak,at+0.009);
+            gain.gain.setValueAtTime(peak*0.85,at+duration*0.45);
             gain.gain.exponentialRampToValueAtTime(0.0001, at + duration);
             oscillator.connect(gain);
             gain.connect(context.destination);
@@ -313,6 +475,456 @@
       };
     })();
 
+    function akxLogo() {
+      return `<svg class="akx-logo" viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AKX"><path d="M82 14 L112 14 L148 118 L148 206 L120 206 L104 154 L48 154 L30 206 L2 206 L82 14 Z M76 58 L56 128 L96 128 L76 58 Z" stroke="currentColor" stroke-width="4.5" stroke-linejoin="miter" fill="currentColor" fill-opacity="0.08"/><path d="M148 14 L176 14 L176 96 L246 14 L280 14 L208 98 L282 206 L248 206 L176 104 L176 206 L148 206 Z" stroke="currentColor" stroke-width="4.5" stroke-linejoin="miter" fill="currentColor" fill-opacity="0.08"/><path d="M212 14 L244 14 L276 62 L308 14 L340 14 L292 86 L344 206 L312 206 L276 126 L240 206 L208 206 L260 86 Z" stroke="currentColor" stroke-width="4.5" stroke-linejoin="miter" fill="currentColor" fill-opacity="0.08"/></svg>`;
+    }
+    const IMAGE_MAX_CHARS = 180000;
+    const editorImagePanels = new Map();
+    const imageTasks = new Map();
+    let studyImageDraft = null;
+    let imagePreviewFocus = null;
+    let imagePreviewScroll = null;
+    let imagePreviewOverflow = '';
+    let imageZoom = 1;
+    let imageBaseWidth = 1;
+
+    function normalizeCardImage(value) {
+      if (value === undefined || value === null || value === '') return '';
+      if (typeof value !== 'string' || value.length > IMAGE_MAX_CHARS) throw new Error('An attached image must be 180,000 characters or fewer.');
+      if (!/^data:image\/(?:png|jpe?g|webp|gif|avif|bmp);base64,[A-Za-z0-9+/]+={0,2}$/i.test(value)) throw new Error('Use an uploaded or pasted raster image. Image URLs must be imported before saving.');
+      return value;
+    }
+    function normalizeImageSide(value) {
+      if (value === undefined || value === null || value === '') return 'prompt';
+      if (!['prompt','answer','both'].includes(value)) throw new Error('Invalid image placement.');
+      return value;
+    }
+    function imageIcon() {
+      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 4-6 5 7"/></svg>';
+    }
+    function readImageFile(file) {
+      return new Promise((resolve,reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result));
+        reader.onerror = () => reject(new Error('Could not read this image file.'));
+        reader.onabort = () => reject(new Error('Image loading was cancelled.'));
+        reader.readAsDataURL(file);
+      });
+    }
+    function decodeImage(source) {
+      return new Promise((resolve,reject) => {
+        const image = new Image();
+        image.onload = () => resolve(image);
+        image.onerror = () => reject(new Error('This image could not be decoded. Try PNG, JPEG, or WebP.'));
+        image.src = source;
+      });
+    }
+    async function compressImage(file) {
+      if (!(file instanceof Blob) || !file.size) throw new Error('Choose an image file first.');
+      if (file.size > 20 * 1024 * 1024) throw new Error('Choose an image smaller than 20 MB.');
+      if (!/^image\/(?:png|jpe?g|webp|gif|avif|bmp)$/i.test(file.type)) throw new Error('Supported image types: PNG, JPEG, WebP, GIF, AVIF, and BMP.');
+      const image = await decodeImage(await readImageFile(file));
+      if (!image.naturalWidth || !image.naturalHeight || image.naturalWidth * image.naturalHeight > 80000000) throw new Error('This image is too large to process. Use a smaller copy.');
+      let scale = Math.min(1,640 / Math.max(image.naturalWidth,image.naturalHeight));
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      if (!context) throw new Error('Image compression is unavailable in this browser.');
+      for (let pass = 0; pass < 9; pass++) {
+        canvas.width = Math.max(1,Math.round(image.naturalWidth * scale));
+        canvas.height = Math.max(1,Math.round(image.naturalHeight * scale));
+        context.clearRect(0,0,canvas.width,canvas.height);
+        context.imageSmoothingEnabled = true;
+        context.imageSmoothingQuality = 'high';
+        context.drawImage(image,0,0,canvas.width,canvas.height);
+        let format = 'image/webp';
+        let probe = canvas.toDataURL(format,0.78);
+        if (!probe.startsWith('data:image/webp;')) {
+          format = 'image/jpeg';
+          context.fillStyle = '#ffffff';
+          context.fillRect(0,0,canvas.width,canvas.height);
+          context.drawImage(image,0,0,canvas.width,canvas.height);
+          probe = canvas.toDataURL(format,0.75);
+        }
+        for (const quality of format === 'image/webp' ? [0.78,0.7,0.62,0.54,0.46,0.38] : [0.75,0.67,0.59,0.51,0.43,0.35]) {
+          const result = quality === (format === 'image/webp' ? 0.78 : 0.75) ? probe : canvas.toDataURL(format,quality);
+          if (result.length <= IMAGE_MAX_CHARS) return normalizeCardImage(result);
+        }
+        scale *= 0.82;
+      }
+      throw new Error('This image could not fit the attachment limit. Try cropping it first.');
+    }
+    async function imageFromUrl(value) {
+      let url;
+      try { url = new URL(String(value).trim()); } catch (_) { throw new Error('Enter a complete http or https image URL.'); }
+      if (!['http:','https:'].includes(url.protocol) || url.username || url.password) throw new Error('Use an http or https image URL without embedded credentials.');
+      const controller = new AbortController(),timer = setTimeout(() => controller.abort(),15000);
+      try {
+        const response = await fetch(url.href,{mode:'cors',credentials:'omit',referrerPolicy:'no-referrer',signal:controller.signal});
+        if (!response.ok) throw new Error('The image server did not return a usable image.');
+        return await compressImage(await response.blob());
+      } catch (error) {
+        if (error.name === 'AbortError') throw new Error('The image request timed out. Download the image and upload the file instead.');
+        if (error instanceof TypeError) throw new Error('This server does not allow image importing from this page. Download the image and upload or paste it instead.');
+        throw error;
+      } finally { clearTimeout(timer); }
+    }
+    function imageWorkPending(target='editor') {return target==='study' ? Boolean(cardEdit&&imageTasks.has('study')) : Boolean(editor?.cards.some(card=>imageTasks.has('editor:'+card.id)));}
+    function editorImageCard(cardId) { return editor?.cards.find(card => card.id === cardId) || null; }
+    function editorImageBlock(cardId) { return [...document.querySelectorAll('[data-image-editor]')].find(block => block.dataset.imageEditor === cardId) || null; }
+    function attachmentPreview(image,label) {
+      if (!image) return `<span class="image-empty-thumb" aria-hidden="true">${imageIcon()}</span>`;
+      return `<button type="button" class="image-thumb" onclick="Learn.openImagePreview(this.querySelector('img').src,this.querySelector('img').alt)" aria-label="Zoom attached image"><img src="${esc(image)}" alt="${esc(label)}" decoding="async"></button>`;
+    }
+    function imagePlacementButtons(side,target,cardId='') {
+      return `<div class="image-placement" role="radiogroup" aria-label="Image placement">${[['prompt','Show on Question'],['answer','Show on Answer'],['both','Both']].map(([value,label])=>`<button type="button" class="btn image-placement-choice ${side===value?'active':''}" role="radio" aria-checked="${side===value}" tabindex="${side===value?'0':'-1'}" data-image-side="${value}" data-image-target="${target}" data-card-id="${esc(cardId)}" onclick="${target==='study'?'Learn.setStudyImageSide(this.dataset.imageSide)':'Learn.setEditorImageSide(this.dataset.cardId,this.dataset.imageSide)'}" onkeydown="Learn.imagePlacementKey(event,this)">${label}</button>`).join('')}</div>`;
+    }
+    function editorAttachmentBody(card) {
+      const image = card.image || '',side = card.imageSide || 'prompt';
+      return `<div class="image-attach-main">${attachmentPreview(image,'Attached diagram for '+(card.term||card.definition||'this card'))}<div class="image-source-controls"><div class="row wrap"><button type="button" class="btn" data-card-id="${esc(card.id)}" onclick="Learn.chooseEditorImage(this.dataset.cardId)">${imageIcon()}Upload image</button><span class="tiny muted">Or paste an image into this card.</span><button type="button" class="btn ghost danger" data-card-id="${esc(card.id)}" onclick="Learn.removeEditorImage(this.dataset.cardId)" ${image?'':'disabled'}>Remove</button></div><div class="image-url-row"><input class="field" type="url" data-image-url aria-label="Image URL" placeholder="https://example.com/diagram.png"><button type="button" class="btn" data-card-id="${esc(card.id)}" onclick="Learn.editorImageUrl(this.dataset.cardId)">Import URL</button></div><input class="sr-only" tabindex="-1" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif,image/bmp" data-image-file data-card-id="${esc(card.id)}" aria-label="Choose an image for this card" onchange="Learn.attachImageToEditor(this.dataset.cardId,this.files[0])"></div></div>${imagePlacementButtons(side,'editor',card.id)}<p class="tiny muted image-attachment-note">Images stay inside your saved deck. Resized to at most 640 pixels; click a thumbnail or image to zoom.</p><p class="small image-status" data-image-status role="status" aria-live="polite"></p>`;
+    }
+    function renderEditorAttachment(card,index) {
+      const open = editorImagePanels.has(card.id) ? editorImagePanels.get(card.id) : Boolean(card.image);
+      return `<div class="image-editor-block" data-image-editor="${esc(card.id)}"><button type="button" class="btn ghost image-attach-toggle" data-image-toggle data-card-id="${esc(card.id)}" aria-label="${card.image?'Edit attached image':'Attach image'} to card ${index+1}" aria-expanded="${open}" onclick="Learn.toggleImageBar(this.dataset.cardId)">${imageIcon()}${card.image?'Image attached':'Attach image'}</button><div class="image-attachment-bar" data-image-bar ${open?'':'hidden'}>${editorAttachmentBody(card)}</div></div>`;
+    }
+    function refreshEditorImage(cardId) {
+      const card=editorImageCard(cardId),block=editorImageBlock(cardId);if(!card||!block)return;
+      const bar=block.querySelector('[data-image-bar]');bar.innerHTML=editorAttachmentBody(card);bar.hidden=false;editorImagePanels.set(cardId,true);
+      const toggle=block.querySelector('[data-image-toggle]');toggle.innerHTML=imageIcon()+(card.image?'Image attached':'Attach image');toggle.setAttribute('aria-expanded','true');
+    }
+    function toggleImageBar(cardId) {
+      const block=editorImageBlock(cardId);if(!block)return;
+      const bar=block.querySelector('[data-image-bar]');bar.hidden=!bar.hidden;
+      editorImagePanels.set(cardId,!bar.hidden);
+      block.querySelector('[data-image-toggle]').setAttribute('aria-expanded',String(!bar.hidden));
+    }
+    function chooseEditorImage(cardId) { editorImageBlock(cardId)?.querySelector('[data-image-file]')?.click(); }
+    async function attachImageToEditor(cardId,file) {
+      if(!file)return;
+      const owner=editor,card=editorImageCard(cardId);if(!owner||!card)return;
+      syncEditor();const token=Symbol();imageTasks.set('editor:'+cardId,token);
+      const status=editorImageBlock(cardId)?.querySelector('[data-image-status]');if(status)status.textContent='Compressing image…';
+      try {
+        const image=await compressImage(file);
+        if(editor!==owner||imageTasks.get('editor:'+cardId)!==token||!owner.cards.includes(card))return;
+        card.image=image;card.imageSide=normalizeImageSide(card.imageSide);refreshEditorImage(cardId);toast('Image attached. Save the deck to keep it.');
+      } catch(error) {if(editor===owner&&imageTasks.get('editor:'+cardId)===token){if(status)status.textContent=error.message;toast(error.message,'error');}}
+      finally {if(imageTasks.get('editor:'+cardId)===token)imageTasks.delete('editor:'+cardId);}
+    }
+    async function editorImageUrl(cardId) {
+      const owner=editor,card=editorImageCard(cardId),block=editorImageBlock(cardId);if(!owner||!card||!block)return;
+      const value=block.querySelector('[data-image-url]').value;syncEditor();const token=Symbol();imageTasks.set('editor:'+cardId,token);
+      const status=block.querySelector('[data-image-status]');status.textContent='Importing and compressing image…';
+      try {
+        const image=await imageFromUrl(value);
+        if(editor!==owner||imageTasks.get('editor:'+cardId)!==token||!owner.cards.includes(card))return;
+        card.image=image;card.imageSide=normalizeImageSide(card.imageSide);refreshEditorImage(cardId);toast('Image imported. Save the deck to keep it.');
+      } catch(error) {if(editor===owner&&imageTasks.get('editor:'+cardId)===token){status.textContent=error.message;toast(error.message,'error');}}
+      finally {if(imageTasks.get('editor:'+cardId)===token)imageTasks.delete('editor:'+cardId);}
+    }
+    function syncImagePlacement(block,side) {
+      block?.querySelectorAll('[data-image-side]').forEach(button=>{const active=button.dataset.imageSide===side;button.classList.toggle('active',active);button.setAttribute('aria-checked',String(active));button.tabIndex=active?0:-1;});
+    }
+    function setEditorImageSide(cardId,side) {
+      const card=editorImageCard(cardId);if(!card)return;card.imageSide=normalizeImageSide(side);syncImagePlacement(editorImageBlock(cardId),side);
+    }
+    function removeEditorImage(cardId) {
+      const card=editorImageCard(cardId);if(!card)return;imageTasks.delete('editor:'+cardId);card.image='';refreshEditorImage(cardId);
+    }
+    function imagePlacementKey(event,button) {
+      const buttons=[...button.closest('[role="radiogroup"]').querySelectorAll('[data-image-side]')];let index=buttons.indexOf(button);
+      if(['ArrowRight','ArrowDown'].includes(event.key))index=(index+1)%buttons.length;
+      else if(['ArrowLeft','ArrowUp'].includes(event.key))index=(index+buttons.length-1)%buttons.length;
+      else if(event.key==='Home')index=0;else if(event.key==='End')index=buttons.length-1;else return;
+      event.preventDefault();event.stopPropagation();const next=buttons[index];
+      if(next.dataset.imageTarget==='study')setStudyImageSide(next.dataset.imageSide);else setEditorImageSide(next.dataset.cardId,next.dataset.imageSide);
+      next.focus({preventScroll:true});
+    }
+    function beginStudyImageEdit(card) {
+      studyImageDraft={image:normalizeCardImage(card.image),imageSide:normalizeImageSide(card.imageSide)};
+    }
+    function studyImageValues() { return studyImageDraft ? {...studyImageDraft} : {image:'',imageSide:'prompt'}; }
+    function studyImageBody() {
+      const draft=studyImageValues();
+      return `<div class="image-attach-main">${attachmentPreview(draft.image,'Current card diagram')}<div class="image-source-controls"><div class="row wrap"><button type="button" class="btn" onclick="Learn.chooseStudyImage()">${imageIcon()}Upload image</button><span class="tiny muted">Or paste into either card field.</span><button type="button" class="btn ghost danger" onclick="Learn.removeStudyImage()" ${draft.image?'':'disabled'}>Remove</button></div><div class="image-url-row"><input id="study-image-url" class="field" type="url" aria-label="Image URL" placeholder="https://example.com/diagram.png"><button type="button" class="btn" onclick="Learn.studyImageUrl()">Import URL</button></div><input id="study-image-file" class="sr-only" tabindex="-1" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif,image/bmp" aria-label="Choose an image for this card" onchange="Learn.attachStudyImage(this.files[0])"></div></div>${imagePlacementButtons(draft.imageSide,'study')}<p class="small image-status" data-image-status role="status" aria-live="polite"></p>`;
+    }
+    function renderStudyImageEditor(card) {
+      if(!studyImageDraft)beginStudyImageEdit(card);
+      return `<div id="study-image-editor" class="image-attachment-bar">${studyImageBody()}</div>`;
+    }
+    function refreshStudyImage() {const host=document.getElementById('study-image-editor');if(host)host.innerHTML=studyImageBody();}
+    function chooseStudyImage() {document.getElementById('study-image-file')?.click();}
+    async function attachStudyImage(file) {
+      if(!file||!cardEdit||!studyImageDraft)return;
+      const owner=cardEdit,draft=studyImageDraft,token=Symbol();imageTasks.set('study',token);
+      const status=document.querySelector('#study-image-editor [data-image-status]');if(status)status.textContent='Compressing image…';
+      try {const image=await compressImage(file);if(cardEdit!==owner||studyImageDraft!==draft||imageTasks.get('study')!==token)return;draft.image=image;refreshStudyImage();}
+      catch(error){if(cardEdit===owner&&imageTasks.get('study')===token){if(status)status.textContent=error.message;toast(error.message,'error');}}
+      finally{if(imageTasks.get('study')===token)imageTasks.delete('study');}
+    }
+    async function studyImageUrl() {
+      const field=document.getElementById('study-image-url');if(!field||!cardEdit||!studyImageDraft)return;
+      const owner=cardEdit,draft=studyImageDraft,token=Symbol();imageTasks.set('study',token);
+      const status=document.querySelector('#study-image-editor [data-image-status]');if(status)status.textContent='Importing and compressing image…';
+      try{const image=await imageFromUrl(field.value);if(cardEdit!==owner||studyImageDraft!==draft||imageTasks.get('study')!==token)return;draft.image=image;refreshStudyImage();}
+      catch(error){if(cardEdit===owner&&imageTasks.get('study')===token){if(status)status.textContent=error.message;toast(error.message,'error');}}
+      finally{if(imageTasks.get('study')===token)imageTasks.delete('study');}
+    }
+    function setStudyImageSide(side) {if(studyImageDraft){studyImageDraft.imageSide=normalizeImageSide(side);syncImagePlacement(document.getElementById('study-image-editor'),side);}}
+    function removeStudyImage() {if(studyImageDraft){imageTasks.delete('study');studyImageDraft.image='';refreshStudyImage();}}
+    function imagePreviewOpen() {return document.getElementById('image-lightbox')?.open===true;}
+    function imageMarkup(card,side,context='study') {
+      let source;try{source=normalizeCardImage(card.image);}catch(_){return '';}
+      if(!source||!['prompt','answer'].includes(side)||!['both',side].includes(card.imageSide||'prompt'))return '';
+      const label=side==='prompt'?'Study diagram for the current question':'Diagram for the answer';
+      return `<button type="button" class="card-image-button ${context==='flashcards'?'flashcard-image':'study-image'}" onclick="Learn.openImagePreview(this.querySelector('img').src,this.querySelector('img').alt)" aria-label="${esc('Zoom '+label)}"><img class="card-diagram" src="${esc(source)}" alt="${esc(label)}" decoding="async" ${context==='test'?'loading="lazy"':''}></button>`;
+    }
+    function ensureImageLightbox() {
+      let box=document.getElementById('image-lightbox');if(box)return box;
+      box=document.createElement('dialog');box.id='image-lightbox';box.className='image-lightbox';box.setAttribute('aria-labelledby','image-preview-title');box.setAttribute('oncancel','Learn.closeImagePreview()');box.setAttribute('onkeydown','Learn.imageZoomKey(event)');
+      box.innerHTML=`<div class="image-lightbox-head"><h2 id="image-preview-title">Diagram preview</h2><div class="row"><button type="button" class="btn" onclick="Learn.changeImageZoom(-0.25)" aria-label="Zoom out">−</button><button type="button" class="btn" id="image-zoom-reset" onclick="Learn.resetImageZoom()" aria-label="Fit image">100%</button><button type="button" class="btn" onclick="Learn.changeImageZoom(0.25)" aria-label="Zoom in">+</button><button type="button" class="icon-btn" onclick="Learn.closeImagePreview()" aria-label="Close image preview">${svg('close')}</button></div></div><div id="image-zoom-stage" class="image-zoom-stage" onwheel="Learn.imageZoomWheel(event)"><img id="image-preview-image" alt=""></div><p class="image-lightbox-hint">Use + / − to zoom, 0 to fit, and Escape to close. Scroll to inspect details.</p>`;
+      document.body.appendChild(box);return box;
+    }
+    function applyImageZoom() {
+      const image=document.getElementById('image-preview-image');if(!image)return;
+      image.style.width=(imageBaseWidth*imageZoom)+'px';
+      const label=document.getElementById('image-zoom-reset');if(label)label.textContent=Math.round(imageZoom*100)+'%';
+    }
+    function resetImageZoom() {
+      const image=document.getElementById('image-preview-image'),stage=document.getElementById('image-zoom-stage');if(!image||!stage||!image.naturalWidth)return;
+      imageBaseWidth=Math.max(1,Math.min(image.naturalWidth,Math.max(80,stage.clientWidth-32),Math.max(80,stage.clientHeight-32)*image.naturalWidth/image.naturalHeight));
+      imageZoom=1;applyImageZoom();stage.scrollTop=0;stage.scrollLeft=0;
+    }
+    function changeImageZoom(delta) {imageZoom=Math.max(.5,Math.min(4,imageZoom+delta));applyImageZoom();}
+    function openImagePreview(source,label='Card diagram') {
+      let image;try{image=normalizeCardImage(source);}catch(error){toast(error.message,'error');return;}
+      if(!image)return;
+      const box=ensureImageLightbox();
+      if(!box.open){imagePreviewFocus=document.activeElement;imagePreviewScroll={x:window.scrollX,y:window.scrollY};imagePreviewOverflow=document.body.style.overflow;}
+      cancelAutoAdvance();document.body.style.overflow='hidden';
+      const preview=document.getElementById('image-preview-image');preview.alt=String(label||'Card diagram');preview.onload=resetImageZoom;preview.src=image;
+      if(!box.open)box.showModal();
+      requestAnimationFrame(()=>{resetImageZoom();box.querySelector('[aria-label="Close image preview"]')?.focus({preventScroll:true});});
+    }
+    function closeImagePreview() {
+      const box=document.getElementById('image-lightbox');if(!box?.open)return;
+      box.close();document.body.style.overflow=imagePreviewOverflow;
+      if(imagePreviewFocus?.isConnected)imagePreviewFocus.focus({preventScroll:true});
+      if(imagePreviewScroll)window.scrollTo({top:imagePreviewScroll.y,left:imagePreviewScroll.x,behavior:'instant'});
+      imagePreviewFocus=null;imagePreviewScroll=null;syncAutoAdvance();
+    }
+    function imageZoomKey(event) {
+      if(event.key==='+'||event.key==='='){event.preventDefault();event.stopPropagation();changeImageZoom(.25);}
+      else if(event.key==='-'||event.key==='_'){event.preventDefault();event.stopPropagation();changeImageZoom(-.25);}
+      else if(event.key==='0'){event.preventDefault();event.stopPropagation();resetImageZoom();}
+    }
+    function imageZoomWheel(event) {if(event.ctrlKey||event.metaKey){event.preventDefault();changeImageZoom(event.deltaY<0?.1:-.1);}}
+    function openCurrentImage() {
+      if(imagePreviewOpen()){closeImagePreview();return;}
+      const focused=document.activeElement?.closest('[data-test-question],[data-card]');
+      const roots=[focused,document.getElementById('modal')?.open?document.getElementById('modal'):null,document.getElementById('main')].filter(Boolean);
+      for(const root of roots){const image=[...root.querySelectorAll('.card-image-button img,.image-thumb img')].find(node=>!node.closest('[aria-hidden="true"],[hidden]'));if(image){openImagePreview(image.src,image.alt);return;}}
+      toast('There is no image on this side of the current card.');
+    }
+    function handleImagePaste(event) {
+      if(imagePreviewOpen())return;
+      const item=[...(event.clipboardData?.items||[])].find(entry=>entry.kind==='file'&&entry.type.startsWith('image/'));
+      const file=item?.getAsFile();if(!file||!(event.target instanceof Element))return;
+      const row=event.target.closest('#editor-cards [data-card]');
+      if(row&&editorImageCard(row.dataset.card)){event.preventDefault();attachImageToEditor(row.dataset.card,file);return;}
+      if(cardEdit&&studyImageDraft&&(event.target.closest('#study-image-editor')||['study-edit-term','study-edit-definition'].includes(event.target.id))){event.preventDefault();attachStudyImage(file);}
+    }
+    document.addEventListener('paste',handleImagePaste);
+    function rewindCopy(value) {
+      return typeof structuredClone === 'function' ? structuredClone(value) : JSON.parse(JSON.stringify(value));
+    }
+    function rewindContext(session) {
+      return rewindCopy({question:session.question,queue:session.queue,results:session.results,total:session.total,hits:session.hits,streak:session.streak,screen:session.screen,round:session.round,roundStart:session.roundStart,recentHistory:session.recentHistory || []});
+    }
+    function clearRewind(session = state.session) {
+      if(!session)return;
+      session.rewindState=null;delete session.rewindReturn;
+      if(session.question)delete session.question.reviewingPrevious;
+    }
+    function saveRewind(stage = 'answer') {
+      const session=state.session,question=session?.question;
+      if(page!=='study'||session?.screen!=='question'||!question||question.reviewingPrevious||question.rewindUsed)return;
+      if(!['answer','leave'].includes(stage))return;
+      if(!question.instanceId)question.instanceId=uid();
+      const previous=session.rewindState;
+      if(stage==='leave'&&question.skipped&&previous&&!previous.used&&previous.questionId===question.instanceId&&previous.snapshot?.question?.phase==='asking') {
+        previous.left=true;
+        return;
+      }
+      const card=deckById(session.deckId)?.cards.find(item=>item.id===question.cardId);
+      if(!card)return;
+      session.rewindState={snapshot:rewindContext(session),cardSnapshot:rewindCopy(card),used:false,stage,questionId:question.instanceId,left:stage==='leave'};
+    }
+    function rewindButton(session = state.session) {
+      const record=session?.rewindState;
+      if(!record||record.used||session.question?.reviewingPrevious)return '';
+      const immediateSkip=session.question?.phase==='incorrect'&&session.question.skipped&&session.question.instanceId===record.questionId;
+      return `<button type="button" class="btn ghost rewind-button" data-action="rewind" onclick="Learn.rewindLast()" aria-label="${immediateSkip?'Undo skip':'Previous / Undo'}" aria-keyshortcuts="Alt+Z" title="Undo the last transition once">${svg('back')}<span class="rewind-label">${immediateSkip?'Undo skip':'Previous / Undo'}</span> <kbd>Alt Z</kbd></button>`;
+    }
+    function restoreRewindCard(session,snapshot) {
+      const deck=deckById(session.deckId),card=deck?.cards.find(item=>item.id===snapshot.id);
+      if(!card)return null;
+      card.level=snapshot.level;card.attempts=snapshot.attempts;card.correct=snapshot.correct;
+      deck.updatedAt=Date.now();
+      if(typeof syncFlashCard==='function')syncFlashCard(deck.id,card);
+      return card;
+    }
+    function rewindLast() {
+      const session=state.session,record=session?.rewindState;
+      if(page!=='study'||!record||record.used||document.querySelector('dialog[open]'))return;
+      const deck=deckById(session.deckId),snapshot=record.snapshot;
+      if(!deck||!snapshot?.question||!session.cardIds.includes(snapshot.question.cardId)){clearRewind(session);persist();return;}
+      flushDraft();cancelAutoAdvance();
+      const savedY=window.scrollY,current=rewindContext(session);
+      const sameQuestion=current.question?.instanceId===record.questionId;
+      const restoreAsking=snapshot.question.phase==='asking';
+      record.used=true;
+      if(restoreAsking) {
+        restoreRewindCard(session,record.cardSnapshot);
+        Object.assign(session,rewindCopy(snapshot));
+        session.question.phase='asking';session.question.rewindUsed=true;
+        delete session.question.reviewingPrevious;
+        if(!sameQuestion&&current.question?.phase==='asking'&&current.question.cardId!==session.question.cardId&&!session.queue.includes(current.question.cardId))session.queue.unshift(current.question.cardId);
+        session.queue=session.queue.filter(id=>id!==session.question.cardId);
+        delete session.rewindReturn;
+      } else {
+        session.rewindReturn={context:current,sourceRound:snapshot.round,resultIndex:snapshot.results.length-1,sourceCardId:snapshot.question.cardId};
+        Object.assign(session,rewindCopy(snapshot));
+        session.question.rewindUsed=true;session.question.reviewingPrevious=true;
+        session.screen='question';
+        session.queue=[...current.queue];
+        if(current.question?.phase==='asking')session.queue=[current.question.cardId,...session.queue.filter(id=>id!==current.question.cardId)];
+      }
+      session.rewindState=record;
+      motion='card-enter';sfx.click();persist();
+      if(session.screen==='question')updateStudyView();else render();
+      window.scrollTo({top:savedY,behavior:'instant'});
+    }
+    function returnFromRewindReview() {
+      const session=state.session,question=session?.question,back=session?.rewindReturn;
+      if(!question?.reviewingPrevious||!back)return false;
+      cancelAutoAdvance();flushDraft();
+      const savedY=window.scrollY,deck=deckById(session.deckId);
+      const result=session.results[back.resultIndex] ? rewindCopy(session.results[back.resultIndex]) : null;
+      const totals={total:session.total,hits:session.hits,streak:session.streak};
+      const queue=[...session.queue];
+      const record=session.rewindState;
+      Object.assign(session,rewindCopy(back.context),totals);
+      if(back.context.round===back.sourceRound&&result&&session.results[back.resultIndex]?.cardId===back.sourceCardId)session.results[back.resultIndex]=result;
+      if(back.context.round!==back.sourceRound) {
+        const previousCard=deck.cards.find(card=>card.id===back.sourceCardId);
+        if(previousCard)session.roundStart[previousCard.id]=previousCard.level;
+      }
+      const current=session.question;
+      session.queue=queue.filter(id=>id!==current?.cardId&&deck.cards.some(card=>card.id===id&&card.level<2));
+      if(current?.phase==='asking') {
+        const card=deck.cards.find(item=>item.id===current.cardId);
+        if(card?.level===2){session.question=null;nextQuestion();}
+        else if(card&&card.level!==current.from) {
+          const fresh=buildQuestion(card,session.options);
+          fresh.instanceId=current.instanceId;fresh.rewindUsed=current.rewindUsed===true;
+          if(fresh.type===current.type&&fresh.answerText===current.answerText&&fresh.promptText===current.promptText){fresh.draft=current.draft;fresh.hintStep=current.hintStep;fresh.attemptsUsed=current.attemptsUsed;fresh.failedChoices=(current.failedChoices||[]).filter(value=>fresh.choices.includes(value));}
+          session.question=fresh;
+        }
+      }
+      if(session.question)delete session.question.reviewingPrevious;
+      delete session.rewindReturn;session.rewindState=record;
+      if(record)record.used=true;
+      motion='card-enter';persist();
+      if(session.screen==='question')updateStudyView();else render();
+      window.scrollTo({top:savedY,behavior:'instant'});
+      return true;
+    }
+    function sanitizeRewind(session) {
+      const raw=session.rewindState,deck=deckById(session.deckId);
+      const discard=()=>{delete session.rewindReturn;if(session.question)delete session.question.reviewingPrevious;return null;};
+      if(!raw||typeof raw!=='object'||!deck||typeof raw.used!=='boolean'||!['answer','leave'].includes(raw.stage))return discard();
+      const ids=new Set(session.cardIds),cards=new Map(deck.cards.map(card=>[card.id,card]));
+      const integer=value=>Number.isSafeInteger(value)&&value>=0;
+      const validQuestion=question=>{
+        if(!question||typeof question!=='object'||!ids.has(question.cardId)||!['asking','correct','incorrect'].includes(question.phase)||![0,1].includes(question.from)||!['mc','written'].includes(question.type)||!['term','definition'].includes(question.answerWith)||typeof question.instanceId!=='string'||!question.instanceId||question.instanceId.length>100)return null;
+        const copy={};
+        for(const [name,value]of Object.entries(question)) {
+          if(value===null||typeof value==='boolean'||(typeof value==='number'&&Number.isFinite(value)))copy[name]=value;
+          else if(typeof value==='string'&&value.length<=(/image/i.test(name)?180000:5000))copy[name]=value;
+          else if(Array.isArray(value)&&['choices','failedChoices'].includes(name)&&value.length<=4&&value.every(item=>typeof item==='string'&&item.length<=5000))copy[name]=[...value];
+          else return null;
+        }
+        if(!Array.isArray(copy.choices)||copy.type==='mc'&&(copy.choices.length<1||copy.choices.length>4)||typeof copy.draft!=='string'||typeof copy.answerText!=='string'||typeof copy.promptText!=='string')return null;
+        try{copy.image=normalizeCardImage(copy.image);copy.imageSide=normalizeImageSide(copy.imageSide);}catch(_){return null;}
+        if(copy.failedChoices!==undefined&&(!copy.failedChoices.every(value=>copy.choices.includes(value))||new Set(copy.failedChoices).size!==copy.failedChoices.length))return null;
+        if(copy.attemptsUsed!==undefined&&![0,1,2].includes(copy.attemptsUsed))return null;
+        return copy;
+      };
+      const validContext=(context,withQuestion=false)=>{
+        if(!context||typeof context!=='object'||!['question','checkpoint','complete','empty'].includes(context.screen)||!integer(context.total)||!integer(context.hits)||context.hits>context.total||!integer(context.streak)||context.streak>context.hits||!Number.isSafeInteger(context.round)||context.round<1)return null;
+        if(!Array.isArray(context.queue)||context.queue.length>ids.size||!context.queue.every(id=>ids.has(id))||new Set(context.queue).size!==context.queue.length)return null;
+        if(!Array.isArray(context.results)||context.results.length>7||!context.results.every(result=>result&&ids.has(result.cardId)&&[0,1,2].includes(result.from)&&[0,1,2].includes(result.to)&&typeof result.correct==='boolean'&&typeof result.override==='boolean'))return null;
+        if(!context.roundStart||!session.cardIds.every(id=>[0,1,2].includes(context.roundStart[id])))return null;
+        if(!Array.isArray(context.recentHistory)||context.recentHistory.length>4||!context.recentHistory.every(id=>cards.has(id)))return null;
+        const question=context.question?validQuestion(context.question):null;
+        if((withQuestion||context.screen==='question')&&!question)return null;
+        if(context.screen==='question'&&question.phase!=='asking'&&context.results[context.results.length-1]?.cardId!==question.cardId)return null;
+        return {question,queue:[...context.queue],results:context.results.map(result=>({cardId:result.cardId,from:result.from,to:result.to,correct:result.correct,override:result.override})),total:context.total,hits:context.hits,streak:context.streak,screen:context.screen,round:context.round,roundStart:Object.fromEntries(session.cardIds.map(id=>[id,context.roundStart[id]])),recentHistory:[...context.recentHistory]};
+      };
+      const snapshot=validContext(raw.snapshot,true),card=raw.cardSnapshot;
+      if(!snapshot||!card||card.id!==snapshot.question.cardId||!cards.has(card.id)||![0,1,2].includes(card.level)||!integer(card.attempts)||!integer(card.correct)||card.correct>card.attempts||typeof raw.questionId!=='string'||raw.questionId!==snapshot.question.instanceId)return discard();
+      const cardSnapshot=rewindCopy(cards.get(card.id));
+      Object.assign(cardSnapshot,{level:card.level,attempts:card.attempts,correct:card.correct});
+      const record={snapshot,cardSnapshot,used:raw.used,stage:raw.stage,questionId:raw.questionId,left:raw.left===true};
+      if(session.question?.reviewingPrevious) {
+        const back=session.rewindReturn,context=validContext(back?.context);
+        if(!record.used||!context||!Number.isSafeInteger(back.sourceRound)||back.sourceRound<1||!Number.isSafeInteger(back.resultIndex)||back.resultIndex<0||back.resultIndex>6||!ids.has(back.sourceCardId))return discard();
+        session.rewindReturn={context,sourceRound:back.sourceRound,resultIndex:back.resultIndex,sourceCardId:back.sourceCardId};
+      } else delete session.rewindReturn;
+      return record;
+    }
+
+    function cardAnswer(card,side) {return String(card[side]||'').trim()||(card.image?String(card[side==='term'?'definition':'term']||'').trim():'');}
+    function cardPrompt(card,side) {
+      if(card.image&&(!String(card.term||'').trim()||!String(card.definition||'').trim())&&['prompt','both'].includes(card.imageSide||'prompt'))return 'Identify the structure shown.';
+      return String(card[side==='term'?'definition':'term']||'').trim()||(card.image?'Identify the structure shown.':'');
+    }
+    function orderedChoiceValues(deck,side,expected,randomize=true) {
+      const unique=new Map();for(const card of deck.cards){const value=cardAnswer(card,side),key=normalize(value);if(value&&!unique.has(key))unique.set(key,value);}
+      const candidates=[...unique.values()].filter(value=>normalize(value)!==normalize(expected));
+      const distractors=(randomize?extremeShuffle(candidates):candidates).slice(0,3);
+      const choices=[expected,...distractors];
+      if(randomize)return extremeShuffle(choices);
+      const order=[...unique.keys()];return choices.sort((a,b)=>order.indexOf(normalize(a))-order.indexOf(normalize(b)));
+    }
+    function arrangePendingQueue(session) {
+      const deck=deckById(session.deckId);if(!deck)return;
+      if(session.options.shuffle!==false)session.queue=protectRecentStart(extremeShuffle(session.queue,session.recentHistory||[]),session.recentHistory||[],deck.cards.length);
+      else {
+        const current=deck.cards.findIndex(card=>card.id===session.question?.cardId),count=deck.cards.length;
+        const rank=id=>{const index=deck.cards.findIndex(card=>card.id===id);if(current<0)return index;const difference=(index-current+count)%count;return difference===0?count:difference;};
+        session.queue.sort((a,b)=>rank(a)-rank(b));
+      }
+    }
+    function shuffleHeader(mode) {
+      const enabled=mode==='flashcards'?state.flashcards?.shuffle:mode==='test'?(state.test?.config.shuffle??state.settings.shuffle):state.session?.options.shuffle;
+      return `<label class="mode-shuffle" for="${mode==='study'?'learn':mode}-shuffle"><span>Shuffle</span><input id="${mode==='study'?'learn':mode}-shuffle" type="checkbox" class="switch" role="switch" onchange="Learn.setModeShuffle(this.checked)" ${enabled!==false?'checked':''}></label>`;
+    }
+    function setModeShuffle(enabled) {
+      if(typeof enabled!=='boolean')return;
+      updateStudyOptions({shuffle:enabled});
+      if(page==='flashcards'&&state.flashcards)toggleFlashShuffle(enabled,true);
+      else if(page==='test'&&state.test) {
+        flushDraft();state.test.config.shuffle=enabled;
+        if(state.test.phase==='taking') {
+          const deck=deckById(state.test.deckId);
+          state.test.questions=enabled?extremeShuffle(state.test.questions):state.test.questions.sort((a,b)=>deck.cards.findIndex(card=>card.id===a.cardId)-deck.cards.findIndex(card=>card.id===b.cardId));
+          state.test.questions.forEach(question=>{if(question.type==='mc')question.choices=enabled?extremeShuffle(question.choices):question.choices.sort((a,b)=>deck.cards.findIndex(card=>normalize(cardAnswer(card,question.answerWith))===normalize(a))-deck.cards.findIndex(card=>normalize(cardAnswer(card,question.answerWith))===normalize(b)));});
+        }
+        persist();render();
+      }
+      syncOptionsControls();
+    }
     function validFlashcards(raw, decks = state.decks) {
       if (!raw || typeof raw !== 'object' || typeof raw.deckId !== 'string') return null;
       const deck = decks.find(item => item.id === raw.deckId);
@@ -352,7 +964,7 @@
         position,
         flipped: raw.flipped === true,
         trackProgress,
-        shuffle: raw.shuffle === true,
+        shuffle: raw.shuffle !== false,
         frontKey,
         studyScope,
         reviewed,
@@ -365,7 +977,8 @@
     function createFlashcards(deckId, cardIds, preferences = {}) {
       const deck = deckById(deckId);
       const chosen = cardIds || selectedCards(deck, state.settings).map(card => card.id);
-      const order = preferences.shuffle ? shuffle(chosen) : [...chosen];
+      const randomize=preferences.shuffle===undefined?state.settings.shuffle!==false:preferences.shuffle===true;
+      const order = randomize ? extremeShuffle(chosen) : [...chosen];
       return {
         deckId,
         cardIds: [...chosen],
@@ -374,7 +987,7 @@
         position: 0,
         flipped: false,
         trackProgress: preferences.trackProgress !== false,
-        shuffle: preferences.shuffle === true,
+        shuffle: randomize,
         frontKey: preferences.frontKey || (state.settings.answerWith === 'term' ? 'definition' : 'term'),
         studyScope: scopeOf(state.settings),
         reviewed: 0,
@@ -453,7 +1066,7 @@
       const flash = state.flashcards, card = flashcardCurrent();
       if (!flash || !card) return;
       if (!['term', 'definition'].includes(side)) side = flash.flipped ? (flash.frontKey === 'term' ? 'definition' : 'term') : flash.frontKey;
-      speak(card[side]);
+      speak(cardAnswer(card,side));
     }
 
     function starFlashcard() {
@@ -485,7 +1098,8 @@
       sfx.click();persist();render();focusFlashcards('flash-track-progress');
     }
 
-    function toggleFlashShuffle(enabled) {
+    function toggleFlashShuffle(enabled,coordinated=false) {
+      if(!coordinated){setModeShuffle(enabled===true);return;}
       const flash = state.flashcards;
       if (!flash || document.getElementById('modal').open) return;
       const currentId = flashcardCurrent()?.id;
@@ -573,7 +1187,7 @@
       const reversed = flash.frontKey !== (state.settings.answerWith === 'term' ? 'definition' : 'term');
       const face = (key, back) => {
         const visible = back === flash.flipped;
-        return `<section id="flash-${back ? 'back' : 'front'}-face" class="flash-face ${back ? 'flash-back' : 'flash-front'}" aria-hidden="${!visible}" ${visible ? '' : 'inert'}><div class="flash-face-tools"><span class="eyebrow">${key === 'term' ? 'Term' : 'Definition'}</span><div class="row" style="gap:2px"><button type="button" class="icon-btn" onclick="Learn.speakFlashcard('${key}')" aria-label="Read ${key} aloud" tabindex="${visible ? 0 : -1}">${svg('speaker')}</button><button type="button" class="icon-btn ${card.starred ? 'starred' : ''}" data-flash-star onclick="Learn.starFlashcard()" aria-label="${card.starred ? 'Unstar' : 'Star'} current card" aria-pressed="${card.starred}" tabindex="${visible ? 0 : -1}">${svg('star')}</button></div></div><div class="flash-card-text" onclick="Learn.flipFlashcard()">${esc(card[key])}</div><div class="flash-face-hint tiny muted">Click or press Space, ↑ or ↓ to flip</div></section>`;
+        return `<section id="flash-${back ? 'back' : 'front'}-face" class="flash-face ${back ? 'flash-back' : 'flash-front'}" aria-hidden="${!visible}" ${visible ? '' : 'inert'}><div class="flash-face-tools"><span class="eyebrow">${key === 'term' ? 'Term' : 'Definition'}</span><div class="row" style="gap:2px"><button type="button" class="icon-btn" onclick="Learn.speakFlashcard('${key}')" aria-label="Read ${key} aloud" tabindex="${visible ? 0 : -1}">${svg('speaker')}</button><button type="button" class="icon-btn ${card.starred ? 'starred' : ''}" data-flash-star onclick="Learn.starFlashcard()" aria-label="${card.starred ? 'Unstar' : 'Star'} current card" aria-pressed="${card.starred}" tabindex="${visible ? 0 : -1}">${svg('star')}</button></div></div>${imageMarkup(card,back?'answer':'prompt','flashcards')}<div class="flash-card-text" onclick="Learn.flipFlashcard()">${esc(card[key]||cardAnswer(card,key))}</div><div class="flash-face-hint tiny muted">Click or press Space, ↑ or ↓ to flip</div></section>`;
       };
       return `<div class="study flashcards">${heading}<div class="flash-toolbar"><label class="flash-toggle" for="flash-track-progress"><span>Track progress</span><input id="flash-track-progress" type="checkbox" class="switch" role="switch" onchange="Learn.toggleFlashTrack(this.checked)" ${flash.trackProgress ? 'checked' : ''}></label><label class="flash-toggle" for="flash-shuffle"><span>Shuffle</span><input id="flash-shuffle" type="checkbox" class="switch" role="switch" onchange="Learn.toggleFlashShuffle(this.checked)" ${flash.shuffle ? 'checked' : ''}></label><label class="flash-toggle" for="flash-flip-side"><span>Flip side</span><input id="flash-flip-side" type="checkbox" class="switch" role="switch" onchange="Learn.toggleFlashSide(this.checked)" ${reversed ? 'checked' : ''}></label></div><div class="round-meta"><span>Card ${currentIndex} of ${count}</span><span>${flash.trackProgress ? `${count - flash.queue.length} known · ${flash.queue.length} to practice` : `${flash.position} viewed`}</span></div><div class="progress-track" role="progressbar" aria-label="Flashcard review progress" aria-valuemin="0" aria-valuemax="${count}" aria-valuenow="${completed}"><div class="progress-fill" style="transform:scaleX(${completed / count})"></div></div><div class="row spread flash-status-line"><span class="badge purple">${esc(tier(card.level))}</span>${accuracyBadge(card)}</div><div class="flashcard-scene"><button id="flash-flip" type="button" class="flash-flip-target" onclick="Learn.flipFlashcard()" aria-label="Flip flashcard" aria-pressed="${flash.flipped}" aria-describedby="${flash.flipped ? 'flash-back-face' : 'flash-front-face'} flash-key-hint"></button><div id="flashcard-inner" class="flashcard-inner ${flash.flipped ? 'flipped' : ''}">${face(frontKey, false)}${face(backKey, true)}</div></div><div id="flash-status" class="sr-only" role="status" aria-live="polite">Showing the ${flash.flipped ? backKey : frontKey}.</div><div class="flash-rating-row">${flash.trackProgress ? `<button type="button" class="btn flash-rating flash-learning" onclick="Learn.rateFlashcard(false)" aria-keyshortcuts="ArrowLeft 1">${svg('back')}Still learning <kbd>← / 1</kbd></button><button type="button" class="btn primary flash-rating" onclick="Learn.rateFlashcard(true)" aria-keyshortcuts="ArrowRight 2">Know it ${svg('check')}<kbd>→ / 2</kbd></button>` : `<button type="button" class="btn flash-rating" onclick="Learn.navigateFlashcard(-1)" aria-keyshortcuts="ArrowLeft 1" ${flash.position ? '' : 'disabled'}>${svg('back')}Previous <kbd>←</kbd></button><button type="button" class="btn primary flash-rating" onclick="Learn.navigateFlashcard(1)" aria-keyshortcuts="ArrowRight 2">Next ${svg('arrow')}<kbd>→</kbd></button>`}</div><p id="flash-key-hint" class="hint" style="text-align:center"><kbd>Space</kbd> / <kbd>↑</kbd> / <kbd>↓</kbd> Flip · <kbd>←</kbd> / <kbd>→</kbd> ${flash.trackProgress ? 'Grade' : 'Navigate'} · <kbd>S</kbd> Star · <kbd>A</kbd> Speak</p><p class="hint" style="text-align:center">${flash.trackProgress ? 'Still learning returns to the queue. Know it saves mastery and removes the card from this review.' : 'Browse freely: navigation does not change mastery or accuracy.'} Your place is saved automatically. Selection changes apply when you restart.</p></div>`;
     }
@@ -624,7 +1238,8 @@
       for (const item of raw.questions) {
         if (!item || typeof item.id !== 'string' || !item.id || item.id.length > 100 || seenQuestions.has(item.id) || !ids.has(item.cardId) || seenCards.has(item.cardId) || (poolIds && !poolIds.includes(item.cardId)) || !['tf','mc','written'].includes(item.type) || !['term','definition'].includes(item.answerWith) || !isText(item.prompt) || !isText(item.expected) || !Array.isArray(item.choices)) return null;
         seenCards.add(item.cardId);seenQuestions.add(item.id);
-        const question = {id:item.id,cardId:item.cardId,type:item.type,answerWith:item.answerWith,prompt:item.prompt,expected:item.expected,choices:[],statement:'',truth:true,response:null,result:null};
+        const attached=deck.cards.find(card=>card.id===item.cardId);let media;try{media={image:normalizeCardImage(item.image===undefined?attached.image:item.image),imageSide:normalizeImageSide(item.imageSide===undefined?attached.imageSide:item.imageSide)};}catch(_){return null;}
+        const question = {...media,id:item.id,cardId:item.cardId,type:item.type,answerWith:item.answerWith,prompt:item.prompt,expected:item.expected,choices:[],statement:'',truth:true,response:null,result:null};
         if (item.type === 'mc') {
           if (item.choices.length < 1 || item.choices.length > 4 || !item.choices.every(isText) || !item.choices.includes(item.expected) || new Set(item.choices.map(normalize)).size !== item.choices.length) return null;
           question.choices = [...item.choices];
@@ -640,11 +1255,11 @@
         if (raw.phase === 'results') question.result = testResultFor(question);
         questions.push(question);
       }
-      return {deckId:deck.id,phase:raw.phase,config:{count:config.count,answerWith:config.answerWith,types:{tf:config.types.tf,mc:config.types.mc,written:config.types.written}},questions,poolIds,celebrate:false};
+      return {deckId:deck.id,phase:raw.phase,config:{count:config.count,answerWith:config.answerWith,types:{tf:config.types.tf,mc:config.types.mc,written:config.types.written},shuffle:config.shuffle!==false},questions,poolIds,celebrate:false};
     }
     function testSetupState(deckId,config=null) {
       const deck = deckById(deckId);
-      return {deckId,phase:'setup',config:config ? {count:Math.max(1,Math.min(deck.cards.length,config.count)),answerWith:config.answerWith,types:{...config.types}} : {count:Math.min(20,deck.cards.length),answerWith:'definition',types:{tf:true,mc:true,written:true}},questions:[],poolIds:null,celebrate:false};
+      return {deckId,phase:'setup',config:config ? {count:Math.max(1,Math.min(deck.cards.length,config.count)),answerWith:config.answerWith,types:{...config.types},shuffle:config.shuffle!==false} : {count:Math.min(20,deck.cards.length),answerWith:'definition',types:{tf:true,mc:true,written:true},shuffle:state.settings.shuffle!==false},questions:[],poolIds:null,celebrate:false};
     }
     function startTest(deckId) {
       const deck = deckById(deckId);if (!deck) return;
@@ -688,23 +1303,23 @@
       scheduleSave();
     }
     function makeTestQuestion(card,type,answerWith,deck) {
-      const expected = card[answerWith],prompt = card[answerWith === 'term' ? 'definition' : 'term'];
+      const expected = cardAnswer(card,answerWith),prompt = cardPrompt(card,answerWith);
       const unique = new Map();
-      for (const other of shuffle(deck.cards)) {
-        const answer = other[answerWith],key=normalize(answer);
+      for (const other of (state.test?.config.shuffle!==false?extremeShuffle(deck.cards):deck.cards)) {
+        const answer = cardAnswer(other,answerWith),key=normalize(answer);
         if (key !== normalize(expected) && !unique.has(key)) unique.set(key,answer);
       }
-      const question = {id:uid(),cardId:card.id,type,answerWith,prompt,expected,choices:[],statement:'',truth:true,response:type==='written'?'':null,result:null};
-      if (type === 'mc') question.choices = shuffle([expected,...[...unique.values()].slice(0,3)]);
+      const question = {id:uid(),cardId:card.id,type,answerWith,prompt,expected,image:normalizeCardImage(card.image),imageSide:normalizeImageSide(card.imageSide),choices:[],statement:'',truth:true,response:type==='written'?'':null,result:null};
+      if (type === 'mc') question.choices = orderedChoiceValues(deck,answerWith,expected,state.test?.config.shuffle!==false);
       if (type === 'tf') {
-        question.truth = !unique.size || Math.random() >= .5;
+        question.truth = !unique.size || cryptographicInt(0,1)===1;
         question.statement = question.truth ? expected : [...unique.values()][0];
       }
       return question;
     }
     function generateTest() {
       const test = state.test;if (page !== 'test' || test?.phase !== 'setup') return;
-      const deck = deckById(test.deckId),enabled = shuffle(['tf','mc','written'].filter(type=>test.config.types[type]));
+      const deck = deckById(test.deckId),enabled = (test.config.shuffle!==false?extremeShuffle:items=>[...items])(['tf','mc','written'].filter(type=>test.config.types[type]));
       const countInput = document.getElementById('test-count'),value=Number(countInput?.value ?? test.config.count);
       const pool=deck.cards.filter(card=>!test.poolIds||test.poolIds.includes(card.id));
       if (!enabled.length || !pool.length || !Number.isSafeInteger(value) || value < 1 || value > pool.length) {
@@ -712,8 +1327,8 @@
         return;
       }
       test.config.count=value;
-      const bothStart=Math.random()<.5?0:1;
-      test.questions=shuffle(pool).slice(0,value).map((card,index)=>makeTestQuestion(card,enabled[index%enabled.length],test.config.answerWith==='both'?((index+bothStart)%2===0?'term':'definition'):test.config.answerWith,deck));
+      const bothStart=cryptographicInt(0,1);
+      test.questions=(test.config.shuffle!==false?extremeShuffle(pool):pool).slice(0,value).map((card,index)=>makeTestQuestion(card,enabled[index%enabled.length],test.config.answerWith==='both'?((index+bothStart)%2===0?'term':'definition'):test.config.answerWith,deck));
       test.phase='taking';test.celebrate=false;sfx.click();persist();render();window.scrollTo(0,0);
       requestAnimationFrame(()=>document.getElementById('test-heading')?.focus({preventScroll:true}));
     }
@@ -761,7 +1376,7 @@
       const missed=test.questions.filter(question=>!question.result.correct);if(!missed.length)return;
       const deck=deckById(test.deckId);prepareMode();
       test.poolIds=missed.map(question=>question.cardId);test.config.count=missed.length;
-      test.questions=shuffle(missed).map(question=>makeTestQuestion(deck.cards.find(card=>card.id===question.cardId),question.type,question.answerWith,deck));
+      test.questions=(test.config.shuffle!==false?extremeShuffle(missed):missed.sort((a,b)=>deck.cards.findIndex(c=>c.id===a.cardId)-deck.cards.findIndex(c=>c.id===b.cardId))).map(question=>makeTestQuestion(deck.cards.find(card=>card.id===question.cardId),question.type,question.answerWith,deck));
       test.phase='taking';test.celebrate=false;page='test';persist();render();window.scrollTo(0,0);
     }
     function practiceMissedTest() {
@@ -769,10 +1384,10 @@
       const missed=[...new Set(test.questions.filter(question=>!question.result.correct).map(question=>question.cardId))];
       if(missed.length)startLearnForCards(test.deckId,missed);
     }
-    function renderTest() {
+    function renderTestBase() {
       const test=state.test,deck=test&&deckById(test.deckId);
       if(!deck)return `<div class="empty"><h2>Choose a deck to take a test.</h2><button type="button" class="btn primary" onclick="Learn.action(this)" data-action="home">Library</button></div>`;
-      const header=`${modeSwitcher(deck.id,'test')}<div class="row spread test-mode-heading"><div><div class="eyebrow">Test mode</div><h1>${esc(deck.title)}</h1></div>${test.phase!=='setup'?'<button type="button" class="btn ghost" onclick="Learn.configureNewTest()">Configure test</button>':''}</div>`;
+      const header=`${modeSwitcher(deck.id,'test')}<div class="row spread test-mode-heading"><div class="row" style="min-width:0"><button type="button" class="icon-btn" onclick="Learn.action(this)" data-action="home" aria-label="Back to library">${svg('back')}</button><div><div class="eyebrow">Test mode</div><h1>${esc(deck.title)}</h1></div></div><div class="row wrap">${shuffleHeader('test')}${test.phase!=='setup'?'<button type="button" class="btn ghost" onclick="Learn.configureNewTest()">Configure test</button>':''}</div></div>`;
       if(!deck.cards.length)return `<div class="study test-view">${header}<div class="empty"><h2>Add cards to build a test.</h2><button type="button" class="btn" onclick="Learn.action(this)" data-action="edit" data-id="${esc(deck.id)}">Edit deck</button></div></div>`;
       if(test.phase==='setup') {
         const max=test.poolIds?.length||deck.cards.length;
@@ -783,7 +1398,22 @@
         return `<div class="study test-view">${header}<div class="test-progress-header"><h2 id="test-heading" tabindex="-1">Take your time. You’ve got this.</h2><span id="test-progress-label" class="small muted" role="status" aria-live="polite">Answered ${answered} of ${total}</span><div id="test-progress" class="progress-track" role="progressbar" aria-label="Test answers completed" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${answered}"><div id="test-progress-fill" class="test-progress-fill" style="transform:scaleX(${answered/total})"></div></div></div><div class="test-question-list">${test.questions.map((question,index)=>`<section class="question test-question" data-test-question="${index}" aria-labelledby="test-question-title-${index}"><div class="row spread"><span class="badge purple">${testTypeLabel(question.type)}</span><span class="tiny muted">Question ${index+1} of ${total}</span></div><h3 id="test-question-title-${index}" class="test-question-prompt">${esc(question.prompt)}</h3>${question.type==='written'?`<label for="test-answer-${index}">Your ${question.answerWith}</label><input id="test-answer-${index}" class="field answer-input" value="${esc(question.response)}" maxlength="5000" autocomplete="off" autocapitalize="off" spellcheck="false" oninput="Learn.captureTestAnswer(${index},this.value)">`:question.type==='mc'?`<div class="choices">${question.choices.map((choice,choiceIndex)=>`<button type="button" class="choice test-choice ${question.response===choice?'selected':''}" aria-pressed="${question.response===choice}" data-test-answer="${choiceIndex}" onclick="Learn.answerTest(${index},${choiceIndex})"><span class="key">${String.fromCharCode(65+choiceIndex)}</span><span>${esc(choice)}</span></button>`).join('')}</div>${question.choices.length<4?'<p class="hint">This deck has fewer than four distinct answers, so this question has fewer choices.</p>':''}`:`<p class="test-statement">${esc(question.statement)}</p><div class="test-tf-choices">${[true,false].map(value=>`<button type="button" class="btn test-choice ${question.response===value?'selected':''}" aria-pressed="${question.response===value}" data-test-answer="${value}" onclick="Learn.answerTest(${index},${value})">${value?'True':'False'}</button>`).join('')}</div>`}</section>`).join('')}</div><div class="test-submit"><p class="small muted">Unanswered questions count as incorrect. Submit when you’re ready to see your score.</p><button type="button" class="btn primary" onclick="Learn.submitTest()">Submit test ${svg('check')}</button></div></div>`;
       }
       const correct=test.questions.filter(question=>question.result?.correct).length,total=test.questions.length,score=Math.round(correct/total*100),missed=total-correct;
-      return `<div class="study test-view checkpoint">${header}${test.celebrate?confetti():''}<section class="question card-enter" aria-labelledby="test-score-heading"><div class="completion-icon">${svg(score>=85?'trophy':'spark')}</div><div class="eyebrow">${score>=85?'Look at you go':'A clear path for your next practice'}</div><h1 id="test-score-heading" tabindex="-1">${score}% · ${correct} / ${total} Correct</h1><p class="muted">${missed?'Every missed answer is a useful place to practice.':'You answered every question correctly.'}</p><div class="test-breakdown">${['tf','mc','written'].map(type=>{const questions=test.questions.filter(question=>question.type===type);return questions.length?`<div class="checkpoint-stat"><strong>${questions.filter(question=>question.result.correct).length}/${questions.length}</strong><span class="tiny muted">${testTypeLabel(type)}</span></div>`:'';}).join('')}</div><div class="row wrap" style="justify-content:center;margin-top:24px"><button type="button" class="btn" onclick="Learn.retakeMissedTest()" ${missed?'':'disabled'}>Retake missed questions</button><button type="button" class="btn primary" onclick="Learn.practiceMissedTest()" ${missed?'':'disabled'}>Practice missed in Learn</button><button type="button" class="btn" onclick="Learn.configureNewTest()">New test</button></div></section><div class="test-review"><h2>Your full review</h2>${test.questions.map((question,index)=>{const result=question.result,user=!testAnswered(question)?'No answer':question.type==='tf'?(question.response?'True':'False'):question.response;return `<section class="question test-review-question"><div class="row spread"><span class="badge ${result.correct?'green':'test-incorrect-badge'}">${result.correct?'✓ Correct':'Review this one'}</span><span class="tiny muted">${index+1} · ${testTypeLabel(question.type)}</span></div><h3 class="test-question-prompt">${esc(question.prompt)}</h3>${question.type==='tf'?`<p class="test-statement">${esc(question.statement)}</p>`:''}<div class="test-review-grid"><div><div class="tiny muted">YOUR ANSWER</div><p class="test-review-answer ${result.correct?'success':'error'}">${esc(user)}</p></div><div><div class="tiny muted">CORRECT ANSWER</div><p class="test-review-answer">${question.type==='tf'?`${question.truth?'True':'False'} · `:''}${esc(question.expected)}</p></div></div>${result.typo?'<p class="hint success">Accepted with minor spelling differences. Exact spelling is shown above.</p>':''}</section>`;}).join('')}</div></div>`;
+      return `<div class="study test-view checkpoint">${header}${test.celebrate?confetti():''}<section class="question card-enter" aria-labelledby="test-score-heading"><div class="completion-icon">${svg(score>=85?'trophy':'spark')}</div><div class="eyebrow">${score>=85?'Look at you go':'A clear path for your next practice'}</div><h1 id="test-score-heading" tabindex="-1">${score}% · ${correct} / ${total} Correct</h1><p class="muted">${missed?'Every missed answer is a useful place to practice.':'You answered every question correctly.'}</p><div class="test-breakdown">${['tf','mc','written'].map(type=>{const questions=test.questions.filter(question=>question.type===type);return questions.length?`<div class="checkpoint-stat"><strong>${questions.filter(question=>question.result.correct).length}/${questions.length}</strong><span class="tiny muted">${testTypeLabel(type)}</span></div>`:'';}).join('')}</div><div class="row wrap" style="justify-content:center;margin-top:24px"><button type="button" class="btn" onclick="Learn.retakeMissedTest()" ${missed?'':'disabled'}>Retake missed questions</button><button type="button" class="btn primary" onclick="Learn.practiceMissedTest()" ${missed?'':'disabled'}>Practice missed in Learn</button><button type="button" class="btn" onclick="Learn.configureNewTest()">New test</button></div></section><div class="test-review"><h2>Your full review</h2>${test.questions.map((question,index)=>{const result=question.result,user=!testAnswered(question)?'No answer':question.type==='tf'?(question.response?'True':'False'):question.response;return `<section class="question test-review-question"><div class="row spread"><span class="badge ${result.correct?'green':'test-incorrect-badge'}">${result.correct?svg('check')+' Correct':'Review this one'}</span><span class="tiny muted">${index+1} · ${testTypeLabel(question.type)}</span></div><h3 class="test-question-prompt">${esc(question.prompt)}</h3>${question.type==='tf'?`<p class="test-statement">${esc(question.statement)}</p>`:''}<div class="test-review-grid"><div><div class="tiny muted">YOUR ANSWER</div><p class="test-review-answer ${result.correct?'success':'error'}">${esc(user)}</p></div><div><div class="tiny muted">CORRECT ANSWER</div><p class="test-review-answer">${question.type==='tf'?`${question.truth?'True':'False'} · `:''}${esc(question.expected)}</p></div></div>${result.typo?'<p class="hint success">Accepted with minor spelling differences. Exact spelling is shown above.</p>':''}</section>`;}).join('')}</div></div>`;
+    }
+    function renderTest() {
+      const template=document.createElement('template');template.innerHTML=renderTestBase();
+      if(state.test?.phase==='taking')template.content.querySelectorAll('[data-test-question]').forEach(section=>{
+        const q=state.test.questions[Number(section.dataset.testQuestion)],media=imageMarkup(q,'prompt','test');if(!media)return;
+        const grid=document.createElement('div');grid.className='prompt-media-grid test-media-block';
+        const copy=document.createElement('div');
+        [...section.children].slice(1).forEach(child=>copy.appendChild(child));
+        grid.append(copy);grid.insertAdjacentHTML('beforeend',media);section.appendChild(grid);
+      });
+      if(state.test?.phase==='results')template.content.querySelectorAll('.test-review-question').forEach((section,index)=>{
+        const q=state.test.questions[index],media=imageMarkup(q,'answer','test')||imageMarkup(q,'prompt','test');
+        if(media)section.insertAdjacentHTML('beforeend',media);
+      });
+      return template.innerHTML;
     }
     function validateBackup(raw) {
       if (!raw || raw.version !== 1 || !Array.isArray(raw.decks) || raw.decks.length > 200) throw new Error('Choose a version 1 Learn backup with a decks array (up to 200 decks).');
@@ -796,14 +1426,16 @@
         return {id:identifier(d.id),title:text(d.title,120,'deck title'),description:typeof d.description==='string'?d.description.slice(0,500):'',createdAt:Number.isFinite(d.createdAt)?d.createdAt:Date.now(),updatedAt:Number.isFinite(d.updatedAt)?d.updatedAt:Date.now(),cards:d.cards.map(c => {
           if(!c||![0,1,2].includes(c.level)||typeof c.starred!=='boolean') throw new Error('Invalid card progress in backup.');
           const attempts=Number.isSafeInteger(c.attempts)&&c.attempts>=0?c.attempts:0;
-          return {id:identifier(c.id),term:text(c.term,5000,'term'),definition:text(c.definition,5000,'definition'),level:c.level,starred:c.starred,attempts,correct:Number.isSafeInteger(c.correct)&&c.correct>=0?Math.min(c.correct,attempts):0};
+          const image=normalizeCardImage(c.image),imageSide=normalizeImageSide(c.imageSide);
+          if(typeof c.term!=='string'||typeof c.definition!=='string'||c.term.length>5000||c.definition.length>5000||(!image&&(!c.term.trim()||!c.definition.trim()))||(image&&!c.term.trim()&&!c.definition.trim()))throw new Error('Cards need a term and definition, or an image and a short label.');
+          return {id:identifier(c.id),term:c.term.trim(),definition:c.definition.trim(),image,imageSide,level:c.level,starred:c.starred,attempts,correct:Number.isSafeInteger(c.correct)&&c.correct>=0?Math.min(c.correct,attempts):0};
         })};
       });
       const s = raw.settings || {};
       if(s.questionFormat!==undefined&&!['adaptive','written','mc'].includes(s.questionFormat))throw new Error('Invalid question format in backup.');
       if(s.sound!==undefined&&typeof s.sound!=='boolean')throw new Error('Invalid sound setting in backup.');
       if(s.studyScope!==undefined&&!['all','starred','hard'].includes(s.studyScope))throw new Error('Invalid study scope in backup.');
-      for(const name of ['requireRetype','quickSkip','autoAdvance','autoSpeak'])if(s[name]!==undefined&&typeof s[name]!=='boolean')throw new Error('Invalid '+name+' setting in backup.');
+      for(const name of ['twoAttempts','shuffle','requireRetype','quickSkip','autoAdvance','autoSpeak'])if(s[name]!==undefined&&typeof s[name]!=='boolean')throw new Error('Invalid '+name+' setting in backup.');
       const questionFormat=formatOf(s);
       return {version:1,decks,settings:{answerWith:s.answerWith==='term'?'term':'definition',questionFormat,written:questionFormat!=='mc',sound:s.sound!==false,...optionDefaults(s),theme:s.theme==='light'?'light':'dark'},session:null,flashcards:validFlashcards(raw.flashcards,decks),test:validTest(raw.test,decks)};
     }
@@ -816,13 +1448,15 @@
       if(!['question','checkpoint','complete','empty'].includes(s.screen)||!Number.isSafeInteger(s.round)||s.round<1||!Number.isSafeInteger(s.total)||s.total<0||!Number.isSafeInteger(s.hits)||s.hits<0||s.hits>s.total) return false;
       if(!s.options||!['term','definition'].includes(s.options.answerWith))return false;
       if(s.options.studyScope!==undefined&&!['all','starred','hard'].includes(s.options.studyScope))return false;
-      for(const name of ['requireRetype','quickSkip','autoAdvance','autoSpeak'])if(s.options[name]!==undefined&&typeof s.options[name]!=='boolean')return false;
+      for(const name of ['twoAttempts','shuffle','requireRetype','quickSkip','autoAdvance','autoSpeak'])if(s.options[name]!==undefined&&typeof s.options[name]!=='boolean')return false;
       if(s.pendingScope!==undefined&&!['all','starred','hard'].includes(s.pendingScope))return false;
       if(s.selectionLabel!==undefined&&(typeof s.selectionLabel!=='string'||s.selectionLabel.length>100))return false;
       Object.assign(s.options,optionDefaults(s.options));
       if(s.options.questionFormat!==undefined&&!['adaptive','written','mc'].includes(s.options.questionFormat))return false;
       s.options.questionFormat=formatOf(s.options);
       s.options.written=s.options.questionFormat!=='mc';
+      if(s.recentHistory===undefined)s.recentHistory=[];
+      if(!Array.isArray(s.recentHistory)||s.recentHistory.length>4||!s.recentHistory.every(id=>ids.has(id)))return false;
       if(s.streak===undefined)s.streak=0;
       if(!Number.isSafeInteger(s.streak)||s.streak<0||s.streak>s.hits)return false;
       if(!Array.isArray(s.results)||s.results.length>7||!s.results.every(r=>r&&ids.has(r.cardId)&&[0,1,2].includes(r.from)&&[0,1,2].includes(r.to)&&typeof r.correct==='boolean'&&typeof r.override==='boolean')) return false;
@@ -834,8 +1468,14 @@
         if(q.answerWith===undefined) q.answerWith=s.options.answerWith;
         if(!['term','definition'].includes(q.answerWith)) return false;
         const current=d.cards.find(c=>c.id===q.cardId);
-        if(q.answerText===undefined)q.answerText=current[q.answerWith];
-        if(q.promptText===undefined)q.promptText=current[q.answerWith==='term'?'definition':'term'];
+        if(q.answerText===undefined)q.answerText=cardAnswer(current,q.answerWith);
+        if(q.promptText===undefined)q.promptText=cardPrompt(current,q.answerWith);
+        try{q.image=normalizeCardImage(q.image===undefined?current.image:q.image);q.imageSide=normalizeImageSide(q.imageSide===undefined?current.imageSide:q.imageSide);}catch(_){return false;}
+        if(q.instanceId===undefined)q.instanceId=uid();
+        if(q.rewindUsed===undefined)q.rewindUsed=false;
+        if(q.attemptsUsed===undefined)q.attemptsUsed=0;
+        if(q.failedChoices===undefined)q.failedChoices=[];
+        if(typeof q.instanceId!=='string'||!q.instanceId||q.instanceId.length>100||typeof q.rewindUsed!=='boolean'||![0,1].includes(q.attemptsUsed)||!Array.isArray(q.failedChoices)||q.failedChoices.length>4||new Set(q.failedChoices).size!==q.failedChoices.length||!q.failedChoices.every(value=>q.choices.includes(value)))return false;
         if(typeof q.answerText!=='string'||typeof q.promptText!=='string')return false;
         if(q.hintStep===undefined)q.hintStep=0;
         if(q.skipped===undefined)q.skipped=false;
@@ -843,6 +1483,7 @@
         if(![0,1,2].includes(q.hintStep)||typeof q.skipped!=='boolean'||!Number.isSafeInteger(q.streakBefore)||q.streakBefore<0)return false;
         if(q.phase!=='asking'&&(s.results.length<1||s.results[s.results.length-1].cardId!==q.cardId)) return false;
       }
+      s.rewindState=sanitizeRewind(s);
       return true;
     }
     try {
@@ -859,10 +1500,10 @@
       catch(e) {storageIssue='Progress is only in memory: browser storage is unavailable or full. Export a JSON backup before closing.';renderBanner();return false;}
     }
     function toast(message,kind='info') { clearTimeout(toastTimer); const host=document.getElementById('toast');const dialog=document.getElementById('modal');(dialog.open?dialog:document.body).appendChild(host);host.textContent=message;host.className='toast'+(kind==='saved'?' saved':kind==='error'?' error':'');toastTimer=setTimeout(()=>host.classList.add('hidden'),4500); }
-    function savedNotice(ok) {toast(ok?'✓ Saved!':'✓ Saved! In this tab only — export a JSON backup to keep it.', 'saved');}
+    function savedNotice(ok) {toast(ok?'Saved!':'Saved! In this tab only — export a JSON backup to keep it.', 'saved');}
     function persist(message) {const ok=save(); if(message) toast(message+(ok?'':' · Export a backup to keep it.'));}
     function applyTheme() {document.documentElement.classList.toggle('light',state.settings.theme==='light');document.documentElement.classList.toggle('dark',state.settings.theme!=='light');}
-    const deckById=id=>state.decks.find(d=>d.id===id);
+    function deckById(id) {return state.decks.find(d=>d.id===id);}
     function stats(cards) { const mastered=cards.filter(c=>c.level===2).length, learning=cards.filter(c=>c.level===1).length;return {mastered,learning,unseen:cards.length-mastered-learning,percent:cards.length?Math.round((mastered*2+learning)/(cards.length*2)*100):0}; }
     function progress(cards,label='Learning progress') {const s=stats(cards);return `<div class="progress-label"><span>${esc(label)}</span><span>${s.percent}% · ${s.mastered}/${cards.length} mastered</span></div><div class="progress-track" role="progressbar" aria-label="${esc(label)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${s.percent}"><div class="progress-fill" style="transform:scaleX(${s.percent/100})"></div></div>`;}
     function renderBanner() {const host=$('#storage-banner');if(!host)return;host.innerHTML=storageIssue?`<div class="banner" role="alert"><div class="row wrap"><span>${esc(storageIssue)}</span>${corruptRaw!==null?'<button onclick="Learn.action(this)" type="button" class="btn" data-action="recover">Download saved data</button><button onclick="Learn.action(this)" type="button" class="btn danger" data-action="reset-storage">Reset storage</button>':''}${storageConflict?'<button onclick="Learn.action(this)" type="button" class="btn" data-action="export">Export this tab</button><button onclick="Learn.action(this)" type="button" class="btn" data-action="reload">Reload latest data</button>':''}</div></div>`:'';}
@@ -910,15 +1551,15 @@
       const deck=deckById(deckId);if(!deck)return;
       const selected=deck.cards.filter(card=>cardIds.includes(card.id));if(!selected.length)return;
       prepareMode();selected.forEach(card=>{card.level=0;syncFlashCard(deckId,card);});
-      state.session={deckId,cardIds:selected.map(card=>card.id),options:{...state.settings,...optionDefaults(state.settings),studyScope:'all',starredOnly:false},selectionLabel:'Missed questions',queue:shuffle(selected.map(card=>card.id)),round:1,total:0,hits:0,streak:0,results:[],roundStart:Object.fromEntries(selected.map(card=>[card.id,0])),question:null,screen:'question'};
-      page='study';nextQuestion();persist();render();window.scrollTo(0,0);
+      state.session={deckId,cardIds:selected.map(card=>card.id),options:{...state.settings,...optionDefaults(state.settings),studyScope:'all',starredOnly:false},selectionLabel:'Missed questions',queue:state.settings.shuffle===false?selected.map(card=>card.id):extremeShuffle(selected.map(card=>card.id)),round:1,total:0,hits:0,streak:0,recentHistory:[],rewindState:null,results:[],roundStart:Object.fromEntries(selected.map(card=>[card.id,0])),question:null,screen:'question'};
+      page='study';nextQuestion();persist();render();
     }
     function mountShell() {
       if(document.getElementById('main'))return;
-      document.getElementById('app').innerHTML=`<div id="storage-banner"></div><div class="shell"><aside class="sidebar"><button onclick="Learn.action(this)" type="button" class="brand" data-action="home" aria-label="Learn home"><span class="brand-mark">l.</span>learn<span style="color:var(--accent)">.</span></button><nav class="nav" aria-label="Main navigation"><button onclick="Learn.action(this)" type="button" class="nav-button ${page==='home'?'selected':''}" data-action="home">${svg('home')}Your library</button><button onclick="Learn.action(this)" type="button" class="nav-button" data-action="new">${svg('plus')}Create a deck</button><button onclick="Learn.showOptions()" type="button" class="nav-button" data-action="options">${svg('settings')}Study options</button></nav><div class="side-note"><span class="live-dot"></span>Made for your own pace.<br><span style="display:block;margin-top:10px">Your cards stay in this browser.<br>No account. Just learning.</span><div class="akx-sig">Made by <span class="akx-badge">AKX</span> <span class="version-tag">${VERSION}</span></div></div></aside><div class="content"><header class="topbar"><span class="breadcrumb">Your space <span style="margin:0 8px;opacity:.5">/</span> ${page==='study'?'Learn mode':'Study library'}</span><div class="top-actions"><button onclick="Learn.showOptions()" type="button" class="icon-btn mobile-options" data-action="options" aria-label="Study options" title="Study options">${svg('settings')}</button><button onclick="Learn.action(this)" type="button" class="icon-btn theme-sun" data-action="theme" aria-label="Switch to ${state.settings.theme==='dark'?'light':'dark'} theme" title="Switch theme">${svg(state.settings.theme==='dark'?'sun':'moon')}</button><button onclick="Learn.action(this)" type="button" class="btn ghost" data-action="backup">${svg('download')}Backups</button></div></header><main class="page" id="main"></main><footer class="site-footer">${svg('spark')}<span>Built for focus · Made by</span><span class="akx-badge">AKX</span><span class="version-tag">${VERSION}</span></footer></div></div>`;
+      document.getElementById('app').innerHTML=`<div id="storage-banner"></div><div class="shell"><aside class="sidebar"><button onclick="Learn.action(this)" type="button" class="brand" data-action="home" aria-label="Learn home"><span class="brand-mark">l.</span><span class="brand-word">learn<span style="color:var(--accent)">.</span></span></button><nav class="nav" aria-label="Main navigation"><button onclick="Learn.action(this)" type="button" class="nav-button ${page==='home'?'selected':''}" data-action="home" aria-label="Your library" title="Your library">${svg('home')}<span class="nav-label">Your library</span></button><button onclick="Learn.action(this)" type="button" class="nav-button" data-action="new" aria-label="Create a deck" title="Create a deck">${svg('plus')}<span class="nav-label">Create a deck</span></button><button onclick="Learn.showOptions()" type="button" class="nav-button" data-action="options" aria-label="Study options" title="Study options">${svg('settings')}<span class="nav-label">Study options</span></button></nav><div class="side-note"><span class="live-dot"></span>Made for your own pace.<br><span style="display:block;margin-top:10px">Your cards stay in this browser.<br>No account. Just learning.</span><div class="akx-sig">${akxLogo()}<span class="version-tag">${VERSION}</span></div></div></aside><div class="content"><header class="topbar"><span class="breadcrumb">Your space <span style="margin:0 8px;opacity:.5">/</span> ${page==='study'?'Learn mode':'Study library'}</span><div class="top-actions"><button onclick="Learn.showOptions()" type="button" class="icon-btn mobile-options" data-action="options" aria-label="Study options" title="Study options">${svg('settings')}</button><button onclick="Learn.action(this)" type="button" class="icon-btn theme-sun" data-action="theme" aria-label="Switch to ${state.settings.theme==='dark'?'light':'dark'} theme" title="Switch theme">${svg(state.settings.theme==='dark'?'sun':'moon')}</button><button onclick="Learn.action(this)" type="button" class="btn ghost" data-action="backup">${svg('download')}Backups</button></div></header><main class="page" id="main"></main><footer class="site-footer">${akxLogo()}<span class="version-tag">${VERSION}</span></footer></div></div>`;
     }
     function updateChrome() {
-      applyTheme();
+      applyTheme();document.body.classList.toggle('in-study',['study','flashcards','test'].includes(page));
       const crumb=document.querySelector('.breadcrumb');
       if(crumb)crumb.innerHTML=`Your space <span style="margin:0 8px;opacity:.5">/</span> ${page==='study'?'Learn mode':page==='flashcards'?'Flashcards':page==='test'?'Test':'Study library'}`;
       document.querySelectorAll('.nav-button[data-action="home"]').forEach(button=>button.classList.toggle('selected',page==='home'));
@@ -927,7 +1568,7 @@
       renderBanner();
     }
     function focusStudy() {
-      if(page!=='study'||state.session?.screen!=='question'||document.getElementById('modal').open)return;
+      if(page!=='study'||state.session?.screen!=='question'||(document.getElementById('modal').open||imagePreviewOpen()))return;
       const q=state.session.question;
       if(q.phase==='asking'&&q.type==='written')document.getElementById('written-answer')?.focus({preventScroll:true});
       else if(q.phase==='asking'&&q.type==='mc'){const card=document.querySelector('#main section.question');if(card){card.tabIndex=-1;card.focus({preventScroll:true});}}
@@ -935,13 +1576,15 @@
       else if(q.phase==='correct')document.getElementById('continue')?.focus({preventScroll:true});
     }
     function render() {
+      const savedY=window.scrollY;
       cancelAutoAdvance();mountShell();updateChrome();
       document.getElementById('main').innerHTML=page==='test'?renderTest():page==='flashcards'?renderFlashcards():page==='study'&&state.session?renderStudy():renderHome();
       lastMainView=page;animateProgress();motion='';
       if(page==='home'&&search){const input=document.getElementById('search');if(input)input.value=search;filterDecks();}
-      focusStudy();syncAutoAdvance();
+      focusStudy();syncAutoAdvance();window.scrollTo({top:savedY,behavior:'instant'});
     }
     function updateStudyView() {
+      const savedY=window.scrollY;
       if(page!=='study'||state.session?.screen!=='question'||lastMainView!=='study'||!document.querySelector('#main section.question')){render();return;}
       const template=document.createElement('template');template.innerHTML=renderStudy();
       const current=document.querySelector('#main .study'),fresh=template.content.querySelector('.study');
@@ -952,7 +1595,7 @@
       }
       const bar=current.querySelector('[aria-label="Round progress"]');
       if(bar)bar.setAttribute('aria-valuenow',String(state.session.results.length));
-      updateChrome();animateProgress();motion='';focusStudy();syncAutoAdvance();
+      updateChrome();animateProgress();motion='';focusStudy();syncAutoAdvance();window.scrollTo({top:savedY,behavior:'instant'});
     }
     function renderHome() {
       const cards=state.decks.flatMap(d=>d.cards), s=stats(cards), session=state.session, resumeDeck=session&&deckById(session.deckId);
@@ -960,7 +1603,7 @@
     }
     function renderDeck(d) {
       const s=stats(d.cards), stars=d.cards.filter(c=>c.starred).length;
-      return `<article class="deck" data-deck-id="${esc(d.id)}"><div class="row spread"><h3>${esc(d.title)}</h3><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="edit" data-id="${esc(d.id)}" aria-label="Edit ${esc(d.title)}" title="Edit deck">${svg('edit')}</button></div><div class="deck-meta">${d.cards.length} ${d.cards.length===1?'card':'cards'}${stars?` <span style="margin:0 8px">·</span> ★ ${stars} starred`:''}</div><p>${esc(d.description||'A little closer to knowing it by heart.')}</p><div class="deck-bottom">${progress(d.cards)}<div class="deck-footer"><span class="badge ${s.mastered===d.cards.length&&d.cards.length?'green':'purple'}">${s.mastered===d.cards.length&&d.cards.length?'✓ All mastered':s.learning?'In progress':'Ready when you are'}</span><div class="row" style="gap:4px"><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="delete" data-id="${esc(d.id)}" aria-label="Delete ${esc(d.title)}" title="Delete deck">${svg('trash')}</button><button type="button" class="btn" onclick="Learn.startFlashcards(this.dataset.id)" data-id="${esc(d.id)}" ${d.cards.length?'':'disabled'}>Flashcards</button><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="learn" data-id="${esc(d.id)}" ${d.cards.length?'':'disabled'}>Learn ${svg('arrow')}</button><button type="button" class="btn" data-action="test" data-id="${esc(d.id)}" onclick="Learn.startTest(this.dataset.id)" ${d.cards.length?'':'disabled'}>Test</button></div></div></div></article>`;
+      return `<article class="deck" data-deck-id="${esc(d.id)}"><div class="row spread"><h3>${esc(d.title)}</h3><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="edit" data-id="${esc(d.id)}" aria-label="Edit ${esc(d.title)}" title="Edit deck">${svg('edit')}</button></div><div class="deck-meta">${d.cards.length} ${d.cards.length===1?'card':'cards'}${stars?` <span style="margin:0 8px">·</span> ${svg('star')} ${stars} starred`:''}</div><p>${esc(d.description||'A little closer to knowing it by heart.')}</p><div class="deck-bottom">${progress(d.cards)}<div class="deck-footer"><span class="badge ${s.mastered===d.cards.length&&d.cards.length?'green':'purple'}">${s.mastered===d.cards.length&&d.cards.length?svg('check')+' All mastered':s.learning?'In progress':'Ready when you are'}</span><div class="row" style="gap:4px"><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="delete" data-id="${esc(d.id)}" aria-label="Delete ${esc(d.title)}" title="Delete deck">${svg('trash')}</button><button type="button" class="btn" onclick="Learn.startFlashcards(this.dataset.id)" data-id="${esc(d.id)}" ${d.cards.length?'':'disabled'}>Flashcards</button><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="learn" data-id="${esc(d.id)}" ${d.cards.length?'':'disabled'}>Learn ${svg('arrow')}</button><button type="button" class="btn" data-action="test" data-id="${esc(d.id)}" onclick="Learn.startTest(this.dataset.id)" ${d.cards.length?'':'disabled'}>Test</button></div></div></div></article>`;
     }
     function filterDecks() {let visible=0;document.querySelectorAll('[data-deck-id]').forEach(el=>{const d=deckById(el.dataset.deckId);const show=(d.title+' '+d.description).toLocaleLowerCase().includes(search.toLocaleLowerCase());el.classList.toggle('hidden',!show);if(show)visible++;});$('#no-results')?.classList.toggle('hidden',visible>0);}
     function modal(title,body,foot='',small=false) {flushDraft();cancelAutoAdvance();const m=$('#modal');const notification=document.getElementById('toast');if(m.contains(notification))document.body.appendChild(notification);m.style.maxWidth=small?'510px':'760px';m.innerHTML=`<div class="modal-head"><h2 id="modal-title">${esc(title)}</h2><button onclick="Learn.closeModal()" type="button" class="icon-btn" data-action="close-modal" aria-label="Close dialog">${svg('close')}</button></div>${body}${foot}`;if(!m.open)m.showModal();}
@@ -968,7 +1611,7 @@
     function confirmAction(title,message,action,label='Confirm') {modal(title,`<div class="modal-body"><p class="muted" style="margin:0;white-space:pre-wrap">${esc(message)}</p></div>`,`<div class="modal-foot"><button onclick="Learn.closeModal()" type="button" class="btn" data-action="close-modal">Cancel</button><button onclick="Learn.action(this)" type="button" class="btn ${action.startsWith('delete')?'danger':'primary'}" data-action="${esc(action)}">${esc(label)}</button></div>`,true);}
     function editDeck(id) {const d=deckById(id);editor=d?JSON.parse(JSON.stringify(d)):{id:uid(),title:'',description:'',cards:[cardNew()],createdAt:Date.now()};editor.bulk='';editor.status='';renderEditor();}
     function renderEditor() {
-      modal(deckById(editor.id)?'Edit your deck':'Create a study deck',`<div id="deck-editor"><div class="modal-body"><div class="form-group"><label for="deck-title">Deck title</label><input id="deck-title" class="field" required maxlength="120" placeholder="e.g. Biology · Cell structures" value="${esc(editor.title)}"></div><div class="form-group"><label for="deck-description">Description <span class="muted" style="font-weight:400">(optional)</span></label><input id="deck-description" class="field" maxlength="500" placeholder="What are you learning?" value="${esc(editor.description)}"></div><div class="bulk"><label for="bulk-input">Bulk import from Quizlet</label><p class="small muted">Paste terms and definitions separated by a tab or comma, one card per line. Quoted CSV fields are supported.</p><textarea id="bulk-input" class="field" rows="4" placeholder="Mitochondria&#9;The powerhouse of the cell&#10;Nucleus&#9;Stores genetic information">${esc(editor.bulk)}</textarea><div class="row spread wrap" style="margin-top:12px"><span class="tiny muted">Import appends cards. Your edits stay intact.</span><button onclick="Learn.action(this)" class="btn" type="button" data-action="bulk-add">${svg('plus')}Add imported cards</button></div><div id="bulk-status" class="small ${editor.statusError?'error':'success'}" role="status" style="margin-top:${editor.status?'12':'0'}px">${esc(editor.status)}</div></div><div class="section-head"><h3 class="cards-count">Cards <span class="small muted">(${editor.cards.length})</span></h3><span class="tiny muted">★ Star cards to practice them later</span></div><div class="card-labels"><span></span><span>TERM</span><span>DEFINITION</span><span></span></div><div class="row wrap editor-utilities"><button type="button" class="btn ghost" onclick="Learn.swapEditorCards()">⇄ Swap terms &amp; definitions</button><button type="button" class="btn ghost" onclick="Learn.deduplicateEditorCards()">Remove duplicates</button></div><div id="editor-cards">${editor.cards.map((c,i)=>`<div class="card-row" data-card="${esc(c.id)}"><div class="card-number">${i+1}<button onclick="Learn.action(this)" type="button" class="icon-btn ${c.starred?'starred':''}" data-action="editor-star" data-id="${esc(c.id)}" aria-label="${c.starred?'Unstar':'Star'} card ${i+1}" aria-pressed="${c.starred}" style="padding:7px 0">${svg('star')}</button></div>${accuracyBadge(c)}<textarea class="field" name="term" required maxlength="5000" aria-label="Term ${i+1}" placeholder="Term">${esc(c.term)}</textarea><textarea class="field" name="definition" required maxlength="5000" aria-label="Definition ${i+1}" placeholder="Definition">${esc(c.definition)}</textarea><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="remove-card" data-id="${esc(c.id)}" aria-label="Remove card ${i+1}">${svg('trash')}</button></div>`).join('')}</div><button onclick="Learn.action(this)" class="btn" type="button" data-action="add-card">${svg('plus')}Add a card</button><p class="hint">Changing a term or definition resets that card’s mastery. Saving edits ends this deck’s active session.</p></div><div class="modal-foot"><button onclick="Learn.closeModal()" class="btn" type="button" data-action="close-modal">Cancel</button><button class="btn primary" type="button" onclick="Learn.saveDeck()">Save deck ${svg('check')}</button></div></div>`);
+      modal(deckById(editor.id)?'Edit your deck':'Create a study deck',`<div id="deck-editor"><div class="modal-body"><div class="form-group"><label for="deck-title">Deck title</label><input id="deck-title" class="field" required maxlength="120" placeholder="e.g. Biology · Cell structures" value="${esc(editor.title)}"></div><div class="form-group"><label for="deck-description">Description <span class="muted" style="font-weight:400">(optional)</span></label><input id="deck-description" class="field" maxlength="500" placeholder="What are you learning?" value="${esc(editor.description)}"></div><div class="bulk"><label for="bulk-input">Bulk import from Quizlet</label><p class="small muted">Paste terms and definitions separated by a tab or comma, one card per line. Quoted CSV fields are supported.</p><textarea id="bulk-input" class="field" rows="4" placeholder="Mitochondria&#9;The powerhouse of the cell&#10;Nucleus&#9;Stores genetic information">${esc(editor.bulk)}</textarea><div class="row spread wrap" style="margin-top:12px"><span class="tiny muted">Import appends cards. Your edits stay intact.</span><button onclick="Learn.action(this)" class="btn" type="button" data-action="bulk-add">${svg('plus')}Add imported cards</button></div><div id="bulk-status" class="small ${editor.statusError?'error':'success'}" role="status" style="margin-top:${editor.status?'12':'0'}px">${esc(editor.status)}</div></div><div class="section-head"><h3 class="cards-count">Cards <span class="small muted">(${editor.cards.length})</span></h3><span class="tiny muted">Star cards to practice them later</span></div><div class="card-labels"><span></span><span>TERM</span><span>DEFINITION</span><span></span></div><div class="row wrap editor-utilities"><button type="button" class="btn ghost" onclick="Learn.swapEditorCards()">⇄ Swap terms &amp; definitions</button><button type="button" class="btn ghost" onclick="Learn.deduplicateEditorCards()">Remove duplicates</button></div><div id="editor-cards">${editor.cards.map((c,i)=>`<div class="card-row" data-card="${esc(c.id)}"><div class="card-number">${i+1}<button onclick="Learn.action(this)" type="button" class="icon-btn ${c.starred?'starred':''}" data-action="editor-star" data-id="${esc(c.id)}" aria-label="${c.starred?'Unstar':'Star'} card ${i+1}" aria-pressed="${c.starred}" style="padding:7px 0">${svg('star')}</button></div>${accuracyBadge(c)}<textarea class="field" name="term" required maxlength="5000" aria-label="Term ${i+1}" placeholder="Term">${esc(c.term)}</textarea><textarea class="field" name="definition" required maxlength="5000" aria-label="Definition ${i+1}" placeholder="Definition">${esc(c.definition)}</textarea><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="remove-card" data-id="${esc(c.id)}" aria-label="Remove card ${i+1}">${svg('trash')}</button>${renderEditorAttachment(c,i)}</div>`).join('')}</div><button onclick="Learn.action(this)" class="btn" type="button" data-action="add-card">${svg('plus')}Add a card</button><p class="hint">Changing a term or definition resets that card’s mastery. Saving edits ends this deck’s active session.</p></div><div class="modal-foot"><button onclick="Learn.closeModal()" class="btn" type="button" data-action="close-modal">Cancel</button><button class="btn primary" type="button" onclick="Learn.saveDeck()">Save deck ${svg('check')}</button></div></div>`);
     }
     function syncEditor() {editor.title=$('#deck-title').value;editor.description=$('#deck-description').value;editor.bulk=$('#bulk-input').value;document.querySelectorAll('#editor-cards [data-card]').forEach(row=>{const c=editor.cards.find(c=>c.id===row.dataset.card);if(c){c.term=$('[name=term]',row).value;c.definition=$('[name=definition]',row).value;}});}
     function parseBulk(input) {
@@ -987,20 +1630,21 @@
     function saveDeck() {
       if(!editor)return;
       syncEditor();
+      if(imageWorkPending('editor')){toast('Please wait for image compression to finish.');return;}
       if(!editor.title.trim()){toast('Give your deck a title.','error');document.getElementById('deck-title').focus();return;}
-      let draft=editor.cards.filter(c=>c.term.trim()||c.definition.trim());
+      let draft=editor.cards.filter(c=>c.term.trim()||c.definition.trim()||c.image);
       if(editor.bulk.trim()) {
         try {draft=draft.concat(parseBulk(editor.bulk));}
         catch(e){toast(e.message,'error');document.getElementById('bulk-input').focus();return;}
       }
       if(!draft.length){toast('Add at least one complete card.','error');return;}
       if(editor.title.trim().length>120||editor.description.length>500||draft.some(c=>c.term.length>5000||c.definition.length>5000)){toast('Limit: 120 characters for titles, 500 for descriptions, and 5,000 per card field.','error');return;}
-      const incomplete=draft.find(c=>!c.term.trim()||!c.definition.trim());
-      if(incomplete){toast('Each card needs both a term and a definition.','error');return;}
+      const incomplete=draft.find(c=>c.image?!c.term.trim()&&!c.definition.trim():!c.term.trim()||!c.definition.trim());
+      if(incomplete){toast('Cards need both text sides, or an image with a short label.','error');return;}
       const old=deckById(editor.id);
       if(draft.length>10000||state.decks.filter(d=>d.id!==editor.id).reduce((n,d)=>n+d.cards.length,0)+draft.length>50000){toast('Limit: 10,000 cards per deck and 50,000 cards in total.','error');return;}
       if(!old&&state.decks.length>=200){toast('Limit: 200 decks. Export or delete a deck first.','error');return;}
-      const cards=draft.map(c=>{const before=old?.cards.find(b=>b.id===c.id);const changed=before&&(before.term!==c.term.trim()||before.definition!==c.definition.trim());return {...c,term:c.term.trim(),definition:c.definition.trim(),...(changed?{level:0,attempts:0,correct:0}:{})};});
+      const cards=draft.map(c=>{const before=old?.cards.find(b=>b.id===c.id);const image=normalizeCardImage(c.image),imageSide=normalizeImageSide(c.imageSide);const changed=before&&(before.term!==c.term.trim()||before.definition!==c.definition.trim()||before.image!==image||before.imageSide!==imageSide);return {...c,term:c.term.trim(),definition:c.definition.trim(),image,imageSide,...(changed?{level:0,attempts:0,correct:0}:{})};});
       const next={id:editor.id,title:editor.title.trim(),description:editor.description.trim(),cards,createdAt:editor.createdAt,updatedAt:Date.now()};
       if(old)state.decks[state.decks.indexOf(old)]=next;else state.decks.unshift(next);
       if(state.session?.deckId===next.id)state.session=null;
@@ -1021,8 +1665,8 @@
       return `<div id="options-panel"><div class="modal-body options-body">
         <section class="options-section" aria-labelledby="format-label"><h3 id="format-label" class="options-section-title">How do you want to answer?</h3><p class="small muted">Choose the practice that works for you.</p><div class="format-grid" role="radiogroup" aria-labelledby="format-label" data-option-group="questionFormat">${formats.map(([value,icon,title,subtitle])=>`<button type="button" class="format-card ${format===value?'active':''}" role="radio" aria-checked="${format===value}" tabindex="${format===value?'0':'-1'}" data-option="questionFormat" data-value="${value}" onclick="Learn.setStudyOption('questionFormat','${value}')" onkeydown="Learn.optionKey(event,this)"><span class="format-icon">${svg(icon)}</span><span class="format-title">${title}</span><span class="format-subtitle">${subtitle}</span><span class="format-check" aria-hidden="true">${svg('check')}</span></button>`).join('')}</div></section>
         <section class="options-section" aria-labelledby="answer-label"><h3 id="answer-label" class="options-section-title">Answer with</h3><div id="answer-with" class="segmented" role="radiogroup" aria-labelledby="answer-label" data-option-group="answerWith" style="--segments:2;--selected:${current.answerWith==='term'?1:0}"><span class="segment-highlight" aria-hidden="true"></span>${optionRadio('answerWith','definition','Definition',current.answerWith!=='term')}${optionRadio('answerWith','term','Term',current.answerWith==='term')}</div></section>
-        <section class="options-section" aria-labelledby="scope-label"><h3 id="scope-label" class="options-section-title">Cards to study</h3><div id="study-scope" class="segmented" role="radiogroup" aria-labelledby="scope-label" data-option-group="studyScope" style="--segments:3;--selected:${Math.max(0,['all','starred','hard'].indexOf(scope))}"><span class="segment-highlight" aria-hidden="true"></span>${optionRadio('studyScope','all','All cards',scope==='all')}${optionRadio('studyScope','starred','Starred ★',scope==='starred')}${optionRadio('studyScope','hard','Hardest 🔥',scope==='hard')}</div><p class="tiny muted scope-help">Hardest focuses on missed cards and lower lifetime accuracy.</p></section>
-        <section class="options-toggles" aria-label="Study preferences">${toggle('starredOnly','starred-only','Starred cards only','Limit your next unanswered selection to starred cards.')}${toggle('sound','sound-on','Sound effects','Gentle synthesized chimes and encouragement.')}${toggle('requireRetype','require-retype-on','Retype answer when wrong/skipped','Practice the exact answer before continuing. You can always skip retyping.')}${toggle('quickSkip','quick-skip-on','Quick-skip with Enter / Space','Empty Enter skips written answers; Enter or Space skips an MC question.')}${toggle('autoAdvance','auto-advance-on','Auto-advance','Continue 900 ms after a correct answer.')}${toggle('autoSpeak','auto-speak-on','Read questions aloud','Automatically speak each new question.')}</section>
+        <section class="options-section" aria-labelledby="scope-label"><h3 id="scope-label" class="options-section-title">Cards to study</h3><div id="study-scope" class="segmented" role="radiogroup" aria-labelledby="scope-label" data-option-group="studyScope" style="--segments:3;--selected:${Math.max(0,['all','starred','hard'].indexOf(scope))}"><span class="segment-highlight" aria-hidden="true"></span>${optionRadio('studyScope','all','All cards',scope==='all')}${optionRadio('studyScope','starred',svg('star')+' Starred',scope==='starred')}${optionRadio('studyScope','hard',svg('spark')+' Hardest',scope==='hard')}</div><p class="tiny muted scope-help">Hardest focuses on missed cards and lower lifetime accuracy.</p></section>
+        <section class="options-toggles" aria-label="Study preferences">${toggle('starredOnly','starred-only','Starred cards only','Limit your next unanswered selection to starred cards.')}${toggle('sound','sound-on','Sound effects','Gentle synthesized chimes and encouragement.')}${toggle('twoAttempts','two-attempts-on','Two attempts','Try once more before an incorrect answer counts.')}${toggle('shuffle','shuffle-on','Shuffle','Use cryptographic, unpredictable card and answer order.')}${toggle('requireRetype','require-retype-on','Retype answer when wrong/skipped','Practice the exact answer before continuing. You can always skip retyping.')}${toggle('quickSkip','quick-skip-on','Quick-skip with Enter / Space','Empty Enter skips written answers; Enter or Space skips an MC question.')}${toggle('autoAdvance','auto-advance-on','Auto-advance','Continue 900 ms after a correct answer.')}${toggle('autoSpeak','auto-speak-on','Read questions aloud','Automatically speak each new question.')}</section>
         <div class="notice">Changes apply immediately to unanswered questions. Submitted answers and corrections keep their original format and direction; card-selection changes wait until that feedback is finished.</div>
       </div><div class="modal-foot"><span class="small muted" style="margin-right:auto;align-self:center">Changes save automatically</span><button type="button" class="btn primary" onclick="Learn.saveOptions()">Save settings</button></div></div>`;
     }
@@ -1051,7 +1695,8 @@
     function setStudyOption(name,value) {
       const allowed={questionFormat:['adaptive','written','mc'],answerWith:['definition','term'],studyScope:['all','starred','hard']};
       if(allowed[name]){if(!allowed[name].includes(value))return;}
-      else if(!['sound','starredOnly','requireRetype','quickSkip','autoAdvance','autoSpeak'].includes(name)||typeof value!=='boolean')return;
+      else if(!['sound','starredOnly','twoAttempts','shuffle','requireRetype','quickSkip','autoAdvance','autoSpeak'].includes(name)||typeof value!=='boolean')return;
+      if(name==='shuffle'){setModeShuffle(value);return;}
       updateStudyOptions({[name]:value});
       syncOptionsControls();
     }
@@ -1078,16 +1723,18 @@
       const session=state.session;
       let redraw=false;
       if(session) {
-        for(const key of ['answerWith','questionFormat','written','studyScope','starredOnly','requireRetype','quickSkip','autoAdvance','autoSpeak'])session.options[key]=state.settings[key];
+        for(const key of ['answerWith','questionFormat','written','studyScope','starredOnly','twoAttempts','shuffle','requireRetype','quickSkip','autoAdvance','autoSpeak'])session.options[key]=state.settings[key];
         if(scopeOf(old)!==scopeOf(session.options)) {
           if(session.question&&session.question.phase!=='asking')session.pendingScope=session.options.studyScope;
           else {setSessionScope(session);nextQuestion();redraw=true;}
         } else if(session.screen==='question'&&session.question?.phase==='asking'&&(old.answerWith!==session.options.answerWith||formatOf(old)!==formatOf(session.options))) {
           const card=deckById(session.deckId).cards.find(c=>c.id===session.question.cardId);
-          session.question=buildQuestion(card,session.options);motion='card-flip';redraw=true;
+          const previous=session.question;session.question=buildQuestion(card,session.options);session.question.instanceId=previous.instanceId;session.question.rewindUsed=previous.rewindUsed;session.question.attemptsUsed=previous.attemptsUsed;session.question.failedChoices=previous.failedChoices.filter(value=>session.question.choices.includes(value));motion='card-flip';redraw=true;
         }
       }
       if(session?.question?.phase==='incorrect'&&old.requireRetype!==session.options.requireRetype)redraw=true;
+      if(session&&old.shuffle!==session.options.shuffle){arrangePendingQueue(session);if(session.question?.phase==='asking'&&session.question.type==='mc'){const q=session.question,deck=deckById(session.deckId);q.choices=session.options.shuffle!==false?extremeShuffle(q.choices):q.choices.sort((a,b)=>deck.cards.findIndex(card=>normalize(cardAnswer(card,q.answerWith))===normalize(a))-deck.cards.findIndex(card=>normalize(cardAnswer(card,q.answerWith))===normalize(b)));redraw=true;}}
+      const header=document.getElementById('learn-shuffle');if(header&&session)header.checked=session.options.shuffle!==false;
       if(patch.autoSpeak===false&&'speechSynthesis' in window)window.speechSynthesis.cancel();
       persist();syncOptionsControls();
       if(redraw&&page==='study')updateStudyView();
@@ -1102,10 +1749,11 @@
       sfx.click();setStudyOption('answerWith',s.options.answerWith==='term'?'definition':'term');
     }
     function setSessionScope(session) {
+      clearRewind(session);
       const deck=deckById(session.deckId),cards=selectedCards(deck,session.options);
       if(session.results.length)session.round++;
       session.cardIds=cards.map(c=>c.id);session.queue=cards.filter(c=>c.level<2).map(c=>c.id);
-      if(scopeOf(session.options)!=='hard')session.queue=shuffle(session.queue);
+      if(session.options.shuffle!==false)session.queue=extremeShuffle(session.queue,session.recentHistory||[]);
       session.results=[];session.roundStart=Object.fromEntries(cards.map(c=>[c.id,c.level]));
       session.question=null;session.screen=cards.length?'question':'empty';delete session.pendingScope;
     }
@@ -1114,13 +1762,14 @@
       const d=deckById(id);if(!d)return;
       const selected=selectedCards(d,state.settings);
       if(!selected.length){modal('No starred cards yet',`<div class="modal-body"><p class="muted">Star cards in the deck editor, or turn off “Starred cards only” in study options.</p></div>`,`<div class="modal-foot"><button onclick="Learn.action(this)" type="button" class="btn" data-action="edit" data-id="${esc(d.id)}">Edit deck</button><button onclick="Learn.showOptions()" type="button" class="btn primary" data-action="options">Study options</button></div>`,true);return;}
-      const s={deckId:id,cardIds:selected.map(c=>c.id),options:{answerWith:state.settings.answerWith,questionFormat:state.settings.questionFormat,written:state.settings.written,...optionDefaults(state.settings)},queue:scopeOf(state.settings)==='hard'?selected.filter(c=>c.level<2).map(c=>c.id):shuffle(selected.filter(c=>c.level<2).map(c=>c.id)),round:1,total:0,hits:0,streak:0,results:[],roundStart:Object.fromEntries(selected.map(c=>[c.id,c.level])),question:null,screen:'question'};
-      state.session=s;page='study';nextQuestion();persist();render();window.scrollTo(0,0);
+      const s={deckId:id,cardIds:selected.map(c=>c.id),options:{answerWith:state.settings.answerWith,questionFormat:state.settings.questionFormat,written:state.settings.written,...optionDefaults(state.settings)},queue:state.settings.shuffle===false?selected.filter(c=>c.level<2).map(c=>c.id):extremeShuffle(selected.filter(c=>c.level<2).map(c=>c.id)),round:1,total:0,hits:0,streak:0,recentHistory:[],rewindState:null,results:[],roundStart:Object.fromEntries(selected.map(c=>[c.id,c.level])),question:null,screen:'question'};
+      state.session=s;page='study';nextQuestion();persist();render();
     }
     function nextQuestion() {
       const s=state.session,d=deckById(s.deckId);
       cancelAutoAdvance();
       if(s.pendingScope)setSessionScope(s);
+      if(!s.results.length&&s.options.shuffle!==false)s.queue=protectRecentStart(extremeShuffle(s.queue,s.recentHistory||[]),s.recentHistory||[],d.cards.length);
       if(!s.cardIds.length){s.screen='empty';s.question=null;return;}
       s.queue=s.queue.filter(id=>d.cards.some(c=>c.id===id&&c.level<2));
       if(!s.queue.length||s.results.length>=7){
@@ -1131,15 +1780,14 @@
         return;
       }
       const nextId=s.queue.shift(),card=d.cards.find(c=>c.id===nextId);
-      s.question=buildQuestion(card,s.options);s.screen='question';motion='card-enter';
+      s.question=buildQuestion(card,s.options);s.screen='question';s.recentHistory=[...(s.recentHistory||[]),card.id].slice(-4);motion='card-enter';
       if(s.options.autoSpeak)speak(s.question.promptText);
     }
     function buildQuestion(card,options) {
-      const d=deckById(state.session.deckId),format=formatOf(options);
-      const type=format==='written'||(format==='adaptive'&&card.level===1)?'written':'mc';
-      const correct=card[options.answerWith],unique=new Map();
-      if(type==='mc')for(const c of shuffle(d.cards)){const value=c[options.answerWith],key=normalize(value);if(key!==normalize(correct)&&!unique.has(key))unique.set(key,value);}
-      return {cardId:card.id,from:card.level,type,answerWith:options.answerWith,answerText:card[options.answerWith],promptText:card[options.answerWith==='term'?'definition':'term'],choices:type==='mc'?shuffle([correct,...[...unique.values()].slice(0,3)]):[],phase:'asking',draft:'',submitted:'',typo:false,hintStep:0,skipped:false,streakBefore:0};
+      const deck=deckById(state.session.deckId),format=formatOf(options);
+      const type=format==='written'||format==='adaptive'&&card.level===1?'written':'mc';
+      const answerText=cardAnswer(card,options.answerWith);
+      return {instanceId:uid(),rewindUsed:false,cardId:card.id,from:card.level,type,answerWith:options.answerWith,answerText,promptText:cardPrompt(card,options.answerWith),image:normalizeCardImage(card.image),imageSide:normalizeImageSide(card.imageSide),choices:type==='mc'?orderedChoiceValues(deck,options.answerWith,answerText,options.shuffle!==false):[],phase:'asking',draft:'',submitted:'',typo:false,hintStep:0,skipped:false,streakBefore:0,attemptsUsed:0,failedChoices:[]};
     }
     function skipQuestion() {
       const q=state.session?.question;
@@ -1170,6 +1818,7 @@
       const session=state.session,q=session?.question;
       if(page!=='study'||$('#modal').open||session?.screen!=='question'||!q||q.type!=='mc'||q.phase!=='asking')return;
       if(!Number.isInteger(index)||index<0||index>=q.choices.length)return;
+      if(q.failedChoices.includes(q.choices[index]))return;
       submitAnswer(q.choices[index]);
     }
     function normalize(text) {const base=String(text).normalize('NFKC').toLocaleLowerCase().trim();const clean=base.replace(/[\p{P}\p{S}]/gu,'').replace(/\s+/gu,' ').trim();return clean||base.replace(/\s+/gu,' ').trim();}
@@ -1247,12 +1896,18 @@
       }
       return {correct:false, typo:false};
     }
-    function requeue(id,early) {const s=state.session;s.queue=s.queue.filter(x=>x!==id);const card=deckById(s.deckId).cards.find(c=>c.id===id);if(card.level<2){if(early)s.queue.splice(Math.min(2,s.queue.length),0,id);else s.queue.push(id);}}
+    function requeue(id,early) {
+      const session=state.session;session.queue=session.queue.filter(item=>item!==id);
+      const card=deckById(session.deckId).cards.find(item=>item.id===id);
+      if(card.level<2){if(early&&session.options.shuffle!==false)session.queue.splice(randomRequeueOffset(session.queue.length),0,id);else session.queue.push(id);}
+    }
     function submitAnswer(value,skipped=false) {
       const s=state.session,q=s?.question;if(page!=='study'||s?.screen!=='question'||!q||q.phase!=='asking')return;
       if(!skipped&&!String(value).trim()){if(s.options.quickSkip!==false){skipQuestion();return;}toast('Enter an answer first.');return;}
-      flushDraft();cancelAutoAdvance();
+      if(q.type==='mc'&&q.failedChoices.includes(value))return;
+      flushDraft();cancelAutoAdvance();saveRewind('answer');
       const d=deckById(s.deckId),card=d.cards.find(c=>c.id===q.cardId),result=skipped?{correct:false,typo:false}:q.type==='written'?grade(value,q.answerText):{correct:value===q.answerText,typo:false};
+      if(s.options.twoAttempts===true&&!skipped&&!result.correct&&q.attemptsUsed===0){q.attemptsUsed=1;if(q.type==='mc')q.failedChoices.push(value);else q.draft=String(value);motion='answer-wrong';sfx.wrong();persist();updateStudyView();if(q.type==='written'){const input=document.getElementById('written-answer');input?.focus({preventScroll:true});input?.select();}return;}
       card.attempts++;if(result.correct)card.correct++;card.level=result.correct?Math.min(2,q.from+1):0;syncFlashCard(d.id,card);d.updatedAt=Date.now();
       q.streakBefore=s.streak;q.skipped=skipped;
       s.total++;if(result.correct){s.hits++;s.streak++;}else s.streak=0;
@@ -1263,47 +1918,62 @@
       const s=state.session,q=s?.question;if(!q||q.type!=='written'||q.skipped||q.phase!=='incorrect')return;
       const card=deckById(s.deckId).cards.find(c=>c.id===q.cardId),r=s.results[s.results.length-1];card.level=q.from+1;syncFlashCard(s.deckId,card);card.correct++;r.correct=true;r.override=true;r.to=card.level;s.hits++;s.streak=q.streakBefore+1;q.phase='correct';q.overridden=true;requeue(card.id,false);motion='answer-correct';sfx.correct();persist();updateStudyView();
     }
-    function advance() {cancelAutoAdvance();const q=state.session?.question;if(!q||(q.phase!=='correct'&&!(q.phase==='incorrect'&&state.session.options.requireRetype!==true)))return;nextQuestion();persist();render();window.scrollTo(0,0);}
+    function advance() {if(returnFromRewindReview())return;cancelAutoAdvance();const q=state.session?.question;if(!q||(q.phase!=='correct'&&!(q.phase==='incorrect'&&state.session.options.requireRetype!==true)))return;saveRewind('leave');nextQuestion();persist();render();}
     function correction(value) {
+      if(returnFromRewindReview())return;
       const s=state.session,q=s?.question;if(!q||q.phase!=='incorrect')return;
       flushDraft();
       if(s.options.requireRetype!==true){advance();return;}
       if(!String(value).trim()&&s.options.quickSkip!==false){skipRetyping();return;}
-      if(normalize(value)!==normalize(q.answerText)){const hint=$('#correction-hint');hint.textContent='Copy the correct answer above to reinforce it. Spelling must match; case and punctuation are ignored.';hint.className='small error';$('#correction').setAttribute('aria-invalid','true');$('#correction').focus();return;}
-      nextQuestion();persist();render();window.scrollTo(0,0);
+      if(normalize(value)!==normalize(q.answerText)){const hint=$('#correction-hint');hint.textContent='Copy the correct answer above to reinforce it. Spelling must match; case and punctuation are ignored.';hint.className='small error';$('#correction').setAttribute('aria-invalid','true');$('#correction').focus({preventScroll:true});return;}
+      saveRewind('leave');nextQuestion();persist();render();
     }
     function skipRetyping() {
+      if(returnFromRewindReview())return;
       const q=state.session?.question;if(page!=='study'||$('#modal').open||q?.phase!=='incorrect')return;
-      flushDraft();sfx.click();nextQuestion();persist();render();window.scrollTo(0,0);
+      flushDraft();sfx.click();saveRewind('leave');nextQuestion();persist();render();
     }
     function editStudyCard() {
       const q=state.session?.question;if(page!=='study'||q?.phase!=='asking')return;
       cardEdit={deckId:state.session.deckId,cardId:q.cardId};
       const card=deckById(cardEdit.deckId).cards.find(c=>c.id===cardEdit.cardId);
-      modal('Edit card',`<div class="modal-body"><div class="form-group"><label for="study-edit-term">Term</label><textarea id="study-edit-term" class="field" maxlength="5000">${esc(card.term)}</textarea></div><div class="form-group"><label for="study-edit-definition">Definition</label><textarea id="study-edit-definition" class="field" maxlength="5000">${esc(card.definition)}</textarea></div><p class="hint">Changed text restarts this card at Unseen. Round results and lifetime accuracy are kept.</p></div>`,`<div class="modal-foot"><button type="button" class="btn" onclick="Learn.closeModal()">Cancel</button><button type="button" class="btn primary" onclick="Learn.saveStudyCard()">Save card</button></div>`,true);
+      beginStudyImageEdit(card);
+      modal('Edit card',`<div class="modal-body"><div class="form-group"><label for="study-edit-term">Term</label><textarea id="study-edit-term" class="field" maxlength="5000">${esc(card.term)}</textarea></div><div class="form-group"><label for="study-edit-definition">Definition</label><textarea id="study-edit-definition" class="field" maxlength="5000">${esc(card.definition)}</textarea></div>${renderStudyImageEditor(card)}<p class="hint">Changed text or image restarts this card at Unseen. Round results and lifetime accuracy are kept.</p></div>`,`<div class="modal-foot"><button type="button" class="btn" onclick="Learn.closeModal()">Cancel</button><button type="button" class="btn primary" onclick="Learn.saveStudyCard()">Save card</button></div>`,true);
     }
     function saveStudyCard() {
       if(!cardEdit)return;
+      if(imageWorkPending('study')){toast('Please wait for image compression to finish.');return;}
+      const media=studyImageValues();
       const term=document.getElementById('study-edit-term').value.trim(),definition=document.getElementById('study-edit-definition').value.trim();
-      if(!term||!definition||term.length>5000||definition.length>5000){toast('Enter both sides, up to 5,000 characters each.','error');return;}
+      if((media.image?!term&&!definition:!term||!definition)||term.length>5000||definition.length>5000){toast('Enter both sides, up to 5,000 characters each.','error');return;}
       const deck=deckById(cardEdit.deckId),card=deck?.cards.find(c=>c.id===cardEdit.cardId),session=state.session;
       if(!card||session?.question?.cardId!==card.id){closeModal();return;}
-      if(card.term!==term||card.definition!==definition){Object.assign(card,{term,definition,level:0});syncFlashCard(deck.id,card);deck.updatedAt=Date.now();session.question=buildQuestion(card,session.options);motion='card-flip';}
+      if(card.term!==term||card.definition!==definition||card.image!==media.image||card.imageSide!==media.imageSide){clearRewind(session);Object.assign(card,{term,definition,...media,level:0});syncFlashCard(deck.id,card);deck.updatedAt=Date.now();session.question=buildQuestion(card,session.options);motion='card-flip';}
       closeModal();const stored=save();updateStudyView();savedNotice(stored);
     }
     function renderFeedback(session,question,card,answer) {
-      if(question.phase==='correct')return `<div class="feedback" role="status">${session.options.autoAdvance?'<div class="auto-advance-track" aria-hidden="true"><span class="auto-advance-fill"></span></div>':''}<h3 class="success">${question.overridden?'You know it. Grading updated.':question.typo?'Correct — just a small spelling fix.':card.level===2?'You’ve mastered this one!':session.streak>=3?`${session.streak} in a row — keep it going!`:'Nice work. One step closer.'}</h3>${question.typo?`<div class="small muted">Exact spelling</div><div class="answer-text">${esc(answer)}</div>`:''}<div class="row spread wrap" style="margin-top:18px"><span class="badge green">${tier(question.from)} → ${tier(card.level)}</span><button type="button" class="btn primary" id="continue" data-action="continue" onclick="Learn.action(this)">Continue ${svg('arrow')}</button></div></div>`;
+      if(question.phase==='correct')return `<div class="feedback" role="status">${session.options.autoAdvance&&!question.reviewingPrevious?'<div class="auto-advance-track" aria-hidden="true"><span class="auto-advance-fill"></span></div>':''}<h3 class="success">${question.overridden?'You know it. Grading updated.':question.typo?'Correct — just a small spelling fix.':card.level===2?'You’ve mastered this one!':session.streak>=3?`${session.streak} in a row — keep it going!`:'Nice work. One step closer.'}</h3>${question.typo?`<div class="small muted">Exact spelling</div><div class="answer-text">${esc(answer)}</div>`:''}<div class="row spread wrap" style="margin-top:18px"><span class="badge green">${tier(question.from)} → ${tier(card.level)}</span><button type="button" class="btn primary" id="continue" data-action="continue" onclick="Learn.action(this)">${question.reviewingPrevious?'Return to current question':'Continue'} ${svg('arrow')}</button></div></div>`;
       if(question.phase!=='incorrect')return '';
       const overrideButton=question.type==='written'&&!question.skipped?'<button type="button" class="btn ghost" data-action="override" onclick="Learn.action(this)" aria-keyshortcuts="Alt+R">Override: I was right <kbd>Alt R</kbd></button>':'';
-      return `<div class="feedback" aria-live="polite"><h3 class="error">${question.skipped?'No worries — let’s learn it now.':'Let’s give that another look.'}</h3><div class="small muted">Correct ${question.answerWith}</div><div class="row"><div class="answer-text" style="flex:1">${esc(answer)}</div><button type="button" class="icon-btn" data-action="speak-answer" onclick="Learn.action(this)" aria-label="Read correct answer aloud">${svg('speaker')}</button></div>${session.options.requireRetype===true?`<div id="correction-panel"><label for="correction">Type the correct answer to keep going</label><input id="correction" class="field answer-input" oninput="Learn.captureDraft(this)" value="${esc(question.draft)}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="correction-hint"><p id="correction-hint" class="hint">This card returns to Unseen. ${session.options.quickSkip!==false?'Empty Enter skips retyping; it still counts as a miss.':'Type the answer, or use Skip retyping.'}</p><div class="row wrap spread" style="margin-top:18px">${overrideButton}<button type="button" class="btn ghost" onclick="Learn.skipRetyping()" aria-keyshortcuts="Alt+S">Skip retyping <kbd>Alt S</kbd></button><button type="button" class="btn primary" onclick="Learn.checkCorrection()">Check correction ${svg('arrow')}</button></div><button type="button" class="inline-toggle" onclick="Learn.setStudyOption('requireRetype',false)">Turn off retyping</button></div>`:`<div class="row wrap spread" style="margin-top:18px">${overrideButton}<button type="button" id="continue" class="btn primary" data-action="continue" onclick="Learn.action(this)">Continue ${svg('arrow')}</button></div><p class="hint">Enter or Space to continue. This card stays queued for review.</p>`}</div>`;
+      return `<div class="feedback" aria-live="polite"><h3 class="error">${question.skipped?'No worries — let’s learn it now.':'Let’s give that another look.'}</h3><div class="small muted">Correct ${question.answerWith}</div><div class="row"><div class="answer-text" style="flex:1">${esc(answer)}</div><button type="button" class="icon-btn" data-action="speak-answer" onclick="Learn.action(this)" aria-label="Read correct answer aloud">${svg('speaker')}</button></div>${session.options.requireRetype===true&&!question.reviewingPrevious?`<div id="correction-panel"><label for="correction">Type the correct answer to keep going</label><input id="correction" class="field answer-input" oninput="Learn.captureDraft(this)" value="${esc(question.draft)}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="correction-hint"><p id="correction-hint" class="hint">This card returns to Unseen. ${session.options.quickSkip!==false?'Empty Enter skips retyping; it still counts as a miss.':'Type the answer, or use Skip retyping.'}</p><div class="row wrap spread" style="margin-top:18px">${overrideButton}<button type="button" class="btn ghost" onclick="Learn.skipRetyping()" aria-keyshortcuts="Alt+S">Skip retyping <kbd>Alt S</kbd></button><button type="button" class="btn primary" onclick="Learn.checkCorrection()">Check correction ${svg('arrow')}</button></div><button type="button" class="inline-toggle" onclick="Learn.setStudyOption('requireRetype',false)">Turn off retyping</button></div>`:`<div class="row wrap spread" style="margin-top:18px">${overrideButton}<button type="button" id="continue" class="btn primary" data-action="continue" onclick="Learn.action(this)">${question.reviewingPrevious?'Return to current question':'Continue'} ${svg('arrow')}</button></div><p class="hint">${question.reviewingPrevious?'Reviewing the previous answer. Enter returns to your current question.':'Enter or Space to continue. This card stays queued for review.'}</p>`}</div>`;
     }
     function renderStudy() {
-      const s=state.session,d=deckById(s.deckId),cards=scopeCards();
-      if(s.screen==='empty')return `${modeSwitcher(d.id,'study')}<div class="study empty"><h2>No cards in this selection.</h2><p class="muted">Choose All cards or star cards in the deck editor.</p><button type="button" class="btn primary" onclick="Learn.showOptions()">Study options</button><button type="button" class="btn" onclick="Learn.action(this)" data-action="home">Library</button></div>`;
-      if(s.screen!=='question')return modeSwitcher(d.id,'study')+renderCheckpoint();
-      const q=s.question,c=d.cards.find(c=>c.id===q.cardId),answer=q.answerText,prompt=q.promptText;
-      const feedback=renderFeedback(s,q,c,answer);
-      return `${modeSwitcher(d.id,'study')}<div class="study ${motion==='answer-correct'?'progress-advanced':''}"><div class="study-header"><div class="row spread"><div class="row" style="min-width:0"><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="home" aria-label="Back to library">${svg('back')}</button><div><div class="eyebrow" style="margin-bottom:4px">Learn mode${s.selectionLabel?' · '+esc(s.selectionLabel):''}${scopeOf(s.options)==='all'?'':scopeOf(s.options)==='starred'?' · Starred selection':' · Hardest selection'}</div><h1>${esc(d.title)}</h1></div></div><button onclick="Learn.showOptions()" type="button" class="icon-btn" data-action="options" aria-label="Session options" title="Study options">${svg('settings')}</button></div><div class="round-meta"><span>Round ${s.round} <span style="margin:0 7px">·</span> Question ${Math.min(7,s.results.length+(q.phase==='asking'?1:0))} of 7</span><span>${stats(cards).mastered} / ${cards.length} mastered</span></div><div class="progress-track" role="progressbar" aria-label="Round progress" aria-valuemin="0" aria-valuemax="7" aria-valuenow="${s.results.length}"><div class="progress-fill" style="transform:scaleX(${s.results.length/7})"></div></div></div><section class="question ${motion}" aria-label="Study question"><div class="question-top"><div class="row"><button type="button" class="badge purple quick-switch" onclick="Learn.cycleFormat()" aria-label="Cycle question format" ${q.phase==='asking'?'':'disabled'}>${formatOf(s.options)==='adaptive'?'Adaptive · ':''}${q.type==='mc'?'Multiple choice':'Written response'} ⇄</button><span class="tiny muted">${tier(q.from)}</span>${s.streak>=2?`<span class="badge streak-badge" role="status" aria-label="${s.streak} correct answers in a row">🔥 ${s.streak} streak${s.streak>=5?'!':''}</span>`:''}</div><div class="row" style="gap:3px"><button onclick="Learn.action(this)" type="button" class="icon-btn" data-action="speak-prompt" aria-label="Read question aloud" title="Read aloud">${svg('speaker')}</button><button type="button" class="icon-btn" onclick="Learn.editStudyCard()" aria-label="Edit card" aria-keyshortcuts="Alt+E" title="Edit card · Alt E" ${q.phase==='asking'?'':'disabled'}>${svg('edit')}</button><button onclick="Learn.action(this)" type="button" class="icon-btn ${c.starred?'starred':''}" data-action="study-star" aria-label="${c.starred?'Unstar':'Star'} this card" aria-pressed="${c.starred}" title="${c.starred?'Unstar':'Star'} card">${svg('star')}</button></div></div><button type="button" class="eyebrow quick-direction" onclick="Learn.cycleDirection()" aria-label="Reverse answer direction" ${q.phase==='asking'?'':'disabled'}>${q.answerWith==='term'?'Definition':'Term'} ⇄ ${q.answerWith==='term'?'Term':'Definition'}</button><h2 class="prompt">${esc(prompt)}</h2>${q.type==='mc'?`<div class="choices">${q.choices.map((choice,i)=>`<button onclick="Learn.action(this)" type="button" class="choice ${q.phase!=='asking'?(choice===answer?'correct':choice===q.submitted?'wrong':''):''}" data-action="choose" data-index="${i}" ${q.phase==='asking'?'':'disabled'}><span class="key">${i+1}</span><span>${esc(choice)}</span></button>`).join('')}</div>${q.choices.length<4?'<p class="hint">This deck has fewer than four distinct answers, so you’ll see fewer choices. Add cards for more distractors.</p>':''}`:q.phase==='asking'?`<div id="written-panel"><label for="written-answer">Your ${q.answerWith}</label><input id="written-answer" class="field answer-input" oninput="Learn.captureDraft(this)" value="${esc(q.draft)}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type what you remember…" required aria-describedby="answer-hint"><div id="answer-hint" class="hint-reveal ${q.hintStep?'':'hidden'}" role="status" aria-live="polite" aria-atomic="true">${q.hintStep?esc(hintText(answer,q.hintStep)):''}</div><div class="row spread" style="margin-top:18px"><span class="tiny muted">Meaningful practice, not perfect punctuation.</span><button class="btn primary" type="button" onclick="Learn.checkWritten()">Check answer ${svg('arrow')}</button></div></div>`:`<div class="small muted">Your answer</div><div class="answer-text">${q.skipped?'Skipped — let’s learn it now.':esc(q.submitted)}</div>`}${q.phase==='asking'?`<div class="study-tools"><button type="button" class="btn ghost" onclick="Learn.skipQuestion()" data-action="skip" aria-keyshortcuts="Alt+D">Don’t know? <kbd>Alt D</kbd></button>${q.type==='written'?`<button type="button" class="btn ghost" onclick="Learn.getHint()" data-action="hint" aria-controls="answer-hint" aria-keyshortcuts="Alt+H" ${q.hintStep>=2?'disabled':''}>${q.hintStep===0?'Get a hint':q.hintStep===1?'Reveal more':'Hint revealed'} <kbd>Alt H</kbd></button>`:''}</div>`:''}${feedback}</section><div class="study-footer"><span>${q.phase==='asking'?(q.type==='mc'?'<kbd>1</kbd> – <kbd>4</kbd> Choose an answer':'<kbd>Enter</kbd> Check answer')+' · <kbd>Alt D</kbd> Don’t know'+(q.type==='written'?' · <kbd>Alt H</kbd> Hint':''):q.phase==='correct'?'<kbd>Enter</kbd> Continue':s.options.requireRetype===true?'<kbd>Enter</kbd> Check correction · <kbd>Alt S</kbd> Skip':'<kbd>Enter</kbd> / <kbd>Space</kbd> Continue'}${q.phase==='incorrect'&&q.type==='written'&&!q.skipped?' · <kbd>Alt R</kbd> Override':''}</span><span>Progress saves automatically</span></div></div>`;
+      const session=state.session,deck=deckById(session.deckId),cards=scopeCards();
+      const modes=modeSwitcher(deck.id,'study');
+      if(session.screen==='empty')return `${modes}<div class="study empty"><h2>No cards in this selection.</h2><p class="muted">Choose All cards or star cards in the deck editor.</p><button type="button" class="btn primary" onclick="Learn.showOptions()">Study options</button><button type="button" class="btn" onclick="Learn.action(this)" data-action="home">Library</button></div>`;
+      if(session.screen!=='question')return modes+renderCheckpoint();
+      const q=session.question,card=deck.cards.find(item=>item.id===q.cardId),answer=q.answerText;
+      const feedback=renderFeedback(session,q,card,answer);
+      const image=imageMarkup(q,'prompt','study')||(q.phase!=='asking'?imageMarkup(q,'answer','study'):'');
+      let questionBody=`<button type="button" class="eyebrow quick-direction" onclick="Learn.cycleDirection()" aria-label="Reverse answer direction" ${q.phase==='asking'?'':'disabled'}>${q.answerWith==='term'?'Definition':'Term'} ⇄ ${q.answerWith==='term'?'Term':'Definition'}</button><h2 class="prompt">${esc(q.promptText)}</h2>`;
+      if(q.type==='mc') {
+        questionBody+=`<div class="choices">${q.choices.map((choice,index)=>{const failed=q.failedChoices.includes(choice),graded=q.phase!=='asking';return `<button type="button" class="choice ${failed?'wrong':graded?(choice===answer?'correct':choice===q.submitted?'wrong':''):''}" data-action="choose" data-index="${index}" onclick="Learn.action(this)" ${failed||graded?'disabled':''}><span class="key">${index+1}</span><span>${esc(choice)}</span></button>`;}).join('')}</div>${q.choices.length<4?'<p class="hint">This deck has fewer than four distinct answers, so you’ll see fewer choices.</p>':''}`;
+      } else if(q.phase==='asking') {
+        questionBody+=`<div id="written-panel"><label for="written-answer">Your ${q.answerWith}</label><input id="written-answer" class="field answer-input" oninput="Learn.captureDraft(this)" value="${esc(q.draft)}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type what you remember…" aria-describedby="answer-hint attempt-status"><div id="answer-hint" class="hint-reveal ${q.hintStep?'':'hidden'}" role="status" aria-live="polite" aria-atomic="true">${q.hintStep?esc(hintText(answer,q.hintStep)):''}</div><div class="row spread wrap" style="margin-top:16px"><span class="tiny muted">Meaningful practice, not perfect punctuation.</span><button type="button" class="btn primary" onclick="Learn.checkWritten()">Check answer ${svg('arrow')}</button></div></div>`;
+      } else questionBody+=`<div class="small muted">Your answer</div><div class="answer-text">${q.skipped?'Skipped — let’s learn it now.':esc(q.submitted)}</div>`;
+      if(q.phase==='asking')questionBody+=`<p id="attempt-status" class="attempt-notice ${q.attemptsUsed===1?'':'hidden'}" role="status" aria-live="polite">${q.attemptsUsed===1?'Not quite — 1 attempt remaining. Try again or press Alt+D to skip.':''}</p><div class="study-tools"><button type="button" class="btn ghost" onclick="Learn.skipQuestion()" data-action="skip" aria-keyshortcuts="Alt+D">Don’t know? <kbd>Alt D</kbd></button>${q.type==='written'?`<button type="button" class="btn ghost" onclick="Learn.getHint()" data-action="hint" aria-controls="answer-hint" aria-keyshortcuts="Alt+H" ${q.hintStep>=2?'disabled':''}>${q.hintStep===0?'Get a hint':q.hintStep===1?'Reveal more':'Hint revealed'} <kbd>Alt H</kbd></button>`:''}</div>`;
+      const scope=scopeOf(session.options),progressStats=stats(cards);
+      return `${modes}<div class="study ${motion==='answer-correct'?'progress-advanced':''}"><div class="study-header"><div class="row spread"><div class="row" style="min-width:0"><button type="button" class="icon-btn" onclick="Learn.action(this)" data-action="home" aria-label="Back to library">${svg('back')}</button><div><div class="eyebrow" style="margin-bottom:4px">Learn mode${session.selectionLabel?' · '+esc(session.selectionLabel):''}${scope==='all'?'':scope==='starred'?' · Starred selection':' · Hardest selection'}</div><h1>${esc(deck.title)}</h1></div></div><div class="row study-header-tools">${shuffleHeader('study')}<button type="button" class="icon-btn" onclick="Learn.showOptions()" aria-label="Session options" title="Study options">${svg('settings')}</button></div></div><div class="round-meta"><span>Round ${session.round} · Question ${Math.min(7,session.results.length+(q.phase==='asking'?1:0))} of 7</span><span>${progressStats.mastered} / ${cards.length} mastered</span></div><div class="progress-track" role="progressbar" aria-label="Round progress" aria-valuemin="0" aria-valuemax="7" aria-valuenow="${session.results.length}"><div class="progress-fill" style="transform:scaleX(${session.results.length/7})"></div></div></div><section class="question ${motion}" aria-label="Study question"><div class="question-top"><div class="row"><button type="button" class="badge purple quick-switch" onclick="Learn.cycleFormat()" aria-label="Cycle question format" ${q.phase==='asking'?'':'disabled'}>${formatOf(session.options)==='adaptive'?'Adaptive · ':''}${q.type==='mc'?'Multiple choice':'Written response'} ⇄</button><span class="tiny muted">${tier(q.from)}</span>${session.streak>=2?`<span class="badge streak-badge" role="status" aria-label="${session.streak} correct answers in a row">${svg('spark')}${session.streak} streak${session.streak>=5?'!':''}</span>`:''}</div><div class="row question-controls">${rewindButton(session)}<button type="button" class="icon-btn" onclick="Learn.action(this)" data-action="speak-prompt" aria-label="Read question aloud">${svg('speaker')}</button><button type="button" class="icon-btn" onclick="Learn.editStudyCard()" aria-label="Edit card" aria-keyshortcuts="Alt+E" title="Edit card · Alt E" ${q.phase==='asking'?'':'disabled'}>${svg('edit')}</button><button type="button" class="icon-btn ${card.starred?'starred':''}" onclick="Learn.action(this)" data-action="study-star" aria-label="${card.starred?'Unstar':'Star'} this card" aria-pressed="${card.starred}">${svg('star')}</button></div></div>${image?`<div class="prompt-media-grid"><div class="question-copy">${questionBody}</div>${image}</div>`:questionBody}${feedback}</section><div class="study-footer"><span>${q.reviewingPrevious?'<kbd>Enter</kbd> Return to current question':q.phase==='asking'?(q.type==='mc'?'<kbd>1</kbd>–<kbd>4</kbd> Choose':'<kbd>Enter</kbd> Check')+' · <kbd>Alt D</kbd> Don’t know'+(q.type==='written'?' · <kbd>Alt H</kbd> Hint':''):q.phase==='correct'?'<kbd>Enter</kbd> Continue':session.options.requireRetype?'<kbd>Enter</kbd> Check correction · <kbd>Alt S</kbd> Skip':'<kbd>Enter</kbd> / <kbd>Space</kbd> Continue'}${q.phase==='incorrect'&&q.type==='written'&&!q.skipped?' · <kbd>Alt R</kbd> Override':''}</span><span>Progress saves automatically</span></div></div>`;
     }
     function confetti() {
       const colors=['#a89cff','#78ddbd','#f4ca73','#ff9eac','#81c7ff'];
@@ -1316,7 +1986,7 @@
     function renderCheckpoint() {
       const s=state.session,d=deckById(s.deckId),cards=scopeCards(),complete=cards.every(c=>c.level===2),hits=s.results.filter(r=>r.correct).length,accuracy=s.results.length?Math.round(hits/s.results.length*100):100;
       const leveled=cards.filter(c=>c.level>s.roundStart[c.id]);
-      return `<div class="study checkpoint ${motion==='card-enter'?'card-enter':''}">${complete&&motion==='card-enter'?confetti():''}<div class="row spread" style="margin-bottom:25px"><button onclick="Learn.action(this)" type="button" class="btn ghost" data-action="home">${svg('back')}Library</button><span class="badge purple">${esc(d.title)}${scopeOf(s.options)==='all'?'':scopeOf(s.options)==='starred'?' · Starred selection':' · Hardest selection'}</span></div><div class="question"><div class="completion-icon">${svg(complete?'trophy':'spark')}</div><div class="eyebrow">${complete?'Look at you go':'A moment to see your progress'}</div><h1>${complete?'You’ve mastered '+(s.selectionLabel?'your selected cards.':scopeOf(s.options)==='all'?'this deck.':scopeOf(s.options)==='starred'?'your starred selection.':'your hardest selection.'):'Round '+s.round+' complete.'}</h1><p class="muted">${complete?'Take a breath. That knowledge is yours to keep practicing.':'Every little bit is sticking. Ready for the next seven?'}</p><div class="checkpoint-stats"><div class="checkpoint-stat"><strong class="success">${s.results.length?accuracy+'%':'—'}</strong><span class="tiny muted">Round accuracy</span></div><div class="checkpoint-stat"><strong style="color:var(--accent)">${leveled.length}</strong><span class="tiny muted">Cards leveled up</span></div><div class="checkpoint-stat"><strong>${stats(cards).mastered}<span class="small muted"> / ${cards.length}</span></strong><span class="tiny muted">${scopeOf(s.options)!=='all'?'Selected cards':'Deck cards'} mastered</span></div></div><div style="text-align:left">${progress(d.cards,'Overall deck progress')}${scopeOf(s.options)!=='all'?`<div style="margin-top:15px">${progress(cards,scopeOf(s.options)==='starred'?'Starred selection progress':'Hardest selection progress')}</div>`:''}</div>${s.results.length?`<div class="results"><div class="result" style="background:var(--panel2)"><strong>This round’s cards</strong><span class="tiny muted">${hits}/${s.results.length} correct${s.results.some(r=>r.override)?' · includes overrides':''}</span></div>${[...new Set(s.results.map(r=>r.cardId))].map(id=>{const c=d.cards.find(c=>c.id===id),from=s.roundStart[id],missed=s.results.some(r=>r.cardId===id&&!r.correct);return `<div class="result"><span class="result-name">${esc(c.term)} ${accuracyBadge(c)}${missed?'<span class="tiny muted" style="display:block">Correction practiced this round</span>':''}</span><span class="badge ${c.level>from?'green':''}">${c.level>from?`${tier(from)} → `:''}${tier(c.level)}</span></div>`;}).join('')}</div>`:'<div class="notice">These cards were already mastered. Reset their progress below to practice again.</div>'}<p class="small muted">Session accuracy: ${s.total?Math.round(s.hits/s.total*100)+'% ('+s.hits+'/'+s.total+')':'No questions answered in this session'}. Corrections don’t count as new questions.</p><div class="row wrap" style="justify-content:center;margin-top:25px">${complete?'<button onclick="Learn.action(this)" type="button" class="btn" data-action="reset-selected">Practice again</button><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="finish">Back to library '+svg('check')+'</button>':'<button onclick="Learn.action(this)" type="button" id="next-round" class="btn primary" data-action="next-round">Start round '+(s.round+1)+' '+svg('arrow')+'</button>'}</div></div><p class="hint">${formatHint(s.options)}</p></div>`;
+      return `<div class="study checkpoint ${motion==='card-enter'?'card-enter':''}">${complete&&motion==='card-enter'?confetti():''}<div class="row spread wrap" style="margin-bottom:25px">${rewindButton(s)}<button onclick="Learn.action(this)" type="button" class="btn ghost" data-action="home">${svg('back')}Library</button><span class="badge purple">${esc(d.title)}${scopeOf(s.options)==='all'?'':scopeOf(s.options)==='starred'?' · Starred selection':' · Hardest selection'}</span></div><div class="question"><div class="completion-icon">${svg(complete?'trophy':'spark')}</div><div class="eyebrow">${complete?'Look at you go':'A moment to see your progress'}</div><h1>${complete?'You’ve mastered '+(s.selectionLabel?'your selected cards.':scopeOf(s.options)==='all'?'this deck.':scopeOf(s.options)==='starred'?'your starred selection.':'your hardest selection.'):'Round '+s.round+' complete.'}</h1><p class="muted">${complete?'Take a breath. That knowledge is yours to keep practicing.':'Every little bit is sticking. Ready for the next seven?'}</p><div class="checkpoint-stats"><div class="checkpoint-stat"><strong class="success">${s.results.length?accuracy+'%':'—'}</strong><span class="tiny muted">Round accuracy</span></div><div class="checkpoint-stat"><strong style="color:var(--accent)">${leveled.length}</strong><span class="tiny muted">Cards leveled up</span></div><div class="checkpoint-stat"><strong>${stats(cards).mastered}<span class="small muted"> / ${cards.length}</span></strong><span class="tiny muted">${scopeOf(s.options)!=='all'?'Selected cards':'Deck cards'} mastered</span></div></div><div style="text-align:left">${progress(d.cards,'Overall deck progress')}${scopeOf(s.options)!=='all'?`<div style="margin-top:15px">${progress(cards,scopeOf(s.options)==='starred'?'Starred selection progress':'Hardest selection progress')}</div>`:''}</div>${s.results.length?`<div class="results"><div class="result" style="background:var(--panel2)"><strong>This round’s cards</strong><span class="tiny muted">${hits}/${s.results.length} correct${s.results.some(r=>r.override)?' · includes overrides':''}</span></div>${[...new Set(s.results.map(r=>r.cardId))].map(id=>{const c=d.cards.find(c=>c.id===id),from=s.roundStart[id],missed=s.results.some(r=>r.cardId===id&&!r.correct);return `<div class="result"><span class="result-name">${esc(c.term)} ${accuracyBadge(c)}${missed?'<span class="tiny muted" style="display:block">Correction practiced this round</span>':''}</span><span class="badge ${c.level>from?'green':''}">${c.level>from?`${tier(from)} → `:''}${tier(c.level)}</span></div>`;}).join('')}</div>`:'<div class="notice">These cards were already mastered. Reset their progress below to practice again.</div>'}<p class="small muted">Session accuracy: ${s.total?Math.round(s.hits/s.total*100)+'% ('+s.hits+'/'+s.total+')':'No questions answered in this session'}. Corrections don’t count as new questions.</p><div class="row wrap" style="justify-content:center;margin-top:25px">${complete?'<button onclick="Learn.action(this)" type="button" class="btn" data-action="reset-selected">Practice again</button><button onclick="Learn.action(this)" type="button" class="btn primary" data-action="finish">Back to library '+svg('check')+'</button>':'<button onclick="Learn.action(this)" type="button" id="next-round" class="btn primary" data-action="next-round">Start round '+(s.round+1)+' '+svg('arrow')+'</button>'}</div></div><p class="hint">${formatHint(s.options)}</p></div>`;
     }
     function download(text,name,type='application/json') {const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
     function exportBackup() {download(JSON.stringify({version:1,exportedAt:new Date().toISOString(),decks:state.decks,settings:state.settings,flashcards:state.flashcards,test:state.test},null,2),'learn-backup-'+new Date().toISOString().slice(0,10)+'.json');toast('Backup downloaded with decks, stars, and mastery.');}
@@ -1358,7 +2028,7 @@
       let removed = 0;
       for (const card of editor.cards) {
         if (!card.term.trim() && !card.definition.trim()) {retained.push(card);continue;}
-        const key = JSON.stringify([keyPart(card.term),keyPart(card.definition)]);
+        const key = JSON.stringify([keyPart(card.term),keyPart(card.definition),card.image||'',card.imageSide||'prompt']);
         const original = seen.get(key);
         if (original) {
           original.starred = original.starred || card.starred;
@@ -1409,8 +2079,8 @@
       else if(a==='override')override();
       else if(a==='session-info')showOptions();
       else if(a==='study-star'){const s=state.session,c=deckById(s.deckId).cards.find(c=>c.id===s.question.cardId);c.starred=!c.starred;persist();btn.classList.toggle('starred',c.starred);btn.setAttribute('aria-pressed',String(c.starred));btn.setAttribute('aria-label',(c.starred?'Unstar':'Star')+' this card');btn.title=(c.starred?'Unstar':'Star')+' card';}
-      else if(a==='speak-prompt'||a==='speak-answer'){const s=state.session,c=deckById(s.deckId).cards.find(c=>c.id===s.question.cardId);speak(c[a==='speak-answer'?s.question.answerWith:s.question.answerWith==='term'?'definition':'term']);}
-      else if(a==='next-round'){const s=state.session;if(s.screen==='question')return;s.round++;s.results=[];s.roundStart=Object.fromEntries(scopeCards().map(c=>[c.id,c.level]));nextQuestion();persist();render();window.scrollTo(0,0);}
+      else if(a==='speak-prompt'||a==='speak-answer'){const s=state.session,c=deckById(s.deckId).cards.find(c=>c.id===s.question.cardId);speak(a==='speak-answer'?s.question.answerText:s.question.promptText);}
+      else if(a==='next-round'){const s=state.session;if(s.screen==='question')return;s.round++;s.results=[];s.roundStart=Object.fromEntries(scopeCards().map(c=>[c.id,c.level]));saveRewind('leave');nextQuestion();persist();render();}
       else if(a==='finish'){state.session=null;page='home';persist();render();window.scrollTo(0,0);}
       else if(a==='reset-selected')confirmAction('Practice these cards again?','This resets mastery and answer statistics for the cards in this session. Other cards keep their progress.','confirm-practice','Reset and study');
       else if(a==='confirm-practice'){const s=state.session;for(const c of scopeCards()){c.level=0;c.attempts=0;c.correct=0;syncFlashCard(s.deckId,c);}s.queue=shuffle(s.cardIds);s.round=1;s.total=0;s.hits=0;s.streak=0;s.results=[];s.roundStart=Object.fromEntries(scopeCards().map(c=>[c.id,0]));closeModal();nextQuestion();persist();render();}
@@ -1425,9 +2095,12 @@
     function captureDraft(input) {if(state.session?.question){state.session.question.draft=input.value;cancelDraftSave();draftTimer=setTimeout(()=>{draftTimer=null;save();},300);}}
     function searchDecks(value) {search=value;filterDecks();}
     document.addEventListener('keydown',e=>{
+      if(e.altKey&&!e.ctrlKey&&!e.metaKey&&!e.repeat&&e.key.toLowerCase()==='i'){e.preventDefault();openCurrentImage();return;}
+      if(imagePreviewOpen())return;
       if(flashKeydown(e))return;
       if(e.repeat||e.isComposing||$('#modal').open||page!=='study'||!state.session)return;
       const s=state.session,q=s.question,typing=/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.target.isContentEditable;
+      if(e.altKey&&!e.ctrlKey&&!e.metaKey&&e.key.toLowerCase()==='z'){e.preventDefault();rewindLast();return;}
       if(s.screen!=='question'){if(e.key==='Enter'&&!typing&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&e.target===document.body){e.preventDefault();(s.screen==='checkpoint'?$('#next-round'):null)?.click();}return;}
       if(e.altKey&&!e.ctrlKey&&!e.metaKey&&q.phase==='asking'&&e.key.toLowerCase()==='e'){e.preventDefault();editStudyCard();return;}
       if(e.altKey&&!e.ctrlKey&&!e.metaKey&&q.phase==='incorrect'&&e.key.toLowerCase()==='s'){e.preventDefault();skipRetyping();return;}
@@ -1437,6 +2110,7 @@
       if(e.key==='Enter'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&e.target.id==='written-answer'&&q.phase==='asking'){e.preventDefault();checkWritten();return;}
       if(e.key==='Enter'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&e.target.id==='correction'&&q.phase==='incorrect'){e.preventDefault();checkCorrection();return;}
       if(e.ctrlKey||e.metaKey||e.altKey||typing)return;
+      if(q.reviewingPrevious&&(e.key==='Enter'||e.key===' '||e.code==='Space')&&(!e.target.closest('button,a,[role=button]')||e.target.closest('#continue'))){e.preventDefault();advance();return;}
       if(q.phase==='incorrect'&&s.options.requireRetype!==true&&(e.key==='Enter'||e.key===' '||e.code==='Space')&&(!e.target.closest('button,a,[role=button]')||e.target.closest('#continue'))){e.preventDefault();advance();return;}
       if(q.phase==='asking'&&q.type==='mc'&&s.options.quickSkip!==false&&(e.key==='Enter'||e.key===' '||e.code==='Space')&&!e.target.closest('button,a,[role=button]')){e.preventDefault();skipQuestion();return;}
       if(q.phase==='asking'&&q.type==='mc'&&/^[1-4]$/.test(e.key)){e.preventDefault();selectChoice(Number(e.key)-1);}
@@ -1444,7 +2118,7 @@
     });
     window.addEventListener('storage',e=>{if(e.key===KEY&&e.newValue!==JSON.stringify(state)){storageConflict=true;storageIssue='Your library changed in another tab. Export this tab if needed, then reload to use the latest saved library. Saving here is paused to prevent overwriting it.';renderBanner();}});
     window.addEventListener('pagehide',()=>{flushDraft();cancelAutoAdvance();sfx.stop();if('speechSynthesis' in window)window.speechSynthesis.cancel();});
-    window.Learn={action,saveDeck,saveOptions,closeModal,showOptions,applyStudyOptions:updateStudyOptions,applyImport,readImport,checkWritten,checkCorrection,captureDraft,searchDecks,switchMode,skipQuestion,getHint,setStudyOption,optionKey,cycleFormat,cycleDirection,skipRetyping,editStudyCard,saveStudyCard,swapEditorCards,deduplicateEditorCards,startFlashcards,restartFlashcards,flipFlashcard,speakFlashcard,rateFlashcard,reviewUnmasteredFlashcards,starFlashcard,toggleFlashTrack,toggleFlashShuffle,toggleFlashSide,navigateFlashcard,startTest,configureNewTest,confirmNewTest,testConfigChange,generateTest,captureTestAnswer,answerTest,submitTest,retakeMissedTest,practiceMissedTest};
+    window.Learn={action,saveDeck,saveOptions,closeModal,showOptions,applyStudyOptions:updateStudyOptions,applyImport,readImport,checkWritten,checkCorrection,captureDraft,searchDecks,switchMode,skipQuestion,getHint,setStudyOption,optionKey,cycleFormat,cycleDirection,skipRetyping,editStudyCard,saveStudyCard,swapEditorCards,deduplicateEditorCards,startFlashcards,restartFlashcards,flipFlashcard,speakFlashcard,rateFlashcard,reviewUnmasteredFlashcards,starFlashcard,toggleFlashTrack,toggleFlashShuffle,toggleFlashSide,navigateFlashcard,startTest,configureNewTest,confirmNewTest,testConfigChange,generateTest,captureTestAnswer,answerTest,submitTest,retakeMissedTest,practiceMissedTest,setModeShuffle,rewindLast,compressImage,toggleImageBar,chooseEditorImage,attachImageToEditor,editorImageUrl,setEditorImageSide,removeEditorImage,imagePlacementKey,chooseStudyImage,attachStudyImage,studyImageUrl,setStudyImageSide,removeStudyImage,openImagePreview,closeImagePreview,changeImageZoom,resetImageZoom,imageZoomKey,imageZoomWheel,openCurrentImage};
     render();
   })();
   </script>
